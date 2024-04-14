@@ -33,11 +33,14 @@
  <div class="chartbox">
 
   <script type="text/javascript">
-   function doAction(d) {
+   function doAction() {
+    console.log('dd')
+
     var script = document.createElement('script');
-    script.innerHTML = 'console.log('origamitukino' )';
+    script.innerHTML = 'console.log(\'origamitukino\')';
     document.body.appendChild(script);
    }
+
   </script>
 
   <input type="button" value="実行" onclick='doAction( "new" );'>
