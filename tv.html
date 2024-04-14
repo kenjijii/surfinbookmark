@@ -36,11 +36,10 @@
 
   <script type="text/javascript">
 
-   const strage = locaStrage;
    function doAction() {
-    strage.setItem('url', document.getElementById('url').value);
+    localStorage.setItem('url', document.getElementById('url').value);
     console.log('dd')
-    const strageValue = strage.getItem('url');
+    const strageValue = localStorage.getItem('url');
     console.log('dd')
     console.log(strageValue);
     var script = document.createElement('script');
