@@ -32,39 +32,9 @@
 <body>
  <div class="chartbox">
 
-  <script type="text/javascript">
-   // *********************************************************
-   // 関数
-   // *********************************************************
-   function doAction(strValue) {
-
-    var base;
-    var obj;
-
-    base = document.getElementById(strValue);
-    base.innerHTML = "";
-
-    // IFRAME 作成
-    obj = document.createElement("iframe");
-    // IFRAME の見栄え属性をセット
-    obj.setAttribute("frameBorder", "1");
-    obj.setAttribute("scrolling", "no");
-
-    // IFRAME の配置属性をセット
-    obj.style.position = "relative";
-    obj.style.width = "500px";
-    obj.style.height = "500px";
-
-    // IFRAME の内容をセット
-    obj.src = document.getElementById("url").value;
-
-    // IFRAME を実装
-    base.appendChild(obj);
-
-
-   }
-
-  </script>
+  <script type="text/javascript">var script = document.createElement('script');
+   script.innerHTML = 'console.log("オラオラ")';
+   document.body.appendChild(script);</script>
 
   <input type="button" value="実行" onclick='doAction( "new" );'>
   <br>
