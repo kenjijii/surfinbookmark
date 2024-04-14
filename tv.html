@@ -33,7 +33,7 @@
 
 <body>
  <script>
-  const stocks = 'NASDAQ: AMD';
+  const stocks = `;
   function doAction() {
    let jnex = localStorage.getItem('stk');
    let strageValue = jnex ? JSON.parse(jnex) : [];
@@ -47,21 +47,21 @@
 
    const script = document.createElement('script');
    script.innerHTML = `
-                new TradingView.widget(
-                    {
-                        "width": 440,
-                        "height": 270,
-                        "symbol": "${stocks}",
-                        "interval": "D",
-                        "timezone": "Etc/UTC",
-                        "theme": "light",
-                        "style": "1",
-                        "locale": "ja",
-                        "enable_publishing": false,
-                        "allow_symbol_change": true,
-                        "container_id": "tradingview_4bdf3"
-                    }
-                );
+  new TradingView.widget(
+   {
+    "width": 440,
+    "height": 270,
+    "symbol": "${stocks}",
+    "interval": "D",
+    "timezone": "Etc/UTC",
+    "theme": "light",
+    "style": "1",
+    "locale": "ja",
+    "enable_publishing": false,
+    "allow_symbol_change": true,
+    "container_id": "tradingview_4bdf3"
+   }
+  );
     `;
    document.body.appendChild(script);
 
