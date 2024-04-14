@@ -32,233 +32,47 @@
 <body>
  <div class="chartbox">
 
-  <div class="iframebox"><!-- TradingView Widget BEGIN -->
+  <script type="text/javascript">
+   // *********************************************************
+   // 関数
+   // *********************************************************
+   function doAction(strValue) {
 
-   <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
-   <script type="text/javascript">
-    new TradingView.widget(
-     {
-      "width": 440,
-      "height": 270,
-      "symbol": "NASDAQ:AMD",
-      "interval": "D",
-      "timezone": "Etc/UTC",
-      "theme": "light",
-      "style": "1",
-      "locale": "ja",
-      "enable_publishing": false,
-      "allow_symbol_change": true,
-      "container_id": "tradingview_4bdf3"
-     }
-    );
-   </script>
-   <!-- TradingView Widget END -->
-  </div>
-  <div class="iframebox"><!-- TradingView Widget BEGIN -->
+    var base;
+    var obj;
 
-   <script type="text/javascript">
-    new TradingView.widget(
-     {
-      "width": 440,
-      "height": 270,
+    base = document.getElementById(strValue);
+    base.innerHTML = "";
 
-      "symbol": "NASDAQ:AAPL",
-      "interval": "D",
-      "timezone": "Etc/UTC",
-      "theme": "light",
-      "style": "1",
-      "locale": "ja",
-      "enable_publishing": false,
-      "allow_symbol_change": true,
-      "container_id": "tradingview_c51a8"
-     }
-    );
-   </script>
-   <!-- TradingView Widget END -->
-  </div>
-  <div class="iframebox"><!-- TradingView Widget BEGIN -->
+    // IFRAME 作成
+    obj = document.createElement("iframe");
+    // IFRAME の見栄え属性をセット
+    obj.setAttribute("frameBorder", "1");
+    obj.setAttribute("scrolling", "no");
 
-   <script type="text/javascript">
-    new TradingView.widget(
-     {
-      "width": 440,
-      "height": 270,
+    // IFRAME の配置属性をセット
+    obj.style.position = "relative";
+    obj.style.width = "500px";
+    obj.style.height = "500px";
 
-      "symbol": "NASDAQ:NVDA",
-      "interval": "D",
-      "timezone": "Etc/UTC",
-      "theme": "light",
-      "style": "1",
-      "locale": "ja",
-      "enable_publishing": false,
-      "allow_symbol_change": true,
-      "container_id": "tradingview_c51a8"
-     }
-    );
-   </script>
-   <!-- TradingView Widget END -->
-  </div>
-  <div class="iframebox"><!-- TradingView Widget BEGIN -->
+    // IFRAME の内容をセット
+    obj.src = document.getElementById("url").value;
 
-   <script type="text/javascript">
-    new TradingView.widget(
-     {
-      "width": 440,
-      "height": 270,
-      "symbol": "AMEX:GLIN",
-      "interval": "D",
-      "timezone": "Etc/UTC",
-      "theme": "light",
-      "style": "1",
-      "locale": "ja",
-      "enable_publishing": false,
-      "allow_symbol_change": true,
-      "container_id": "tradingview_c51a8"
-     }
-    );
-   </script>
-   <!-- TradingView Widget END -->
-  </div>
-
-  <div class="iframebox">
+    // IFRAME を実装
+    base.appendChild(obj);
 
 
-   <script type="text/javascript">
-    new TradingView.widget(
-     {
-      "width": 440,
-      "height": 270,
-      "symbol": "FRED:NIKKEI225",
-      "interval": "D",
-      "timezone": "Etc/UTC",
-      "theme": "light",
-      "style": "1",
-      "locale": "ja",
-      "enable_publishing": false,
-      "allow_symbol_change": true,
-      "container_id": "tradingview_e2add"
-     }
-    );
-   </script>
-   <!-- TradingView Widget END -->
-   <!-- TradingView Widget END -->
-  </div>
-  <div class="iframebox">
+   }
+
+  </script>
+
+  <input type="button" value="実行" onclick='doaction( "new" );'>
+  <br>
+  <input type="text" id="url" value="http://winofsql.jp/" style="width:400px;">
+
+  <div id="new"></div>
 
 
-   <script type="text/javascript">
-    new TradingView.widget(
-     {
-      "width": 440,
-      "height": 270,
-      "symbol": "TSE:1541",
-      // "symbol": "FRED:NIKKEI225",
-      "interval": "D",
-      "timezone": "Etc/UTC",
-      "theme": "light",
-      "style": "1",
-      "locale": "ja",
-      "enable_publishing": false,
-      "allow_symbol_change": true,
-      "container_id": "tradingview_e2add"
-     }
-    );
-   </script>
-   <!-- TradingView Widget END -->
-   <!-- TradingView Widget END -->
-  </div>
-  <div class="iframebox">
-
-
-   <script type="text/javascript">
-    new TradingView.widget(
-     {
-      "width": 440,
-      "height": 270,
-      "symbol": "AMEX:TECS",
-      "interval": "D",
-      "timezone": "Etc/UTC",
-      "theme": "light",
-      "style": "1",
-      "locale": "ja",
-      "enable_publishing": false,
-      "allow_symbol_change": true,
-      "container_id": "tradingview_e2add"
-     }
-    );
-   </script>
-   <!-- TradingView Widget END -->
-   <!-- TradingView Widget END -->
-  </div>
-  <div class="iframebox">
-
-
-   <script type="text/javascript">
-    new TradingView.widget(
-     {
-      "width": 440,
-      "height": 270,
-      "symbol": "NYSE:TSM",
-      "interval": "D",
-      "timezone": "Etc/UTC",
-      "theme": "light",
-      "style": "1",
-      "locale": "ja",
-      "enable_publishing": false,
-      "allow_symbol_change": true,
-      "container_id": "tradingview_e2add"
-     }
-    );
-   </script>
-   <!-- TradingView Widget END -->
-   <!-- TradingView Widget END -->
-  </div>
-  <div class="iframebox">
-
-
-   <script type="text/javascript">
-    new TradingView.widget(
-     {
-      "width": 440,
-      "height": 270,
-      "symbol": "AMEX:TZA",
-      "interval": "D",
-      "timezone": "Etc/UTC",
-      "theme": "light",
-      "style": "1",
-      "locale": "ja",
-      "enable_publishing": false,
-      "allow_symbol_change": true,
-      "container_id": "tradingview_e2add"
-     }
-    );
-   </script>
-   <!-- TradingView Widget END -->
-   <!-- TradingView Widget END -->
-  </div>
-  <div class="iframebox">
-
-
-   <script type="text/javascript">
-    new TradingView.widget(
-     {
-      "width": 440,
-      "height": 270,
-      "symbol": "NYSE:UBER",
-      "interval": "D",
-      "timezone": "Etc/UTC",
-      "theme": "light",
-      "style": "1",
-      "locale": "ja",
-      "enable_publishing": false,
-      "allow_symbol_change": true,
-      "container_id": "tradingview_e2add"
-     }
-    );
-   </script>
-   <!-- TradingView Widget END -->
-   <!-- TradingView Widget END -->
-  </div>
 
  </div>
 </body>
