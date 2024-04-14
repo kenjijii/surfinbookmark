@@ -36,13 +36,23 @@
 
   <script type="text/javascript">
 
+
+   let strageValue = JSON.parse(localStorage.getItem('stockName'));
+   strageValue = strageValue ? strageValue : [];
+
+   console.log('くっころ' + strageValue);
    function doAction() {
-    localStorage.setItem('url', document.getElementById('url').value);
+    strageValue.push(document.getElementById('stockName').value);
+
+
+
+    // localStorage.setItem(keyname, JSON.stringify(arr));
+
+
+    localStorage.setItem('stockName', document.getElementById('stockName').value);
     console.log('dd')
-    const strageValue = localStorage.getItem('url');
-    console.log('dd')
-    console.log(strageValue);
-    var script = document.createElement('script');
+
+    const script = document.createElement('script');
     script.innerHTML = `
                 new TradingView.widget(
                     {
@@ -67,7 +77,7 @@
 
   <input type="button" value="実行" onclick='doAction( "new" );'>
   <br>
-  <input type="text" id="url" value="http://winofsql.jp/" style="width:400px;">
+  <input type="text" id="stockName" value="http://winofsql.jp/" style="width:400px;">
 
   <div id="new"></div>
 
