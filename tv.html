@@ -32,6 +32,20 @@
 </head>
 
 <body>
+<script>
+
+ function doAction() {
+let jnex = localStorage.getItem('stk');
+let strageValue = jnex ? JSON.parse(jnex) : [];
+console.log('くっころ' + strageValue);
+console.log('length' + strageValue.length);
+strageValue.push(document.getElementById('stockName').value);
+localStorage.setItem('stk', JSON.stringify(strageValue));
+
+}
+
+</script>
+
  <div class="chartbox">
 
 
