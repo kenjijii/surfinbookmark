@@ -37,13 +37,13 @@
   <script type="text/javascript">
 
 
-   let strageValue = JSON.parse(localStorage.getItem('stockName'));
-   strageValue = strageValue ? strageValue : [];
 
-   console.log('くっころ' + strageValue);
    function doAction() {
+    let strageValue = JSON.parse(localStorage.getItem('stockName'));
+    strageValue = strageValue ? strageValue : [];
     strageValue.push(document.getElementById('stockName').value);
 
+    console.log('くっころ' + strageValue);
 
 
     // localStorage.setItem(keyname, JSON.stringify(arr));
