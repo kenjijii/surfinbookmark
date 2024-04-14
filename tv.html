@@ -8,6 +8,7 @@
   -->
 
 <head>
+
  <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
  <title>Apache2 Ubuntu Default Page: It works</title>
@@ -34,9 +35,14 @@
  <div class="chartbox">
 
   <script type="text/javascript">
-   function doAction() {
-    console.log('dd')
 
+   const strage = localstrage;
+   function doAction() {
+    strage.setItem('url', document.getElementById('url').value);
+    console.log('dd')
+    const strageValue = strage.getItem('url');
+    console.log('dd')
+    console.log(strageValue);
     var script = document.createElement('script');
     script.innerHTML = `
                 new TradingView.widget(
