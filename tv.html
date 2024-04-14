@@ -33,7 +33,7 @@
 
 <body>
  <script>
-
+  const stocks = 'NASDAQ: AMD';
   function doAction() {
    let jnex = localStorage.getItem('stk');
    let strageValue = jnex ? JSON.parse(jnex) : [];
@@ -51,7 +51,7 @@
                     {
                         "width": 440,
                         "height": 270,
-                        "symbol": "${document.getElementById('stockName').value}",
+                        "symbol": "${stocks}",
                         "interval": "D",
                         "timezone": "Etc/UTC",
                         "theme": "light",
