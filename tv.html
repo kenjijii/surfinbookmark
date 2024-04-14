@@ -32,38 +32,38 @@
 </head>
 
 <body>
- <script>
+ <<<<<<< HEAD <script>
 
   function doAction() {
-   let jnex = localStorage.getItem('stk');
-   let strageValue = jnex ? JSON.parse(jnex) : [];
-   console.log('くっころ' + strageValue);
-   console.log('length' + strageValue.length);
-   strageValue.push(document.getElementById('stockName').value);
-   localStorage.setItem('stk', JSON.stringify(strageValue));
+  let jnex = localStorage.getItem('stk');
+  let strageValue = jnex ? JSON.parse(jnex) : [];
+  console.log('くっころ' + strageValue);
+  console.log('length' + strageValue.length);
+  strageValue.push(document.getElementById('stockName').value);
+  localStorage.setItem('stk', JSON.stringify(strageValue));
 
 
-   // NASDAQ: AMD
+  // NASDAQ: AMD
 
-   const script = document.createElement('script');
-   script.innerHTML = `
-                new TradingView.widget(
-                    {
-                        "width": 440,
-                        "height": 270,
-                        "symbol": "＄｛ document.getElementById('stockName').value｝",
-                        "interval": "D",
-                        "timezone": "Etc/UTC",
-                        "theme": "light",
-                        "style": "1",
-                        "locale": "ja",
-                        "enable_publishing": false,
-                        "allow_symbol_change": true,
-                        "container_id": "tradingview_4bdf3"
-                    }
-                );
-    `;
-   document.body.appendChild(script);
+  const script = document.createElement('script');
+  script.innerHTML = `
+  new TradingView.widget(
+  {
+  "width": 440,
+  "height": 270,
+  "symbol": "＄｛ document.getElementById('stockName').value｝",
+  "interval": "D",
+  "timezone": "Etc/UTC",
+  "theme": "light",
+  "style": "1",
+  "locale": "ja",
+  "enable_publishing": false,
+  "allow_symbol_change": true,
+  "container_id": "tradingview_4bdf3"
+  }
+  );
+  `;
+  document.body.appendChild(script);
 
 
 
@@ -79,21 +79,36 @@
 
   }
 
- </script>
+  </script>
+  =======
+  <script>
 
- <div class="chartbox">
+   function doAction() {
+    let jnex = localStorage.getItem('stk');
+    let strageValue = jnex ? JSON.parse(jnex) : [];
+    console.log('くっころ' + strageValue);
+    console.log('length' + strageValue.length);
+    strageValue.push(document.getElementById('stockName').value);
+    localStorage.setItem('stk', JSON.stringify(strageValue));
+
+   }
+
+  </script>
+  >>>>>>> a3c96ada8c080a696d0a94fb77596dff7d16d05d
+
+  <div class="chartbox">
 
 
 
-  <input type="button" value="実行" onclick='doAction( "new" );'>
-  <br>
-  <input type="text" id="stockName" value="http://winofsql.jp/" style="width:400px;">
+   <input type="button" value="実行" onclick='doAction( "new" );'>
+   <br>
+   <input type="text" id="stockName" value="http://winofsql.jp/" style="width:400px;">
 
-  <div id="new"></div>
+   <div id="new"></div>
 
 
 
- </div>
+  </div>
 </body>
 
 </html>
