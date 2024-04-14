@@ -33,8 +33,10 @@
 
 <body>
  <script>
-  const stocks = `NASDAQ:AMD`;
+  let stocks = `NASDAQ:AMD`;
   function doAction() {
+   stocks = document.getElementById('stockName').value;
+   console.log('stocks' + stocks);
    let jnex = localStorage.getItem('stk');
    let strageValue = jnex ? JSON.parse(jnex) : [];
    console.log('くっころ' + strageValue);
@@ -64,19 +66,6 @@
                 );
     `;
    document.body.appendChild(script);
-
-
-
-
-
-
-
-
-
-
-
-
-
   }
 
  </script>
