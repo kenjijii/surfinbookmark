@@ -8,14 +8,12 @@
   -->
 
 <head>
-
  <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
  <title>chartHome</title>
  <style type="text/css" media="screen">
   body {
    width: 100%;
-
   }
 
   .chartbox {
@@ -33,58 +31,50 @@
 
 <body>
  <script>
+  let stocks = `NASDAQ:AMD`;
+
   // jsonで取得
   // 最初にループでいくつか表示させる
   // doactionループ
-
   function getTimeChart() {
+   // 現在のタイムを取得表示する
    const select = document.getElementById('time');
    console.log({ select });
    console.log(select.options);
    const selected = [...select.options].find(opt => opt.selected);
    console.log({ selected: selected.value });
    return selected.value;
-
   }
 
-
-  function getStArr() {
+  function LocalStock() {
+   // ローカルから取得して配列リターン
    let jnex = localStorage.getItem('stk');
    let strageValue = jnex ? JSON.parse(jnex) : [];
    console.log('strageValue' + strageValue);
-
-
+   return strageValue;
   }
-  getStArr();
+  function LocalStTime() {
+   let jnex = localStorage.getItem('time');
+   let strageTime = jnex ? JSON.parse(jnex) : [];
+   console.log('strageTime' + strageTime);
+   return strageTime;
+  }
 
-
-  let stocks = `NASDAQ:AMD`;
-  function doAction() {
-
-   stocks = document.getElementById('stockName').value;
-
-   let jnex = localStorage.getItem('stk');
-   let strageValue = jnex ? JSON.parse(jnex) : [];
-   strageValue.push(document.getElementById('stockName').value);
-
-   // time
-   const time = getTimeChart();
-   console.log({ time });
-
-   localStorage.setItem('stk', JSON.stringify(strageValue));
-   console.log('stocks' + stocks);
-
-
-   // NASDAQ: AMD
-
-   const script = document.createElement('script');
-   script.innerHTML = `
-                new TradingView.widget(
+  function makeChart() {
+   // ローカルストレージから配列を取得
+   let strageValue = LocalStock();
+   let strageTime = LocalStTime();
+   // stocknameの内容を配列に入れる
+   // timeas same as stockname
+   // ローカルにデータ格納されていると思う
+   for (let i = 0; i < strageValue.length; i++) {
+    const script = document.createElement('script');
+    script.innerHTML = `new TradingView.widget(
                     {
                         "width": 440,
                         "height": 270,
-                        "symbol": "${stocks}",
-                        "interval": "D",
+                        "symbol": "${strageValue[i]}",
+                        "interval": "${strageTime[i]}",
                         "timezone": "Etc/UTC",
                         "theme": "light",
                         "style": "1",
@@ -93,19 +83,35 @@
                         "allow_symbol_change": true,
                         "container_id": "tradingview_4bdf3"
                     }
-                );
-    `;
-   document.body.appendChild(script);
+                );`;
+    document.body.appendChild(script);
+   }
+
+
   }
 
+
+  function doAction() {
+   stocks = document.getElementById('stockName').value;
+   let strageValue = LocalStock();
+   strageValue.push(document.getElementById('stockName').value);
+   // ローカルストレージから配列を取得
+   // stocknameの内容を配列に入れる
+   const strageTime = LocalStTime();
+   strageTime.push(getTimeChart());
+   // timeas same as stockname
+   // ローカルにデータ格納されていると思う
+
+   localStorage.setItem('stk', JSON.stringify(strageValue));
+   localStorage.setItem('time', JSON.stringify(strageTime));
+
+
+  }
+  makeChart()
  </script>
-
-
  <br>
  <input type="text" id="stockName" value="http://winofsql.jp/" style="width:400px;">
-
  <div>
-
   <select name="time" id="time">
    <option value="1">1</option>
    <option value="5">5</option>
@@ -117,16 +123,9 @@
    <option value="W">W</option>
    </section>
  </div>
-
  <input type="button" value="実行" onclick='doAction( "new" );'>
-
-
  <div class="chartbox">
-
   <div id="new"></div>
-
-
-
  </div>
 </body>
 
