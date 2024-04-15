@@ -81,7 +81,19 @@
    // timeas same as stockname
    // ローカルにデータ格納されていると思う
    for (let i = 0; i < strageValue.length; i++) {
+
+    const divCreate = document.createElement('div');
+    divCreate.id = `tradingview_${i}`;
+    document.getElementById('new').appendChild(divCreate);
+
+
+
+    const divT = document.createElement('div');
+    divT.class = `inner`;
+    document.getElementById(`tradingview_${i}`).appendChild(div)
+
     const script = document.createElement('script');
+
     script.innerHTML = `new TradingView.widget(
                     {
                         "width": 440,
@@ -97,8 +109,9 @@
                         "container_id": "tradingview_4bdf3"
                     }
                 );`;
-    document.body.appendChild(script);
-    document.write(`<input type="button" value="delete" onclick="deletebox(${i})">${strageValue[i]}`);
+
+    document.getElementById(`tradingview_${i}`).appendChild(script);
+    document.write(`<input type="button" value="delete" onclick="deletebox(${i})">${strageValue[i]}-${strageTime[i]}`);
 
    }
 
@@ -128,7 +141,7 @@
  <br>
 
  <input type="button" id="clear" value="clear">
- <input type="text" id="stockName" value="http://winofsql.jp/" style="width:400px;">
+ <input type="text" id="stockName" value="NASDAQ:AAPL" style="width:400px;">
  <div>
   <select name="time" id="time">
    <option value="1">1</option>
