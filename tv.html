@@ -90,7 +90,7 @@
 
     const divT = document.createElement('div');
     divT.class = `inner`;
-    document.getElementById(`tradingview_${i}`).appendChild(div)
+    document.getElementById('t').appendChild(div)
 
     const script = document.createElement('script');
 
@@ -110,7 +110,7 @@
                     }
                 );`;
 
-    document.getElementById(`tradingview_${i}`).appendChild(script);
+    document.body.appendChild(script);
     document.write(`<input type="button" value="delete" onclick="deletebox(${i})">${strageValue[i]}-${strageTime[i]}`);
 
    }
