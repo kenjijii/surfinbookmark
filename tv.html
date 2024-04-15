@@ -30,17 +30,15 @@
 </head>
 
 <body>
- <!-- <script>
+ <script>
   let stocks = `NASDAQ:AMD`;
   function clear() {
    localStorage.clear();
   }
   function deletebox(number) {
    let strageValue = LocalStock();
-   console.log('ss')
    let strageTime = LocalStTime();
    strageValue.splice(number, 1);
-   strageTime.splice(number, 1);
    localStorage.setItem('stk', JSON.stringify(strageValue));
    localStorage.setItem('time', JSON.stringify(strageTime));
    makeChart();
@@ -81,19 +79,7 @@
    // timeas same as stockname
    // ローカルにデータ格納されていると思う
    for (let i = 0; i < strageValue.length; i++) {
-
-    const divCreate = document.createElement('div');
-    divCreate.id = `tradingview_${i}`;
-    document.body.appendChild(divCreate);
-
-
-
-    const divT = document.createElement('div');
-    divT.class = `inner`;
-    document.getElementById(`tradingview_${i}`).appendChild(div)
-
     const script = document.createElement('script');
-
     script.innerHTML = `new TradingView.widget(
                     {
                         "width": 440,
@@ -110,8 +96,8 @@
                     }
                 );`;
 
-    document.getElementById(`tradingview_${i}`).appendChild(script);
-    document.write(`<input type="button" value="delete" onclick="deletebox(${i})">${strageValue[i]}-${strageTime[i]}`);
+    document.getElementById('new').appendChild(script);
+    document.write(`<input type="button" value="delete" onclick="deletebox()">${strageValue[i]}`);
 
    }
 
@@ -137,32 +123,32 @@
 
   }
   makeChart()
- </script> -->
+ </script>
  <br>
-
- <input type="button" id="clear" value="clear">
- <input type="text" id="stockName" value="NASDAQ:AAPL" style="width:400px;">
  <div>
-  <select name="time" id="time">
-   <option value="1">1</option>
-   <option value="5">5</option>
-   <option value="15">15</option>
-   <option value="30">30</option>
-   <option value="60">60</option>
-   <option value="180">180</option>
-   <option value="D">D</option>
-   <option value="W">W</option>
-   </section>
- </div>
- <input type="button" value="実行" onclick='doAction( "new" );'>
- <br>
- <div id="deletebox">
+  <input type="button" id="clear" value="clear">
+  <input type="text" id="stockName" value="NASDAQ:AMD" style="width:400px;">
+  <div>
+   <select name="time" id="time">
+    <option value="1">1</option>
+    <option value="5">5</option>
+    <option value="15">15</option>
+    <option value="30">30</option>
+    <option value="60">60</option>
+    <option value="180">180</option>
+    <option value="D">D</option>
+    <option value="W">W</option>
+    </section>
+  </div>
+  <input type="button" value="実行" onclick='doAction( "new" );'>
+  <br>
+  <div id="deletebox">
 
+  </div>
  </div>
-
 
  <div class="chartbox">
-  <div id="new">dffd</div>
+  <div id="new"></div>
  </div>
 </body>
 
