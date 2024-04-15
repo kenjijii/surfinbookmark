@@ -32,6 +32,15 @@
 <body>
  <script>
   let stocks = `NASDAQ:AMD`;
+  function deletebox() {
+   let strageValue = LocalStock();
+   let strageTime = LocalStTime();
+   strageValue.pop();
+   strageTime.pop();
+   localStorage.setItem('stk', JSON.stringify(strageValue));
+   localStorage.setItem('time', JSON.stringify(strageTime));
+   makeChart();
+  }
 
   // jsonで取得
   // 最初にループでいくつか表示させる
@@ -85,6 +94,7 @@
                     }
                 );`;
     document.body.appendChild(script);
+    document.write(`<div class="iframebox" id="tradingview_4bdf3">×</div>`);
    }
 
 
@@ -124,6 +134,12 @@
    </section>
  </div>
  <input type="button" value="実行" onclick='doAction( "new" );'>
+ <br>
+ <div id="deletebox">
+
+ </div>
+
+
  <div class="chartbox">
   <div id="new"></div>
  </div>
