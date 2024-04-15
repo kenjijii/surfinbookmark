@@ -95,9 +95,12 @@
                         "allow_symbol_change": true,
                         "container_id": "tradingview_4bdf3"
                     }
-                );`;
+                );
+                
+    document.body.appendChild(` < div > <input type="button" value="実行" onclick='doDel( "new" );'>dd</div>`);
+    
+    `;
     document.body.appendChild(script);
-    // document.write(` <div><input type="button" value="実行" onclick='doDel( "new" );'></div>`);
    }
 
 
@@ -118,6 +121,7 @@
    localStorage.setItem('stk', JSON.stringify(strageValue));
    localStorage.setItem('time', JSON.stringify(strageTime));
 
+   makeChart()
 
   }
   makeChart()
