@@ -95,7 +95,10 @@
                         "container_id": "tradingview_4bdf3"
                     }
                 );`;
-    document.getElementById('new').appendChild(script);
+    const ew = document.getElementById('new');
+    ew.appendChild(script);
+
+
     document.write(`<input type="button" value="delete" onclick="deletebox()">${strageValue[i]}`);
 
    }
