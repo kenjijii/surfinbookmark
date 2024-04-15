@@ -35,11 +35,11 @@
   function clear() {
    localStorage.clear();
   }
-  function deletebox() {
+  function deletebox(number) {
    let strageValue = LocalStock();
    let strageTime = LocalStTime();
-   strageValue.pop();
-   strageTime.pop();
+   strageValue.splice(number, 1);
+   strageTime.splice(number, 1);
    localStorage.setItem('stk', JSON.stringify(strageValue));
    localStorage.setItem('time', JSON.stringify(strageTime));
    makeChart();
@@ -97,7 +97,7 @@
                     }
                 );`;
     document.body.appendChild(script);
-    document.write(`<input type="button" value="delete" onclick="deletebox()">${strageValue[i]}`);
+    document.write(`<input type="button" value="delete" onclick="deletebox(i)">${strageValue[i]}`);
 
    }
 
