@@ -85,15 +85,7 @@
     const divCreate = document.createElement('div');
     divCreate.id = `tradingview_${i}`;
     document.getElementById('new').appendChild(divCreate);
-
-
-
-    const divT = document.createElement('div');
-    divT.class = `inner`;
-    document.getElementById(`tradingview_${i}`).appendChild(div)
-
     const script = document.createElement('script');
-
     script.innerHTML = `new TradingView.widget(
                     {
                         "width": 440,
@@ -110,7 +102,7 @@
                     }
                 );`;
 
-    document.getElementById(`tradingview_${i}`).appendChild(script);
+    document.body.appendChild(script);
     document.write(`<input type="button" value="delete" onclick="deletebox(${i})">${strageValue[i]}-${strageTime[i]}`);
 
    }
