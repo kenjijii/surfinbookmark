@@ -36,6 +36,18 @@
   // jsonで取得
   // 最初にループでいくつか表示させる
   // doactionループ
+
+  function getTimeChart() {
+   const select = document.getElementById('time');
+   console.log({ select });
+   console.log(select.options);
+   const selected = [...select.options].find(opt => opt.selected);
+   console.log({ selected: selected.value });
+   return selected.value;
+
+  }
+
+
   function getStArr() {
    let jnex = localStorage.getItem('stk');
    let strageValue = jnex ? JSON.parse(jnex) : [];
@@ -50,6 +62,11 @@
   function doAction() {
    stocks = document.getElementById('stockName').value;
    strageValue.push(document.getElementById('stockName').value);
+
+   // time
+   const time = getTimeChart();
+   console.log({ time });
+
    localStorage.setItem('stk', JSON.stringify(strageValue));
    console.log('stocks' + stocks);
 
