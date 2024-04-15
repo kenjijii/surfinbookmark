@@ -95,10 +95,8 @@
                         "container_id": "tradingview_4bdf3"
                     }
                 );`;
-    const ew = document.getElementById('new');
-    ew.appendChild(script);
 
-
+                document.getElementById('new').appendChild(script);
     document.write(`<input type="button" value="delete" onclick="deletebox()">${strageValue[i]}`);
 
    }
@@ -149,8 +147,8 @@
   </div>
  </div>
 
- <div id="new">
-  <p>ｄｄdd</p>
+ <div class="chartbox">
+  <div id="new"></div>
  </div>
 </body>
 
