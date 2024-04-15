@@ -60,7 +60,11 @@
 
   let stocks = `NASDAQ:AMD`;
   function doAction() {
+
    stocks = document.getElementById('stockName').value;
+
+   let jnex = localStorage.getItem('stk');
+   let strageValue = jnex ? JSON.parse(jnex) : [];
    strageValue.push(document.getElementById('stockName').value);
 
    // time
