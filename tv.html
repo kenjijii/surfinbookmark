@@ -113,13 +113,12 @@
     document.getElementById(`tradingview_${i}`).appendChild(script);
 
 
-    let inputB = document.createElement('input');
-    inputB.type = 'button';
-    inputB.value = 'delete';
-    inputB.onclick = deletebox(i);
-    document.getElementById(`tradingview_${i}`).appendChild(inputB);
-    // documen213t.getElementById(`tradingview_${i}`).append(`<input type="button" value="delete" onclick="deletebox(${i})">${strageValue[i]}-${strageTime[i]}>
-    // jeww`);
+    // let inputB = document.createElement('input');
+    // inputB.type = 'button';
+    // inputB.value = 'delete';
+    // inputB.onclick = deletebox(i);
+    // document.getElementById(`tradingview_${i}`).appendChild(inputB);
+    documen213t.getElementById(`tradingview_${i}`).append(`<input type="button" value="delete" onclick="deletebox(${i})">${strageValue[i]}-${strageTime[i]}>`);
 
    }
 
