@@ -111,6 +111,7 @@
                 );`;
 
     document.getElementById(`tradingview_${i}`).appendChild(script);
+    document.getElementById("deletebox").append(`<input type="button" value="delete" onclick="deletebox(${i})">${strageValue[i]}-${strageTime[i]}>`);
 
 
     // let inputB = document.createElement('input');
