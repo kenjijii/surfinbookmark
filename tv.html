@@ -132,11 +132,13 @@
    makeChart();
    listDelete();
   }
+  document.addEventListener('DOMContentLoaded',
+   function () {
+    makeChart();
+    listDelete();
 
-  documents.onload = function () {
-   makeChart();
-   listDelete();
-  }
+   }
+  );
 
  </script>
 </head>
