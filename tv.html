@@ -45,7 +45,6 @@
    localStorage.setItem('time', JSON.stringify(strageTime));
    makeChart();
   }
-
   // jsonで取得
   // 最初にループでいくつか表示させる
   // doactionループ
@@ -58,7 +57,6 @@
    console.log({ selected: selected.value });
    return selected.value;
   }
-
   function LocalStock() {
    // ローカルから取得して配列リターン
    let jnex = localStorage.getItem('stk');
@@ -71,8 +69,20 @@
    let strageTime = jnex ? JSON.parse(jnex) : [];
    console.log('strageTime' + strageTime);
    return strageTime;
+  };
+  function bodyEraser() {
+   let body = document.body;
+   while (body.firstChild) {
+    body.removeChild(body.firstChild);
+   }
+  };
+  function listDelete() {
+   let strageValue = LocalStock();
+   let strageTime = LocalStTime();
+   for (let i = 0; i < strageValue.length; i++) {
+    document.getElementById('deletebox').insertAdjacentHTML('afterend', ` <input type="button" value="delete" onclick="deletebox(${i})">${strageValue[i]}-${strageTime[i]}>`);
+   };
   }
-
   function makeChart() {
    // ローカルストレージから配列を取得
    let strageValue = LocalStock();
@@ -81,19 +91,13 @@
    // timeas same as stockname
    // ローカルにデータ格納されていると思う
    for (let i = 0; i < strageValue.length; i++) {
-
     const divCreate = document.createElement('div');
     divCreate.id = `tradingview_${i}`;
     document.body.appendChild(divCreate);
-
-
-
     const divT = document.createElement('div');
     divT.class = `inner`;
     document.getElementById(`tradingview_${i}`).appendChild(divT)
-
     const script = document.createElement('script');
-
     script.innerHTML = `new TradingView.widget(
                     {
                         "width": 440,
@@ -109,24 +113,9 @@
                         "container_id": "tradingview_4bdf3"
                     }
                 );`;
-
     document.getElementById(`tradingview_${i}`).appendChild(script);
-    // document.getElementById(`tradingview_${i}`).append(`<input type="button" value="delete" onclick="deletebox(${i})">${strageValue[i]}-${strageTime[i]}>`);
-
-
-    // let inputB = document.createElement('input');
-    // inputB.type = 'button';
-    // inputB.value = 'delete';
-    // inputB.onclick = deletebox(i);
-    // document.getElementById(`tradingview_${i}`).appendChild(inputB);
-    // documen213t.getElementById(`tradingview_${i}`).append(`<input type="button" value="delete" onclick="deletebox(${i})">${strageValue[i]}-${strageTime[i]}>`);
-
    }
-
-
   }
-
-
   function doAction() {
    stocks = document.getElementById('stockName').value;
    let strageValue = LocalStock();
@@ -137,17 +126,15 @@
    strageTime.push(getTimeChart());
    // timeas same as stockname
    // ローカルにデータ格納されていると思う
-
    localStorage.setItem('stk', JSON.stringify(strageValue));
    localStorage.setItem('time', JSON.stringify(strageTime));
-
-   makeChart()
-
+   bodyEraser();
+   makeChart();
+   listDelete();
   }
   makeChart()
  </script>
  <br>
-
  <input type="button" id="clear" value="clear" onclick='clear()'>
  <input type="text" id="stockName" value="NASDAQ:AAPL" style="width:400px;">
  <div>
@@ -165,10 +152,7 @@
  <input type="button" value="実行" onclick='doAction( "new" );'>
  <br>
  <div id="deletebox">
-
  </div>
-
-
  <div class="chartbox">
   <div id="new"></div>
  </div>
