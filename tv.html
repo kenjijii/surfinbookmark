@@ -128,11 +128,13 @@
    // ローカルにデータ格納されていると思う
    localStorage.setItem('stk', JSON.stringify(strageValue));
    localStorage.setItem('time', JSON.stringify(strageTime));
-   bodyEraser();
+   // bodyEraser();
    makeChart();
    listDelete();
   }
-  makeChart()
+  makeChart();
+  listDelete();
+
  </script>
  <br>
  <input type="button" id="clear" value="clear" onclick='clear()'>
