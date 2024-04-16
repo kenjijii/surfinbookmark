@@ -45,7 +45,6 @@
    localStorage.setItem('time', JSON.stringify(strageTime));
    makeChart();
   }
-
   // jsonで取得
   // 最初にループでいくつか表示させる
   // doactionループ
@@ -58,7 +57,6 @@
    console.log({ selected: selected.value });
    return selected.value;
   }
-
   function LocalStock() {
    // ローカルから取得して配列リターン
    let jnex = localStorage.getItem('stk');
@@ -72,7 +70,6 @@
    console.log('strageTime' + strageTime);
    return strageTime;
   }
-
   function makeChart() {
    // ローカルストレージから配列を取得
    let strageValue = LocalStock();
@@ -83,19 +80,13 @@
    // timeas same as stockname
    // ローカルにデータ格納されていると思う
    for (let i = 0; i < strageValue.length; i++) {
-
     const divCreate = document.createElement('div');
     divCreate.id = `tradingview_${i}`;
     document.body.appendChild(divCreate);
-
-
-
     const divT = document.createElement('div');
     divT.class = `inner`;
     document.getElementById(`tradingview_${i}`).appendChild(divT)
-
     const script = document.createElement('script');
-
     script.innerHTML = `new TradingView.widget(
                     {
                         "width": 440,
@@ -115,17 +106,10 @@
     input.type = 'button';
     input.value = 'delete';
     input.onclick = deletebox(i);
-    document.getElementById(`tradingview_${i}`).appendChild(input);
-
-
+    // document.getElementById(`tradingview_${i}`).appendChild(input);
     document.getElementById(`tradingview_${i}`).appendChild(script);
-
    }
-
-
   }
-
-
   function doAction() {
    stocks = document.getElementById('stockName').value;
    let strageValue = LocalStock();
@@ -136,17 +120,13 @@
    strageTime.push(getTimeChart());
    // timeas same as stockname
    // ローカルにデータ格納されていると思う
-
    localStorage.setItem('stk', JSON.stringify(strageValue));
    localStorage.setItem('time', JSON.stringify(strageTime));
-
    makeChart()
-
   }
   makeChart()
  </script>
  <br>
-
  <input type="button" id="clear" value="clear" onclick='clear()'>
  <input type="text" id="stockName" value="NASDAQ:AAPL" style="width:400px;">
  <div>
@@ -164,10 +144,7 @@
  <input type="button" value="実行" onclick='doAction( "new" );'>
  <br>
  <div id="deletebox">
-
  </div>
-
-
  <div class="chartbox">
   <div id="new"></div>
  </div>
