@@ -60,12 +60,14 @@
   function LocalStock() {
    // ローカルから取得して配列リターン
    let jnex = localStorage.getItem('stk');
+   console.log('jnex' + jnex);
    let strageValue = jnex ? JSON.parse(jnex) : [];
    console.log('strageValue' + strageValue);
    return strageValue;
   }
   function LocalStTime() {
    let jnex = localStorage.getItem('time');
+   console.log('jnex' + jnex);
    let strageTime = jnex ? JSON.parse(jnex) : [];
    console.log('strageTime' + strageTime);
    return strageTime;
