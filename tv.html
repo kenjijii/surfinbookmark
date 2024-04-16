@@ -93,11 +93,12 @@
    for (let i = 0; i < strageValue.length; i++) {
     const divCreate = document.createElement('div');
     divCreate.id = `tradingview_${i}`;
-    document.body.appendChild(divCreate);
+    document.getElementById('new').appendChild(divCreate);
     const divT = document.createElement('div');
     divT.class = `inner`;
     document.getElementById(`tradingview_${i}`).appendChild(divT)
     const script = document.createElement('script');
+    script.innerHTML = `console.log('dd')`;
     script.innerHTML = `new TradingView.widget(
                     {
                         "width": 440,
