@@ -27,116 +27,121 @@
    height: auto;
   }
  </style>
-</head>
-
-<body>
  <script>
-  let stocks = `NASDAQ:AMD`;
-  function clear() {
-   localStorage.clear();
-  }
-  function deletebox(number) {
-   let strageValue = LocalStock();
-   console.log('ss')
-   let strageTime = LocalStTime();
-   strageValue.splice(number, 1);
-   strageTime.splice(number, 1);
-   localStorage.setItem('stk', JSON.stringify(strageValue));
-   localStorage.setItem('time', JSON.stringify(strageTime));
-   makeChart();
-  }
-  // jsonで取得
-  // 最初にループでいくつか表示させる
-  // doactionループ
-  function getTimeChart() {
-   // 現在のタイムを取得表示する
-   const select = document.getElementById('time');
-   console.log({ select });
-   console.log(select.options);
-   const selected = [...select.options].find(opt => opt.selected);
-   console.log({ selected: selected.value });
-   return selected.value;
-  }
-  function LocalStock() {
-   // ローカルから取得して配列リターン
-   let jnex = localStorage.getItem('stk');
-   let strageValue = jnex ? JSON.parse(jnex) : [];
-   console.log('strageValue' + strageValue);
-   return strageValue;
-  }
-  function LocalStTime() {
-   let jnex = localStorage.getItem('time');
-   let strageTime = jnex ? JSON.parse(jnex) : [];
-   console.log('strageTime' + strageTime);
-   return strageTime;
-  };
-  function bodyEraser() {
-   let body = document.body;
-   while (body.firstChild) {
-    body.removeChild(body.firstChild);
+
+
+  function load() {
+   let stocks = `NASDAQ:AMD`;
+   function clear() {
+    localStorage.clear();
    }
-  };
-  function listDelete() {
-   let strageValue = LocalStock();
-   let strageTime = LocalStTime();
-   for (let i = 0; i < strageValue.length; i++) {
-    document.getElementById('deletebox').insertAdjacentHTML('afterend', ` <input type="button" value="delete" onclick="deletebox(${i})">${strageValue[i]}-${strageTime[i]}>`);
+   function deletebox(number) {
+    let strageValue = LocalStock();
+    console.log('ss')
+    let strageTime = LocalStTime();
+    strageValue.splice(number, 1);
+    strageTime.splice(number, 1);
+    localStorage.setItem('stk', JSON.stringify(strageValue));
+    localStorage.setItem('time', JSON.stringify(strageTime));
+    makeChart();
+   }
+   // jsonで取得
+   // 最初にループでいくつか表示させる
+   // doactionループ
+   function getTimeChart() {
+    // 現在のタイムを取得表示する
+    const select = document.getElementById('time');
+    console.log({ select });
+    console.log(select.options);
+    const selected = [...select.options].find(opt => opt.selected);
+    console.log({ selected: selected.value });
+    return selected.value;
+   }
+   function LocalStock() {
+    // ローカルから取得して配列リターン
+    let jnex = localStorage.getItem('stk');
+    let strageValue = jnex ? JSON.parse(jnex) : [];
+    console.log('strageValue' + strageValue);
+    return strageValue;
+   }
+   function LocalStTime() {
+    let jnex = localStorage.getItem('time');
+    let strageTime = jnex ? JSON.parse(jnex) : [];
+    console.log('strageTime' + strageTime);
+    return strageTime;
    };
-  }
-  function makeChart() {
-   // ローカルストレージから配列を取得
-   let strageValue = LocalStock();
-   let strageTime = LocalStTime();
-   // stocknameの内容を配列に入れる
-   // timeas same as stockname
-   // ローカルにデータ格納されていると思う
-   for (let i = 0; i < strageValue.length; i++) {
-    const divCreate = document.createElement('div');
-    divCreate.id = `tradingview_${i}`;
-    document.getElementById('new').appendChild(divCreate);
-    const divT = document.createElement('div');
-    divT.class = `inner`;
-    document.getElementById(`tradingview_${i}`).appendChild(divT)
-    const script = document.createElement('script');
-    script.innerHTML = `console.log('dd')`;
-    script.innerHTML = `new TradingView.widget(
-                    {
-                        "width": 440,
-                        "height": 270,
-                        "symbol": "${strageValue[i]}",
-                        "interval": "${strageTime[i]}",
-                        "timezone": "Etc/UTC",
-                        "theme": "light",
-                        "style": "1",
-                        "locale": "ja",
-                        "enable_publishing": false,
-                        "allow_symbol_change": true,
-                        "container_id": "tradingview_4bdf3"
-                    }
-                );`;
-    document.getElementById(`tradingview_${i}`).appendChild(script);
+   function bodyEraser() {
+    let body = document.body;
+    while (body.firstChild) {
+     body.removeChild(body.firstChild);
+    }
+   };
+   function listDelete() {
+    let strageValue = LocalStock();
+    let strageTime = LocalStTime();
+    for (let i = 0; i < strageValue.length; i++) {
+     document.getElementById('deletebox').insertAdjacentHTML('afterend', ` <input type="button" value="delete" onclick="deletebox(${i})">${strageValue[i]}-${strageTime[i]}>`);
+    };
    }
-  }
-  function doAction() {
-   stocks = document.getElementById('stockName').value;
-   let strageValue = LocalStock();
-   strageValue.push(document.getElementById('stockName').value);
-   // ローカルストレージから配列を取得
-   // stocknameの内容を配列に入れる
-   const strageTime = LocalStTime();
-   strageTime.push(getTimeChart());
-   // timeas same as stockname
-   // ローカルにデータ格納されていると思う
-   localStorage.setItem('stk', JSON.stringify(strageValue));
-   localStorage.setItem('time', JSON.stringify(strageTime));
-   // bodyEraser();
+   function makeChart() {
+    // ローカルストレージから配列を取得
+    let strageValue = LocalStock();
+    let strageTime = LocalStTime();
+    // stocknameの内容を配列に入れる
+    // timeas same as stockname
+    // ローカルにデータ格納されていると思う
+    for (let i = 0; i < strageValue.length; i++) {
+     const divCreate = document.createElement('div');
+     divCreate.id = `tradingview_${i}`;
+     document.getElementById('new').appendChild(divCreate);
+     const divT = document.createElement('div');
+     divT.class = `inner`;
+     document.getElementById(`tradingview_${i}`).appendChild(divT)
+     const script = document.createElement('script');
+     script.innerHTML = `console.log('dd')`;
+     script.innerHTML = `new TradingView.widget(
+                     {
+                         "width": 440,
+                         "height": 270,
+                         "symbol": "${strageValue[i]}",
+                         "interval": "${strageTime[i]}",
+                         "timezone": "Etc/UTC",
+                         "theme": "light",
+                         "style": "1",
+                         "locale": "ja",
+                         "enable_publishing": false,
+                         "allow_symbol_change": true,
+                         "container_id": "tradingview_4bdf3"
+                     }
+                 );`;
+     document.getElementById(`tradingview_${i}`).appendChild(script);
+    }
+   }
+   function doAction() {
+    stocks = document.getElementById('stockName').value;
+    let strageValue = LocalStock();
+    strageValue.push(document.getElementById('stockName').value);
+    // ローカルストレージから配列を取得
+    // stocknameの内容を配列に入れる
+    const strageTime = LocalStTime();
+    strageTime.push(getTimeChart());
+    // timeas same as stockname
+    // ローカルにデータ格納されていると思う
+    localStorage.setItem('stk', JSON.stringify(strageValue));
+    localStorage.setItem('time', JSON.stringify(strageTime));
+    // bodyEraser();
+    makeChart();
+    listDelete();
+   }
    makeChart();
    listDelete();
   }
-  makeChart();
-  listDelete();
 
  </script>
+</head>
+
+<body onload="load">
+
  <br>
  <input type="button" id="clear" value="clear" onclick='clear()'>
  <input type="text" id="stockName" value="NASDAQ:AAPL" style="width:400px;">
