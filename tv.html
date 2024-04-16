@@ -76,9 +76,10 @@
    }
   };
   function listDelete() {
-   let strageValue = LocalStock();
-   let strageTime = LocalStTime();
-   for (let i = 0; i < strageValue.length; i++) {
+   const strageValue = LocalStock();
+   const strageTime = LocalStTime();
+   const reversST = LocalStTime().reverse();
+   for (let i = 0; i < reversST.length; i++) {
     document.getElementById('deletebox').insertAdjacentHTML('afterend', ` <input type="button" value="delete" onclick="deletebox(${i})">${strageValue[i]}-${strageTime[i]}>`);
    };
   }
