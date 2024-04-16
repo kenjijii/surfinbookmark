@@ -81,10 +81,8 @@
   };
   function bodyEraser() {
    const myNode = document.getElementById('new');
-   while (myNode.firstChild) {
-    myNode.removeChild(myNode.firstChild);
+   myNode.innerHTML = '';
 
-   }
   };
   function listDelete() {
    const strageValue = LocalStock();
@@ -148,7 +146,6 @@
    function () {
     makeChart();
     listDelete();
-
    }
   );
 
