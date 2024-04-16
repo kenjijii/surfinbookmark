@@ -109,9 +109,14 @@
                         "container_id": "tradingview_4bdf3"
                     }
                 );`;
+    let input = createElement('input');
+    input.type = 'button';
+    input.value = 'delete';
+    input.onclick = deletebox(i);
+    document.getElementById(`tradingview_${i}`).appendChild(input);
+
 
     document.getElementById(`tradingview_${i}`).appendChild(script);
-    document.getElementById(`tradingview_${i}`).append(`<input type="button" value="delete" onclick="deletebox(${i})">${strageValue[i]}-${strageTime[i]}>`);
 
    }
 
