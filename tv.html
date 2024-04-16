@@ -39,6 +39,10 @@
   let stocks = `NASDAQ:AMD`;
   function clear() {
    localStorage.clear();
+   console.log('clear');
+   console.log(localStorage);
+
+   bodyEraser();
   }
   function deletebox(number) {
    let strageValue = LocalStock();
@@ -76,9 +80,10 @@
    return strageTime;
   };
   function bodyEraser() {
-   let body = document.body;
-   while (body.firstChild) {
-    body.removeChild(body.firstChild);
+   const myNode = document.getElementById('new');
+   while (myNode.firstChild) {
+    myNode.removeChild(myNode.firstChild);
+
    }
   };
   function listDelete() {
