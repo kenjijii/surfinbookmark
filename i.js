@@ -29,7 +29,10 @@
 
 // 出口の実行
 // 使わない
-
+// 閉じる
+document.getElementById('close').addEventListener('click', function () {
+ document.getElementById('myModal').style.display = 'none';
+});
 
 
 function listClone() {
