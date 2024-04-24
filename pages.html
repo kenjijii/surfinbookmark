@@ -9,7 +9,6 @@
   window.addEventListener('DOMContentLoaded', function () {
    fetch('./modallcfd.html') //ロード元URL
     .then(data => data.text()).then(html => document.body.insertAdjacentHTML('beforeend', html)) //ロード先ID指定
-
     .then(() => {
      //ロード後の処理を記述   
      document.getElementById('close').addEventListener('click', function () {

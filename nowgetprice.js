@@ -14,30 +14,10 @@ LocalStock();
 
 
 let ArrStockName = ['stock'];
-// 配列から各値を設定する
 let CheckedBS = ['sellbuy'];
-//true is sell, false is buy
-// getpricenowの配列
 let ArrNowPrice = ['price'];
-// タイマーの配列
 let ArrTimer = ['timer'];
 let ArrHow = ['alert'];
-// 建玉の位置の配列が必要・・・・
-// 配列に入れる
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 function getSelectedBrand() { // 選択されているstock要素を取得する関数
@@ -96,9 +76,6 @@ document.getElementById('goShortcut-1').addEventListener('click', async (e) => {
     // alert('im on the sex on the beach')
    });
  });
-
-
-
 
 });
 

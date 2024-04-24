@@ -1,48 +1,4 @@
-// 関数リスト
-const sleep = msec => new Promise(resolve => setTimeout(resolve, msec));
-// 数秒待ってから出し分けする
-function whtttl(callback, pageTitle) {
- const od = document.getElementById("mainFrame").contentDocument.querySelector('h2.hdg-l2-01').innerText;
- console.log(od)
- if (!od.includes(pageTitle)) {
-  callback();
- }
-};
-// function reloader(callback) {
-//     callback();
-//     console.log('ユーザーが見てるよ！');
-// };
-// const reloadFX = () => {
-//     document.getElementById("mainFrame").contentDocument.getElementById('img_update').click()
-// };
-function lookornot(pageTitle) {
- if (typeof document.hidden !== 'undefined') {
-  document.addEventListener('visibilitychange', () => {
-   if (document.visibilityState === 'hidden') {
-    console.log('ユーザーがどっかへ行ったよ');
-   }
-   else {
-    whtttl(reloader(reloadFX()), pageTitle)
-   }
-  }, false);
- }
-};
-function setItvl(int, callback) {
- setInterval(() => {
-  let stady = 'to'
-  console.log('doing');
-  callback();
-  console.log(callback)
- }, int);
-};
-function SbiCfdClicker(params) {
- const btn3 = document.getElementById('goShortcut-3')
- // const btn4 = document.getElementById('goShortcut-4')
- let event = new Event('mousedown');
- btn3.dispatchEvent(event);
- // btn4.dispatchEvent(event);
-}
-
+// helpme
 const {
  RUNTIME,
  aceVimMap,
@@ -73,11 +29,11 @@ settings.hintAlign = "left"
 Hints.setCharacters('asdfgwertzxcvb')
 Hints.style('font-family: Consolas; font-size: 18px; line-height: 1;');
 Hints.style(`
-        font-family: monospace;
-        font-size: 19px;
-        text-transform: lowercase;
-        color:black;
-        `,
+          font-family: monospace;
+          font-size: 19px;
+          text-transform: lowercase;
+          color:black;
+          `,
  "text"
 );
 settings.nextLinkRegex = /((>>|next)|>|›|»|→|次へ|次のページ+)/i
@@ -201,124 +157,124 @@ unmapAllExcept(['w', 's', 'e', 'd', 'f', 'r', 'gg', 'gi', 'J', 'K', 'L', 'H', 'x
 unmapAllExcept([], /miro.com/);
 // set theme
 settings.theme = `
-        .sk_theme {
-        font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji";
-        font-feature-settings: "palt";;
-        font-size: 0.93rem;
-        background: rgb(30 41 59 / 90%);
-        backdrop-filter: blur(5px);
-        box-shadow: 0px 2px 10px rgb(0 0 0 / 80%);
-        border-radius: 0.5rem;
-        color: #abb2bf;
-        }
-        .sk_theme input {
-        font-family: monospace;
-        letter-spacing: -0.03em;
-        }
-        .sk_theme tbody {
-        color: #fff;
-        }
-        .sk_theme input {
-        color: #d0d0d0;
-        }
-        .sk_theme .annotation {
-        color: #56b6c2;
-        }
-        .sk_theme .omnibar_timestamp {
-        color: #e5c07b;
-        }
-        .sk_theme .omnibar_visitcount {
-        color: #98c379;
-        }
-        #sk_omnibar {
-        width: 50%;
-        left: 25%;
-        opacity: 1 !important;
-        }
-        #sk_omnibar #sk_omnibarSearchArea {
-        margin: 1.5rem;
-        padding: 0.5rem;
-        background-color: hsl(217deg 19% 32% / 90%);
-        border-radius: 0.5rem;
-        border: 0;
-        }
-        #sk_omnibar #sk_omnibarSearchResult {
-        margin: 0 1.5rem;
-        }
-        #sk_omnibar #sk_omnibarSearchResult ul li {
-        padding: 0.5rem 1rem;
-        border-radius: 0.5rem;
-        margin-bottom: 0.5rem;
-        background-color: hsl(215deg 25% 17% / 30%);
-        }
-        #sk_omnibar #sk_omnibarSearchResult .omnibar_highlight {
-        font-weight: bold;
-        color: inherit;
-        background-color: rgba(255, 255, 0, 0.2);
-        }
-        #sk_omnibar #sk_omnibarSearchResult ul li.focused {
-        background-image: linear-gradient(to right, hsl(239deg 84% 67% / 50%), hsl(199deg 89% 48% / 60%));
-        color: #fff;
-        }
-        #sk_omnibar #sk_omnibarSearchResult li .url {
-        color: rgb(56, 189, 248);
-        font-weight: normal;
-        font-family: monospace;
-        letter-spacing: -0.03em;
-        font-size: 0.95rem;
-        margin-left: 1.45rem;
-        }
-        #sk_status, #sk_find {
-        font-size: 1.25rem;
-        }
-        #sk_usage > div {
-        width: 25%;
-        margin-bottom: 2em;
-        }
-        #sk_usage span.annotation {
-        padding-left: 16px;
-        }
-        #sk_bubble .sk_bubble_content {
-        overflow: auto;
-        }
-        #sk_keystroke {
-        background: rgb(30 41 59 / 90%);
-        border-radius: 0.5rem 0 0;
-        padding: 0.5rem 1rem;
-        font-size: 1.25rem;
-        }
-        #sk_keystroke > div {
-        display: flex;
-        align-items: center;
-        margin: 0.25em 0;
-        }
-        #sk_keystroke kbd {
-        font-size: 1.5rem;
-        line-height: 1;
-        }
-        #sk_keystroke kbd > .candidates {
-        color: rgb(219 39 119);
-        }
-        #sk_keystroke .kbd-span {
-        min-width: 2.5rem;
-        }
-        #sk_keystroke .annotation {
-        padding-left: 0.5em;
-        color: rgb(125 211 252);
-        }
-        #sk_keystroke:not(.expandRichHints) {
-        font-size: 2rem;
-        font-family: monospace;
-        }
-        #sk_status {
-        padding: 4px 12px;
-        }
-        #sk_status > span {
-        line-height: 1;
-        display: inline-block;
-        border: 0 !important;
-        }
-        `;
+          .sk_theme {
+          font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji";
+          font-feature-settings: "palt";;
+          font-size: 0.93rem;
+          background: rgb(30 41 59 / 90%);
+          backdrop-filter: blur(5px);
+          box-shadow: 0px 2px 10px rgb(0 0 0 / 80%);
+          border-radius: 0.5rem;
+          color: #abb2bf;
+          }
+          .sk_theme input {
+          font-family: monospace;
+          letter-spacing: -0.03em;
+          }
+          .sk_theme tbody {
+          color: #fff;
+          }
+          .sk_theme input {
+          color: #d0d0d0;
+          }
+          .sk_theme .annotation {
+          color: #56b6c2;
+          }
+          .sk_theme .omnibar_timestamp {
+          color: #e5c07b;
+          }
+          .sk_theme .omnibar_visitcount {
+          color: #98c379;
+          }
+          #sk_omnibar {
+          width: 50%;
+          left: 25%;
+          opacity: 1 !important;
+          }
+          #sk_omnibar #sk_omnibarSearchArea {
+          margin: 1.5rem;
+          padding: 0.5rem;
+          background-color: hsl(217deg 19% 32% / 90%);
+          border-radius: 0.5rem;
+          border: 0;
+          }
+          #sk_omnibar #sk_omnibarSearchResult {
+          margin: 0 1.5rem;
+          }
+          #sk_omnibar #sk_omnibarSearchResult ul li {
+          padding: 0.5rem 1rem;
+          border-radius: 0.5rem;
+          margin-bottom: 0.5rem;
+          background-color: hsl(215deg 25% 17% / 30%);
+          }
+          #sk_omnibar #sk_omnibarSearchResult .omnibar_highlight {
+          font-weight: bold;
+          color: inherit;
+          background-color: rgba(255, 255, 0, 0.2);
+          }
+          #sk_omnibar #sk_omnibarSearchResult ul li.focused {
+          background-image: linear-gradient(to right, hsl(239deg 84% 67% / 50%), hsl(199deg 89% 48% / 60%));
+          color: #fff;
+          }
+          #sk_omnibar #sk_omnibarSearchResult li .url {
+          color: rgb(56, 189, 248);
+          font-weight: normal;
+          font-family: monospace;
+          letter-spacing: -0.03em;
+          font-size: 0.95rem;
+          margin-left: 1.45rem;
+          }
+          #sk_status, #sk_find {
+          font-size: 1.25rem;
+          }
+          #sk_usage > div {
+          width: 25%;
+          margin-bottom: 2em;
+          }
+          #sk_usage span.annotation {
+          padding-left: 16px;
+          }
+          #sk_bubble .sk_bubble_content {
+          overflow: auto;
+          }
+          #sk_keystroke {
+          background: rgb(30 41 59 / 90%);
+          border-radius: 0.5rem 0 0;
+          padding: 0.5rem 1rem;
+          font-size: 1.25rem;
+          }
+          #sk_keystroke > div {
+          display: flex;
+          align-items: center;
+          margin: 0.25em 0;
+          }
+          #sk_keystroke kbd {
+          font-size: 1.5rem;
+          line-height: 1;
+          }
+          #sk_keystroke kbd > .candidates {
+          color: rgb(219 39 119);
+          }
+          #sk_keystroke .kbd-span {
+          min-width: 2.5rem;
+          }
+          #sk_keystroke .annotation {
+          padding-left: 0.5em;
+          color: rgb(125 211 252);
+          }
+          #sk_keystroke:not(.expandRichHints) {
+          font-size: 2rem;
+          font-family: monospace;
+          }
+          #sk_status {
+          padding: 4px 12px;
+          }
+          #sk_status > span {
+          line-height: 1;
+          display: inline-block;
+          border: 0 !important;
+          }
+          `;
 // 検索関係
 // unmapAllExcept(['E','R','T','f'], /google.com|twitter.com/);
 // unmapAllExcept(
@@ -360,6 +316,52 @@ addSearchAlias(
 mapkey('or', '#8Open Search with alias r', function () {
  Front.openOmnibar({ type: 'SearchEngine', extra: 'r' })
 })
+
+
+// 関数リスト
+const sleep = msec => new Promise(resolve => setTimeout(resolve, msec));
+// 数秒待ってから出し分けする
+function whtttl(callback, pageTitle) {
+ const od = document.getElementById("mainFrame").contentDocument.querySelector('h2.hdg-l2-01').innerText;
+ console.log(od)
+ if (!od.includes(pageTitle)) {
+  callback();
+ }
+};
+// function reloader(callback) {
+//     callback();
+//     console.log('ユーザーが見てるよ！');
+// };
+// const reloadFX = () => {
+//     document.getElementById("mainFrame").contentDocument.getElementById('img_update').click()
+// };
+function lookornot(pageTitle) {
+ if (typeof document.hidden !== 'undefined') {
+  document.addEventListener('visibilitychange', () => {
+   if (document.visibilityState === 'hidden') {
+    console.log('ユーザーがどっかへ行ったよ');
+   }
+   else {
+    whtttl(reloader(reloadFX()), pageTitle)
+   }
+  }, false);
+ }
+};
+function setItvl(int, callback) {
+ setInterval(() => {
+  let stady = 'to'
+  console.log('doing');
+  callback();
+  console.log(callback)
+ }, int);
+};
+function SbiCfdClicker(params) {
+ const btn3 = document.getElementById('goShortcut-3')
+ // const btn4 = document.getElementById('goShortcut-4')
+ let event = new Event('mousedown');
+ btn3.dispatchEvent(event);
+ // btn4.dispatchEvent(event);
+}
 function rakutenFX() {
  let OrderValue = 1
  let PipsValue = 15
@@ -1276,6 +1278,7 @@ function rakutenFX() {
   });
  })
 };
+
 mapkey('qx', 'Choose a tab with omnibar', function () {
  RUNTIME('getSettings', {
   key: 'sessions'
@@ -1407,74 +1410,120 @@ mapkey('gz', 'go to Cfd tab', function () {
     }
 
    }, 999);
-
-
-
-  // // case location.href.startsWith('https://site3.sbisec.co.jp/ETGate/?') && location.href:
-  // //     // case 'https://site3.sbisec.co.jp/ETGate/?':
-  // //     document.querySelector('#user_input > input:nth-child(1)').value = '186-0337889'
-  // //     document.querySelector('#password_input > input:nth-child(1)').value = 'C4!i/6P58R_R'
-  // //     document.querySelector('.sb-position-c > input:nth-child(1)').click();
-  // //     await sleep(4600);
-  // //     document.querySelector('#navi01P > ul:nth-child(1) > li:nth-child(9) > a:nth-child(1)').click();
-  // //     break;
-
-
-  // // // case 'https://site3.sbisec.co.jp/ETGate/WPLET':
-  // // // top to cfd
-  // // case 'https://site3.sbisec.co.jp/ETGate/':
-  // //     await sleep(1300);
-  // //     document.querySelector('#navi01P > ul:nth-child(1) > li:nth-child(9) > a:nth-child(1)').click();
-  // //     break;
-  // // case 'https://site0.sbisec.co.jp/marble/cfdwarrant/top/cfd.do?':
-  // //     await sleep(300);
-  // //     document.querySelector('a.c_btn_new220203:nth-child(1)').click();
-  // //     await sleep(30);
-  // //     document.querySelector('#navi01P > ul:nth-child(1) > li:nth-child(4) > a:nth-child(1)').click();
-  // //     // 外国株式
-  // //     break;
-  // // case 'https://site0.sbisec.co.jp/marble/foreign/top.do?':
-  // //     await sleep(1000);
-  // //     document.querySelector('._mypage_table__8wou_ > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(2) > div:nth-child(1) > a:nth-child(1)').click();
-  // //     function btnCliker() {
-  // //         document.querySelector('#navi01P > ul:nth-child(1) > li:nth-child(4) > a:nth-child(1)').click();
-  // //     }
-  // //     setItvl(890000, btnCliker);
-
   case 'https://cweb.tfxclick.com/sbisec-kabu365/main/main.html':
    //     // 15分単位
-   mapkey('qq', 'go to Cfd tab', function () {
-    // const Url = 'https://kenjijii.github.io/surfinbookmark/modallcfd.html'
 
 
-    fetch('https://kenjijii.github.io/surfinbookmark/modallcfd.html') //ロード元URL
-     .then(data => data.text()).then(html => document.body.insertAdjacentHTML('beforeend', html)) //ロード先ID指定
+   let ArrStockName = ['stock'];
+   let CheckedBS = ['sellbuy'];
+   let ArrNowPrice = ['price'];
+   let ArrTimer = ['timer'];
+   let ArrHow = ['alert'];
 
-     .then(() => {
-      //ロード後の処理を記述   
-      document.getElementById('close').addEventListener('click', function () {
-       document.getElementById('myModal').style.display = 'none';
-      });
-      // alert('im on the sex on the beach')
-     });
-   });
+   // function LocalStock() {
+   //  // ローカルから取得して配列リターン
+   //  const stock = localStorage.getItem('stock');
+   // ArrStockName = stock ? JSON.parse(stock) : [];
+   //  const sellbuy = localStorage.getItem('sellbuy');
+   // CheckedBS = sellbuy ? JSON.parse(sellbuy) : [];
+   //  const price = localStorage.getItem('price');
+   // ArrNowPrice = price ? JSON.parse(price) : [];
+   //  const timer = localStorage.getItem('timer');
+   // ArrTimer = timer ? JSON.parse(timer) : [];
+   //  const alert = localStorage.getItem('alert');
+   // ArrHow = alert ? JSON.parse(alert) : [];
+   // }
+
+
+   // function setLocalStock() {
+   //  // ローカルに保存
+   //  localStorage.setItem('stock', JSON.stringify(ArrStockName));
+   //  localStorage.setItem('sellbuy', JSON.stringify(CheckedBS));
+   //  localStorage.setItem('price', JSON.stringify(ArrNowPrice));
+   //  localStorage.setItem('timer', JSON.stringify(ArrTimer));
+   //  localStorage.setItem('alert', JSON.stringify(ArrHow));
+   // }
+
+
+   // テストすべき、ここで、5個の値を入れて、それを取り出す。
+
    await sleep(1000);
-   // document.getElementById('goShortcut-1').addEventListener('click', async (e) => {
-   //  alert('取引しました');
-   //  await sleep(1000);
-   //  document.getElementById('main').contentDocument.getElementById('doOrderConfirm-1').addEventListener('click', async (e) => {
-   //   await sleep(1000);
+   document.getElementById("pricePanelToggleMsg").click();
 
-
-
-   //   alert('取引しました');
-   //   // ミューテーションを動作。
-
-   //   // ここに取引の処理を書く
-   //   console.log('取引しました');
-   //  });
-   // });
    setItvl(100000, SbiCfdClicker);
+
+
+
+   function getSelectedBrand() { // 選択されているstock要素を取得する関数
+    const selected_id = document.getElementById('main').contentDocument.getElementById('currencyPair-1').value;
+    return selected_id; //4014
+   };
+   function getNumOfStockes() { // 選択されている番号を取得する関数
+    const value = document.getElementById('main').contentDocument.getElementById('amount-1').value;
+    return value;
+   };
+   function getCheckedBS() {//選択されている売り買いを取得する関数
+    const checkedwhat = document.getElementById('main').contentDocument.getElementById('side-1-2').checked;
+    if (checkedwhat) {
+     // 売り
+     return true;
+    } else {
+     // 買い
+     return false;
+    }
+   };
+   // price
+   function getPriceOfStockes() {
+    let selected_id = getCheckedBS();
+    const stockId = getSelectedBrand();
+    const id = selected_id ? 'p2bid-p' + stockId : 'p2ask-p' + stockId;
+    const price = document.getElementById(id).querySelector('span').innerText;
+    return price;
+   };
+   // ページ上の処理
+   async function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+   };
+
+
+
+   // 買った時点での、数値を入れていく。これに
+   document.getElementById('goShortcut-1').addEventListener('click', async (e) => {
+    await sleep(1000);
+
+    alert('im on the')
+    document.getElementById('main').contentDocument.getElementById('doOrderConfirm-1').addEventListener('click', (e) => {
+     ArrStockName.push(getSelectedBrand());
+     CheckedBS.push(getCheckedBS());
+     ArrNowPrice.push(getPriceOfStockes());
+     ArrTimer.push(getNumOfStockes());
+     // 配列に入れる前の値をゲット
+     // 入っている状態にはなる。
+
+     // ここでモーダルを出して、配列の値を入れていく
+     fetch('https://kenjijii.github.io/surfinbookmark/modallcfd.html') //ロード元URL
+      .then(data => data.text()).then(html => document.body.insertAdjacentHTML('beforeend', html)) //ロード先ID指定
+
+      .then(() => {
+       console.log(ArrStockName)
+       console.log(CheckedBS)
+       console.log(ArrNowPrice)
+       console.log(ArrTimer)
+
+       alert(ArrStockName);
+       //ロード後の処理を記述   
+       document.getElementById('close').addEventListener('click', function () {
+        document.getElementById('myModal').style.display = 'none';
+       });
+       // alert('im on the sex on the beach')
+      });
+    });
+
+   });
+
+
+
+
    break;
 
 
