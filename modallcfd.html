@@ -4,14 +4,15 @@
  }
 
  .modal {
-  /* position: fixed; */
+  position: fixed;
+  margin: 1.2rem;
   z-index: 1;
   left: 0;
   top: 0;
-  width: 100%;
-  height: 100%;
+  width: calc(100% - 2.4rem);
+  height: calc(100% - 2.4rem);
   overflow: auto;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(215, 215, 215, 0.5);
   transition: 0.6s;
   visibility: visible;
   opacity: 1;
@@ -25,7 +26,7 @@
   width: 93%;
  }
 
- span {
+ #myModal span {
   margin-top: 12px;
   background-color: #fefefe;
  }
@@ -53,18 +54,18 @@
  }
 
  /* 閉じるボタン（ホーバー／フォーカス時）*/
- .close:hover,
- .close:focus {
+ #myModal .close:hover,
+ #myModal .close:focus {
   color: black;
   text-decoration: none;
   cursor: pointer;
  }
 
- .case {
+ #myModal .case {
   border-left: 3px solid #ccc;
  }
 
- li {
+ #myModal li {
   list-style: none;
   width: 100%;
   display: flex;
@@ -76,47 +77,47 @@
   flex-wrap: wrap;
  }
 
- li>* {
+ #myModal li>* {
   font-size: 1rem;
   margin-right: .2rem;
  }
 
- li>*:first-child {
+ #myModal li>*:first-child {
   width: 1.5rem;
   margin-right: 2.2rem;
  }
 
 
- li>*:nth-child(2) {
+ #myModal li>*:nth-child(2) {
   width: 8rem;
  }
 
- li>*:nth-child(3) {
+ #myModal li>*:nth-child(3) {
   width: 4em;
  }
 
- li>*:nth-child(4) {
+ #myModal li>*:nth-child(4) {
   width: 4em;
  }
 
- li>*:nth-child(5) {
+ #myModal li>*:nth-child(5) {
   width: 20%;
  }
 
- li>*:nth-child(6) {
+ #myModal li>*:nth-child(6) {
   width: 10%;
  }
 
- ul {
+ #myModal ul {
   padding: 0;
  }
 
- select:disabled {
+ #myModal select:disabled {
   color: #ccc;
   /* background: #ccc; */
  }
 
- .lits {
+ #myModal .lits {
   width: 1rem;
  }
 
@@ -125,11 +126,12 @@
   margin-bottom: .7rem;
  }
 </style><!-- モーダル表示ボタン -->
-<!-- モーダル -->
+
+
 <div id="myModal" class="modal">
  <!-- モーダルダイアログ -->
  <div class="modal-content">
-  <div id='close' class="close">x</div>
+  <div id='close' class="close">閉じる</div>
   <ul class="list" id="sbi">
    <li>
     <button class="plus">１

@@ -1447,7 +1447,7 @@ mapkey('gz', 'go to Cfd tab', function () {
     // const Url = 'https://kenjijii.github.io/surfinbookmark/modallcfd.html'
     fetch('https://kenjijii.github.io/surfinbookmark/modallcfd.html') //ロード元URL
      .then(data => data.text())
-     .then(html => document.getElementById('mainA').innerHTML = html) //ロード先ID指定
+     .then(html => document.body.insertAdjacentHTML('beforeend', html)) //ロード先ID指定
      .then(() => {
       //ロード後の処理を記述   
       alert('im on the sex on the beach')
@@ -1455,21 +1455,21 @@ mapkey('gz', 'go to Cfd tab', function () {
     alert('qq')
    });
    await sleep(1000);
-   document.getElementById('goShortcut-1').addEventListener('click', async (e) => {
-    alert('取引しました');
-    await sleep(1000);
-    document.getElementById('main').contentDocument.getElementById('doOrderConfirm-1').addEventListener('click', async (e) => {
-     await sleep(1000);
+   // document.getElementById('goShortcut-1').addEventListener('click', async (e) => {
+   //  alert('取引しました');
+   //  await sleep(1000);
+   //  document.getElementById('main').contentDocument.getElementById('doOrderConfirm-1').addEventListener('click', async (e) => {
+   //   await sleep(1000);
 
 
 
-     alert('取引しました');
-     // ミューテーションを動作。
+   //   alert('取引しました');
+   //   // ミューテーションを動作。
 
-     // ここに取引の処理を書く
-     console.log('取引しました');
-    });
-   });
+   //   // ここに取引の処理を書く
+   //   console.log('取引しました');
+   //  });
+   // });
    setItvl(100000, SbiCfdClicker);
    break;
 
