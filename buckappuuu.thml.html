@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Document</title>
+
+ <style>
+  .modal {
+   position: fixed;
+   z-index: 1;
+   left: 0;
+   top: 0;
+   width: 100%;
+   height: 100%;
+   overflow: auto;
+   background-color: rgb(0, 0, 0);
+   background-color: rgba(0, 0, 0, 0.5);
+   transition: 0.6s;
+   visibility: visible;
+   opacity: 1;
+  }
+
+  /* モーダルダイアログ */
+  .modal-content {
+   display: flex;
+   background-color: #fefefe;
+   margin: 3% auto;
+   padding: 2px;
+   border: 1px solid #888;
+   width: 93%;
+   justify-content: space-between;
+   flex-wrap: wrap;
+  }
+
+  span {
+   margin-top: 12px;
+   background-color: #fefefe;
+  }
+
+  .modal-content>input {
+   font-size: 1rem;
+   width: 5rem;
+  }
+
+  .modal-content>span {
+   width: 100%;
+   display: block;
+  }
+
+  /* 閉じるボタン*/
+  #close {
+   color: #aaa;
+   float: right;
+   font-size: 28px;
+   font-weight: bold;
+   margin-right: 12px;
+   position: absolute;
+   top: -.2rem;
+   left: .6rem;
+  }
+
+  /* 閉じるボタン（ホーバー／フォーカス時）*/
+  .close:hover,
+  .close:focus {
+   color: black;
+   text-decoration: none;
+   cursor: pointer;
+  }
+
+  .case {
+   border-left: 3px solid #ccc;
+  }
+ </style>
+ <script src="./i.js" defer></script>
+
+</head>
+
+<body>
+
+ <!-- モーダル表示ボタン -->
+ <!-- モーダル -->
+
+
+ <!-- <select class="stockname" id="stockname" sdisabled> -->
+
+ <div id="myModal" class="modal">
+  <!-- モーダルダイアログ -->
+  <div class="modal-content">
+   <div id='close' class="close">x</div>
+
+
+   <div class="case">
+    <span class="t1">
+     <select class="stockname" id="stockname">
+      <option value="4014" selected="selected">日経225(2024)</option>
+      <option value="4024">DAX(2024)</option>
+      <option value="4034">FTSE100(2024)</option>
+      <option value="4044">NYダウ(2024)</option>
+      <option value="4074">NDX-100(2024)</option>
+      <option value="4084">RSL2000(2024)</option>
+      <option value="4054">金ETF(2024)</option>
+      <option value="4094">プラチナETF(2024)</option>
+      <option value="4104">銀ETF(2024)</option>
+      <option value="4064">原油ETF(2024)</option>
+      <!-- elect.options[1].selected = true; -->
+     </select>
+    </span>
+    <span class="t2">
+     <select name="sb" id="sellbuy">
+      <option value="1">売</option>
+      <option value="2">買</option>
+     </select>
+    </span>
+
+    <span class="t3">3999</span>
+    <input id='bana_01' type="number">
+   </div>
+   <div class="coutions" id="case2">
+    <span class="t1">日経</span>
+    <span class="t2">売り</span>
+    <span class="t3">3999</span>
+    <input id='bana_02' type="number">
+   </div>
+   <div class="coutions" id="case3">
+    <span class="t1">日経</span>
+    <span class="t2">売り</span>
+    <span class="t3">3999</span>
+    <input id='bana_03' type="number">
+   </div>uu
+   <div class="coutions" id="case3">
+    <span class="t1">日経</span>
+    <span class="t2">売り</span>
+    <span class="t3">3999</span>
+    <input id='bana_03' type="number">
+   </div>
+   <div class="coutions" id="case3">
+    <span class="t1">日経</span>
+    <span class="t2">売り</span>
+    <span class="t3">3999</span>
+    <input id='bana_03' type="number">
+   </div>
+   <div class="coutions" id="case3">
+    <span class="t1">日経</span>
+    <span class="t2">売り</span>
+    <span class="t3">3999</span>
+    <input id='bana_03' type="number">
+   </div>
+   <div class="coutions" id="case3">
+    <span class="t1">日経</span>
+    <span class="t2">売り</span>
+    <span class="t3">3999</span>
+    <input id='bana_03' type="number">
+   </div>
+   <div class="coutions" id="case3">
+    <span class="t1">日経</span>
+    <span class="t2">売り</span>
+    <span class="t3">3999</span>
+    <input id='bana_03' type="number">
+   </div>
+   <div class="coutions" id="case3">
+    <span class="t1">日経</span>
+    <span class="t2">売り</span>
+    <span class="t3">3999</span>
+    <input id='bana_03' type="number">
+   </div>
+   <div class="coutions" id="case3">
+    <span class="t1">日経</span>
+    <span class="t2">売り</span>
+    <span class="t3">3999</span>
+    <input id='bana_03' type="number">
+   </div>
+  </div>
+ </div>
+
+
+ <div class="test">
+  <div class="ongoingplays">11</div>a
+ </div>
+ <div class="test">
+  <div class="ongoingplays">22</div>ba
+ </div>
+ <div class="test">
+  <div class="ongoingplays">33</div>ca
+ </div>
+ <div class="test">
+  <div class="ongoingplays">44</div>ac
+ </div>
+ <div class="test">
+  <div class="ongoingplays">55</div>aa
+ </div>
+</body>
+
+</html>
