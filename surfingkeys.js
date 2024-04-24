@@ -1445,14 +1445,18 @@ mapkey('gz', 'go to Cfd tab', function () {
    //     // 15分単位
    mapkey('qq', 'go to Cfd tab', function () {
     // const Url = 'https://kenjijii.github.io/surfinbookmark/modallcfd.html'
+
+
     fetch('https://kenjijii.github.io/surfinbookmark/modallcfd.html') //ロード元URL
-     .then(data => data.text())
-     .then(html => document.body.insertAdjacentHTML('beforeend', html)) //ロード先ID指定
+     .then(data => data.text()).then(html => document.body.insertAdjacentHTML('beforeend', html)) //ロード先ID指定
+
      .then(() => {
       //ロード後の処理を記述   
-      alert('im on the sex on the beach')
+      document.getElementById('close').addEventListener('click', function () {
+       document.getElementById('myModal').style.display = 'none';
+      });
+      // alert('im on the sex on the beach')
      });
-    alert('qq')
    });
    await sleep(1000);
    // document.getElementById('goShortcut-1').addEventListener('click', async (e) => {

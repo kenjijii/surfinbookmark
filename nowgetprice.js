@@ -85,7 +85,16 @@ document.getElementById('goShortcut-1').addEventListener('click', async (e) => {
   // 入っている状態にはなる。
 
   // ここでモーダルを出して、配列の値を入れていく
+  fetch('./modallcfd.html') //ロード元URL
+   .then(data => data.text()).then(html => document.body.insertAdjacentHTML('beforeend', html)) //ロード先ID指定
 
+   .then(() => {
+    //ロード後の処理を記述   
+    document.getElementById('close').addEventListener('click', function () {
+     document.getElementById('myModal').style.display = 'none';
+    });
+    // alert('im on the sex on the beach')
+   });
  });
 
 
