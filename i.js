@@ -30,6 +30,8 @@
 // 出口の実行
 // 使わない
 
+
+
 function listClone() {
  const list = document.querySelector(".list");
  const listItem = list.children;
@@ -37,6 +39,7 @@ function listClone() {
  addButton.addEventListener("click", (e) => {
   const AddThis = e.target.parentNode;
   // liが入る
+
   const listItemElement = AddThis.cloneNode(true);
   listItemElement.querySelector('.stockname').disabled = true;
   listItemElement.querySelector('.plus').innerText = '　';
