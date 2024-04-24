@@ -1,12 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
- <meta charset="UTF-8">
- <meta name="viewport" content="width=device-width, initial-scale=1.0">
- <title>love the get money is happy.</title>
- <script src="./i.js" defer></script>
-</head>
 <style>
  .body {
   background-color: rgba(144, 144, 144, 0.333);
@@ -133,71 +124,63 @@
   font-size: 1.6rem;
   margin-bottom: .7rem;
  }
-</style>
+</style><!-- モーダル表示ボタン -->
+<!-- モーダル -->
+<div id="myModal" class="modal">
+ <!-- モーダルダイアログ -->
+ <div class="modal-content">
+  <div id='close' class="close">x</div>
+  <ul class="list" id="sbi">
+   <li>
+    <button class="plus">１
 
+    </button>
+    <select class="stockname">
+     <option value="4014">日経225(2024)</option>
+     <option value="4024">DAX(2024)</option>
+     <option value="4034">FTSE100(2024)</option>
+     <option value="4044">NYダウ(2024)</option>
+     <option value="4074">NDX-100(2024)</option>
+     <option value="4084">RSL2000(2024)</option>
+     <option value="4054" selected="selected">金ETF(2024)</option>
+     <option value="4094">プラチナETF(2024)</option>
+     <option value="4104">銀ETF(2024)</option>
+     <option value="4064">原油ETF(2024)</option>
+     <!-- elect.options[1].selected = true; -->
+    </select>
+    <select class="numOfStock">
+     <option value="1">１個</option>
+     <option value="2">２個</option>
+     <option value="3">３個</option>
+     <option value="4">４個</option>
+     <option value="5">５個</option>
+     <option value="6">６個</option>
+     <option value="7">７個</option>
+     <option value="8">８個</option>
+     <option value="9">９個</option>
+     <option value="10">１０個</option>
+    </select>
 
-<body>
- <!-- モーダル表示ボタン -->
- <!-- モーダル -->
- <div id="myModal" class="modal">
-  <!-- モーダルダイアログ -->
-  <div class="modal-content">
-   <div id='close' class="close">x</div>
-   <ul class="list" id="sbi">
-    <li>
-     <button class="plus">１
+    <select class="sellbuy">
+     <option value="1">売</option>
+     <option value="2">買</option>
+    </select>
+    <!-- 買いの値 -->
+    <span class="settlementValue">35555</span>
+    <input class="timer" type="number">
+    <select name="" class="how">
+     <option value="alert">アラート</option>
+     <option value="relinquish">手放す</option>
+    </select>
+    <!-- アラートか、売るか、特殊な売り買いかかな。mutationに渡し動作させる -->
+    <button class="button button--delete">削除</button>
+   </li>
 
-     </button>
-     <select class="stockname">
-      <option value="4014">日経225(2024)</option>
-      <option value="4024">DAX(2024)</option>
-      <option value="4034">FTSE100(2024)</option>
-      <option value="4044">NYダウ(2024)</option>
-      <option value="4074">NDX-100(2024)</option>
-      <option value="4084">RSL2000(2024)</option>
-      <option value="4054" selected="selected">金ETF(2024)</option>
-      <option value="4094">プラチナETF(2024)</option>
-      <option value="4104">銀ETF(2024)</option>
-      <option value="4064">原油ETF(2024)</option>
-      <!-- elect.options[1].selected = true; -->
-     </select>
-     <select class="numOfStock">
-      <option value="1">１個</option>
-      <option value="2">２個</option>
-      <option value="3">３個</option>
-      <option value="4">４個</option>
-      <option value="5">５個</option>
-      <option value="6">６個</option>
-      <option value="7">７個</option>
-      <option value="8">８個</option>
-      <option value="9">９個</option>
-      <option value="10">１０個</option>
-     </select>
+  </ul>
+  <button class="button button--add">追加</button>
+  </ul>
 
-     <select class="sellbuy">
-      <option value="1">売</option>
-      <option value="2">買</option>
-     </select>
-     <!-- 買いの値 -->
-     <span class="settlementValue">35555</span>
-     <input class="timer" type="number">
-     <select name="" class="how">
-      <option value="alert">アラート</option>
-      <option value="relinquish">手放す</option>
-     </select>
-     <!-- アラートか、売るか、特殊な売り買いかかな。mutationに渡し動作させる -->
-     <button class="button button--delete">削除</button>
-    </li>
-
-   </ul>
-   <button class="button button--add">追加</button>
-   </ul>
-
-  </div>
  </div>
-
-
-
-</body>
+</div>
 
 </html>
