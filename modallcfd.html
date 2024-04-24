@@ -8,7 +8,7 @@
  <script src="./i.js" defer></script>
 </head>
 <style>
- .modal {
+ #myModal .modal {
   /* position: fixed; */
   z-index: 1;
   left: 0;
@@ -23,30 +23,30 @@
  }
 
  /* モーダルダイアログ */
- .modal-content {
+ #myModal .modal-content {
   margin: 3% auto;
   padding: 2px;
   border: 1px solid #888;
   width: 93%;
  }
 
- span {
+ #myModal span {
   margin-top: 12px;
   background-color: #fefefe;
  }
 
- .modal-content>input {
+ #myModal .modal-content>input {
   font-size: 1rem;
   width: 5rem;
  }
 
- .modal-content>span {
+ #myModal .modal-content>span {
   width: 100%;
   display: block;
  }
 
  /* 閉じるボタン*/
- #close {
+ #myModal #close {
   color: #aaa;
   float: right;
   font-size: 28px;
@@ -58,18 +58,19 @@
  }
 
  /* 閉じるボタン（ホーバー／フォーカス時）*/
- .close:hover,
- .close:focus {
+
+ #myModal .close:hover,
+ #myModal .close:focus {
   color: black;
   text-decoration: none;
   cursor: pointer;
  }
 
- .case {
+ #myModal .case {
   border-left: 3px solid #ccc;
  }
 
- li {
+ #myModal li {
   list-style: none;
   width: 100%;
   display: flex;
@@ -81,51 +82,51 @@
   flex-wrap: wrap;
  }
 
- li>* {
+ #myModal li>* {
   font-size: 1rem;
   margin-right: .2rem;
  }
 
- li>*:first-child {
+ #myModal li>*:first-child {
   width: 1.5rem;
   margin-right: 2.2rem;
  }
 
 
- li>*:nth-child(2) {
+ #myModal li>*:nth-child(2) {
   width: 8rem;
  }
 
- li>*:nth-child(3) {
+ #myModal li>*:nth-child(3) {
   width: 4em;
  }
 
- li>*:nth-child(4) {
+ #myModal li>*:nth-child(4) {
   width: 4em;
  }
 
- li>*:nth-child(5) {
+ #myModal li>*:nth-child(5) {
   width: 20%;
  }
 
- li>*:nth-child(6) {
+ #myModal li>*:nth-child(6) {
   width: 10%;
  }
 
- ul {
+ #myModal ul {
   padding: 0;
  }
 
- select:disabled {
+ #myModal select:disabled {
   color: #ccc;
   /* background: #ccc; */
  }
 
- .lits {
+ #myModal .lits {
   width: 1rem;
  }
 
- .settlementValue {
+ #myModal .settlementValue {
   font-size: 1.6rem;
   margin-bottom: .7rem;
  }
