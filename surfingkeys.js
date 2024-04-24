@@ -1444,20 +1444,14 @@ mapkey('gz', 'go to Cfd tab', function () {
   case 'https://cweb.tfxclick.com/sbisec-kabu365/main/main.html':
    //     // 15分単位
    mapkey('qq', 'go to Cfd tab', function () {
-     const Url = 'https://kenjijii.github.io/surfinbookmark/input.css?f'
-
-    // モーダルソース読み込み
-    // (async () => {
-    //  const cssUrl = 'https://kenjijii.github.io/surfinbookmark/input.css?f'
-    //  fetch('https://kenjijii.github.io/surfinbookmark/modal.html?ssss') //ロード元URL
-    //   .then(data => data.text())
-    //   .then(html => document.body.insertAdjacentHTML('beforeend', html))
-    //  var link = await document.createElement('link');
-    //  link.rel = 'stylesheet';
-    //  link.href = cssUrl;
-    //  link.type = 'text/css';
-    //  document.head.after(link);
-    // })()
+    // const Url = 'https://kenjijii.github.io/surfinbookmark/modallcfd.html'
+    fetch('https://kenjijii.github.io/surfinbookmark/modallcfd.html') //ロード元URL
+     .then(data => data.text())
+     .then(html => document.getElementById('mainA').innerHTML = html) //ロード先ID指定
+     .then(() => {
+      //ロード後の処理を記述   
+      alert('im on the sex on the beach')
+     });
     alert('qq')
    });
    await sleep(1000);
