@@ -284,7 +284,7 @@ document.querySelector('#goShortcut-1').addEventListener('click', function () {
 
  const OrderButton = document.getElementById('main').contentDocument.getElementById('doOrderConfirm-1');
  OrderButton.addEventListener('click', function () {
-  document.querySelector('body#no').style.display = 'block';
+  document.querySelector('#myModal.modal').style.display = 'block';
 
 
   alert('modaleda');
