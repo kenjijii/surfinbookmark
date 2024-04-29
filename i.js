@@ -279,9 +279,9 @@ function alerttest() {
 };
 
 
-document.querySelector('#goShortcut-1').addEventListener('click', function () {
+document.querySelector('#goShortcut-1').addEventListener('click', async function () {
 
-
+ await sleep(300);
  const OrderButton = document.getElementById('main').contentDocument.getElementById('doOrderConfirm-1');
  OrderButton.addEventListener('click', function () {
   document.querySelector('#myModal.modal').style.display = 'block';

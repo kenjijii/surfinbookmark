@@ -1404,7 +1404,7 @@ mapkey('gz', 'go to Cfd tab', function () {
     .then(data => data.text()).then(html => document.body.insertAdjacentHTML('beforeend', html)) //ロード先ID指定
     .then(() => {
      var el = document.createElement("script");
-     el.src = "https://kenjijii.github.io/surfinbookmark/i.js";
+     el.src = "https://kenjijii.github.io/surfinbookmark/i.js?888";
      document.body.appendChild(el);
     });
 
