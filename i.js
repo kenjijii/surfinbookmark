@@ -281,7 +281,7 @@ function alerttest() {
 
 document.querySelector('#goShortcut-1').addEventListener('click', async function () {
 
- await sleep(300);
+ await sleep(700);
  const OrderButton = document.getElementById('main').contentDocument.getElementById('doOrderConfirm-1');
  OrderButton.addEventListener('click', function () {
   document.querySelector('#myModal.modal').style.display = 'block';

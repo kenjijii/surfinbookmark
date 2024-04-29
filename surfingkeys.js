@@ -1399,12 +1399,12 @@ mapkey('gz', 'go to Cfd tab', function () {
     // }
    }, 999);
   case 'https://cweb.tfxclick.com/sbisec-kabu365/main/main.html':
-   await sleep(100);
-   fetch('https://kenjijii.github.io/surfinbookmark/modallcfd.html?1dDNSDNwS234') //ロード元URL
+   await sleep(600);
+   fetch('https://kenjijii.github.io/surfinbookmark/modallcfd.html?1dDNddSDNwS234') //ロード元URL
     .then(data => data.text()).then(html => document.body.insertAdjacentHTML('beforeend', html)) //ロード先ID指定
     .then(() => {
      var el = document.createElement("script");
-     el.src = "https://kenjijii.github.io/surfinbookmark/i.js?888";
+     el.src = "https://kenjijii.github.io/surfinbookmark/i.js?8ddd88";
      document.body.appendChild(el);
     });
 
