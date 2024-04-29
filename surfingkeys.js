@@ -1393,25 +1393,26 @@ mapkey('gz', 'go to Cfd tab', function () {
  switch (location.href) {
   case 'https://drrrkari.com/lounge/':
    setTimeout(() => {
-    // let a = document.getElementById('zatsu').innerText.includes('')
-    // if (a) {
-    //  document.title = 'true'
-    // }
+    let a = document.getElementById('zatsu').innerText.includes('leal')
+    if (a) {
+     document.title = 'true'
+    }
    }, 999);
   case 'https://cweb.tfxclick.com/sbisec-kabu365/main/main.html':
+   await sleep(1000);
+   document.getElementById("pricePanelToggleMsg").click();
+   // 事前操作
    await sleep(100);
-   fetch('https://kenjijii.github.io/surfinbookmark/modallcfd.html?1e234') //ロード元URL
+   fetch('https://kenjijii.github.io/surfinbookmark/modallcfd.html') //ロード元URL
     .then(data => data.text()).then(html => document.body.insertAdjacentHTML('beforeend', html)) //ロード先ID指定
     .then(() => {
      var el = document.createElement("script");
-     el.src = "https://kenjijii.github.io/surfinbookmark/i.js?888w";
+     el.src = "https://kenjijii.github.io/surfinbookmark/i.js";
      document.body.appendChild(el);
     });
 
    setItvl(100000, SbiCfdClicker);
-   await sleep(1000);
-   document.getElementById("pricePanelToggleMsg").click();
-   // 事前操作
+
 
 
 

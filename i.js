@@ -237,33 +237,6 @@ function clearLocalStorage() {
 }
 
 
-(async () => {
- await sleep(900)
- // ボタンの設定
- function buttons() {
-  document.getElementById('clear').addEventListener('click', () => {
-   clearLocalStorage();
-  });
-  // Save button
-  document.getElementById('save').addEventListener('click', () => {
-   pageToArray();
-  });
-  document.getElementById('close').addEventListener('click', () => {
-   document.getElementById('myModal').style.display = 'none';
-  });
- };
- buttons();
- genericGetPage()
-
- // Reflect values from the array
- // getPage();
- // ページの中身が入る
- ArrayToPage();
- // ページの中身が入る
- // ページの中身が入る
- makelist();
- listClone();
-})();
 
 function cl() {
  console.log(ArrStockName);
@@ -274,8 +247,21 @@ function cl() {
  console.log(ArrHow);
  console.log(ArrStockNumber);
 }
-function alerttest() {
- alert('test');
+
+function buttons() {
+ document.getElementById('clear').addEventListener('click', () => {
+  clearLocalStorage();
+ });
+ // Save button
+ document.getElementById('save').addEventListener('click', () => {
+  pageToArray();
+ });
+ document.getElementById('close').addEventListener('click', (e) => {
+
+  e.preventDefault();
+  document.getElementById('myModal').style.display = 'none';
+
+ });
 };
 
 
@@ -286,10 +272,20 @@ document.querySelector('#goShortcut-1').addEventListener('click', async function
  OrderButton.addEventListener('click', function () {
   alert('modaleda');
   document.querySelector('#myModal.modal').style.display = 'block';
+  buttons();
+  getPage();
+
+  ArrayToPage();
+
+
+  makelist();
+  listClone();
 
 
  });
 });
+
+
 
 
 
