@@ -259,16 +259,23 @@ function buttons() {
  document.getElementById('close').addEventListener('click', (e) => {
 
   e.preventDefault();
+
+
   document.getElementById('myModal').style.display = 'none';
 
  });
 };
 
+document.querySelector('#myModal').addEventListener('click', async function (event) {
+ document.getElementById('myModal').style.display = 'none';
+ event.stopPropagation();
+});
 
-document.querySelector('#goShortcut-1').addEventListener('click', async function () {
 
- await sleep(1200);
- const OrderButton = document.getElementById('main').contentDocument.getElementById('doOrderConfirm-1');
+
+const OrderButton = document.getElementById('main').contentDocument.getElementById('doOrderConfirm-1');
+if (OrderButton) {
+
  OrderButton.addEventListener('click', function () {
   alert('modaleda');
   document.querySelector('#myModal.modal').style.display = 'block';
@@ -283,6 +290,14 @@ document.querySelector('#goShortcut-1').addEventListener('click', async function
 
 
  });
+
+};
+
+document.querySelector('#goShortcut-1').addEventListener('click', async function () {
+
+ await sleep(1200);
+
+
 });
 
 

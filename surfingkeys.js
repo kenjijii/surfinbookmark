@@ -1387,6 +1387,8 @@ mapkey('gz', 'go to Cfd tab', function () {
 }, { repeatIgnore: true });
 // windowを一つにまとめる。
 // 出し分け
+const time = new Date().getTime();
+
 (async () => {
  console.log('スタート');
  await sleep(1000);
@@ -1399,21 +1401,22 @@ mapkey('gz', 'go to Cfd tab', function () {
     }
    }, 999);
   case 'https://cweb.tfxclick.com/sbisec-kabu365/main/main.html':
+  case 'https://cweb.tfxclick.com/sbisec-kabu365/main/main.html#':
    await sleep(1000);
    document.getElementById("pricePanelToggleMsg").click();
    // 事前操作
    await sleep(100);
-   fetch('https://kenjijii.github.io/surfinbookmark/modallcfd.html') //ロード元URL
+   fetch('https://kenjijii.github.io/surfinbookmark/modallcfd.html?' + time) //ロード元URL
     .then(data => data.text()).then(html => document.body.insertAdjacentHTML('beforeend', html)) //ロード先ID指定
     .then(() => {
      var el = document.createElement("script");
-     el.src = "https://kenjijii.github.io/surfinbookmark/i.js";
+     el.src = "https://kenjijii.github.io/surfinbookmark/i.js?" + time;
      document.body.appendChild(el);
     });
 
    setItvl(100000, SbiCfdClicker);
 
-
+   new Date().getTime();
 
 
 
