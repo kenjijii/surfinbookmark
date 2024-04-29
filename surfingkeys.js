@@ -1413,21 +1413,31 @@ mapkey('gz', 'go to Cfd tab', function () {
     alert('midasu');
     alert(ArrStockName);
    })
-
-
-   mapkey('tcr', 'openarr', function () {
-    getPage();
-    alert('midasu');
-    alert(ArrStockName);
-   })
-
    var el = document.createElement("script");
 
    // SCRIPTタグのSRC属性に読み込みたいファイルを指定
-   el.src = "https://kenjijii.github.io/surfinbookmark/i.js";
-
+   el.src = "https://kenjijii.github.io/surfinbookmark/i.js?js";
    // BODY要素の最後に追加
    document.body.appendChild(el);
+
+
+
+
+   mapkey('tcpp', 'openarr', function () {
+    alerttest();
+   })
+   mapkey('tcpw', 'openarr', function () {
+    alert('ss');
+   });
+   mapkey('tcpc', 'openarr', function () {
+
+    cl()
+    console.log('cl');
+   });
+
+
+
+
 
    break;
   case 'https://fx.rakuten-sec.co.jp/web/top.action':

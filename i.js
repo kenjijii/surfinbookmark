@@ -276,7 +276,13 @@ function cl() {
 }
 function alerttest() {
  alert('test');
-}
+};
+
+
+document.querySelector('#goShortcut-1').addEventListener('click', function () {
+ alert('ss');
+});
+
 // LocalStock('stock');
 // LocalStock('pieces');
 // LocalStock('sellbuy');
