@@ -282,7 +282,7 @@ function alerttest() {
 document.querySelector('#goShortcut-1').addEventListener('click', function () {
  alert('ss');
 });
-
+alert('sse');
 // LocalStock('stock');
 // LocalStock('pieces');
 // LocalStock('sellbuy');
