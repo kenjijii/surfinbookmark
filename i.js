@@ -274,7 +274,9 @@ function cl() {
  console.log(ArrHow);
  console.log(ArrStockNumber);
 }
-
+function alerttest() {
+ alert('test');
+}
 // LocalStock('stock');
 // LocalStock('pieces');
 // LocalStock('sellbuy');
