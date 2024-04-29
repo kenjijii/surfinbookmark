@@ -281,13 +281,13 @@ function alerttest() {
 
 document.querySelector('#goShortcut-1').addEventListener('click', async function () {
 
- await sleep(1000);
+ await sleep(1200);
  const OrderButton = document.getElementById('main').contentDocument.getElementById('doOrderConfirm-1');
  OrderButton.addEventListener('click', function () {
+  alert('modaleda');
   document.querySelector('#myModal.modal').style.display = 'block';
 
 
-  alert('modaleda');
  });
 });
 
