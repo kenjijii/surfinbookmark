@@ -282,7 +282,14 @@ function alerttest() {
 document.querySelector('#goShortcut-1').addEventListener('click', function () {
  alert('ss');
 });
-alert('sse');
+
+
+const OrderButton = document.getElementById('main').contentDocument.getElementById('doOrderConfirm-1');
+OrderButton.addEventListener('click', function () {
+ alert('modaleda');
+});
+
+
 // LocalStock('stock');
 // LocalStock('pieces');
 // LocalStock('sellbuy');

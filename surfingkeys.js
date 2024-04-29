@@ -1399,6 +1399,20 @@ mapkey('gz', 'go to Cfd tab', function () {
     // }
    }, 999);
   case 'https://cweb.tfxclick.com/sbisec-kabu365/main/main.html':
+
+   await sleep(100);
+   fetch('https://kenjijii.github.io/surfinbookmark/modallcfd.html') //ロード元URL
+    .then(data => data.text()).then(html => document.body.insertAdjacentHTML('beforeend', html)) //ロード先ID指定
+    .then(() => {
+     //ロード後の処理を記述   
+     // SCRIPTタグの生成
+     var el = document.createElement("script");
+     // SCRIPTタグのSRC属性に読み込みたいファイルを指定
+     el.src = "https://kenjijii.github.io/surfinbookmark/i.js";
+     // BODY要素の最後に追加
+     document.body.appendChild(el);
+    });
+
    setItvl(100000, SbiCfdClicker);
    await sleep(1000);
    document.getElementById("pricePanelToggleMsg").click();
@@ -1408,31 +1422,11 @@ mapkey('gz', 'go to Cfd tab', function () {
 
 
 
-   mapkey('tcr', 'openarr', function () {
-    getPage();
-    alert('midasu');
-    alert(ArrStockName);
-   })
-   var el = document.createElement("script");
-
-   // SCRIPTタグのSRC属性に読み込みたいファイルを指定
-   el.src = "https://kenjijii.github.io/surfinbookmark/i.js?js";
-   // BODY要素の最後に追加
-   document.body.appendChild(el);
 
 
 
-
-   mapkey('tcpp', 'openarr', function () {
-    alerttest();
-   })
    mapkey('tcpw', 'openarr', function () {
     alert('ss');
-   });
-   mapkey('tcpc', 'openarr', function () {
-
-    cl()
-    console.log('cl');
    });
 
 
