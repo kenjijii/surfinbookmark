@@ -267,17 +267,16 @@ function buttons() {
 };
 
 document.querySelector('#myModal').addEventListener('click', async function (event) {
- document.getElementById('myModal').style.display = 'none';
  event.stopPropagation();
+ document.getElementById('myModal').style.display = 'none';
 });
 
+document.querySelector('#goShortcut-1').addEventListener('click', async function () {
 
-
-const OrderButton = document.getElementById('main').contentDocument.getElementById('doOrderConfirm-1');
-if (OrderButton) {
-
- OrderButton.addEventListener('click', function () {
-  alert('modaleda');
+ await sleep(1200);
+ const OrderButton = document.getElementById('main').contentDocument.getElementById('doOrderConfirm-1');
+ OrderButton.addEventListener('click', function (event) {
+  event.preventDefault();
   document.querySelector('#myModal.modal').style.display = 'block';
   buttons();
   getPage();
@@ -290,14 +289,6 @@ if (OrderButton) {
 
 
  });
-
-};
-
-document.querySelector('#goShortcut-1').addEventListener('click', async function () {
-
- await sleep(1200);
-
-
 });
 
 
