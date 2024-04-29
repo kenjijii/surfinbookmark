@@ -4,21 +4,28 @@
 <head>
  <meta charset="UTF-8">
  <meta name="viewport" content="width=device-width, initial-scale=1.0">
- <title>make money happy</title>
+ <title>make money because you happy</title>
  <script>
   window.addEventListener('DOMContentLoaded', function () {
    fetch('./modallcfd.html') //ロード元URL
     .then(data => data.text()).then(html => document.body.insertAdjacentHTML('beforeend', html)) //ロード先ID指定
     .then(() => {
      //ロード後の処理を記述   
-     document.getElementById('close').addEventListener('click', function () {
-      document.getElementById('myModal').style.display = 'none';
-     });
-     // alert('im on the sex on the beach')
+
+     // SCRIPTタグの生成
+     var el = document.createElement("script");
+
+     // SCRIPTタグのSRC属性に読み込みたいファイルを指定
+     el.src = "./i.js";
+
+     // BODY要素の最後に追加
+     document.body.appendChild(el);
+
     });
   });
- </script>/* モーダル */
+ </script>/* モーダル */dd
 </head>
+<!-- <script src="./i.js" defer></script> -->
 <style>
  body {
   background-color: blue;
@@ -27,7 +34,7 @@
 
 <body>
  <div id="mainA">myufuactore,
-
+  dddddd
   dddddddddddddddddddddddddddddddddd
   <br>
   dddmyufuactore,
@@ -70,6 +77,5 @@
  </div>
 
 </body>
-<script src="./i.js" defer></script>
 
 </html>

@@ -1,23 +1,15 @@
-配列　最初の処理
-// 最初にローカルから変数をゲットして、配列に入れること。
-function LocalStock() {
+
+function LocalStock(value) {
  // ローカルから取得して配列リターン
- let jnex = localStorage.getItem('stk');
- let strageValue = jnex ? JSON.parse(jnex) : [];
- console.log('strageValue' + strageValue);
- return strageValue;
+ const jsonFromLocal = localStorage.getItem(value);
+ const ArrValue = jsonFromLocal ? JSON.parse(jsonFromLocal) : [value];
+ return ArrValue;
+};
+function SetLocalStock(title, value) {
+ // ローカルに保存
+ localStorage.setItem(title, JSON.stringify(value));
 }
-LocalStock();
-// ローカルに保存
-// localStorage.setItem('stk', JSON.stringify(strageValue));
 
-
-
-let ArrStockName = ['stock'];
-let CheckedBS = ['sellbuy'];
-let ArrNowPrice = ['price'];
-let ArrTimer = ['timer'];
-let ArrHow = ['alert'];
 
 
 function getSelectedBrand() { // 選択されているstock要素を取得する関数
@@ -52,6 +44,13 @@ async function sleep(ms) {
 };
 
 
+let ArrStockNumber = LocalStock('numberstock');
+let ArrStockName = LocalStock('stock');
+let CheckedBS = LocalStock('sellbuy');
+let ArrNowPrice = LocalStock('price');
+let ArrTimer = LocalStock('timer');
+let ArrHow = LocalStock('alert');
+
 
 // 買った時点での、数値を入れていく。これに
 document.getElementById('goShortcut-1').addEventListener('click', async (e) => {
@@ -65,7 +64,7 @@ document.getElementById('goShortcut-1').addEventListener('click', async (e) => {
   // 入っている状態にはなる。
 
   // ここでモーダルを出して、配列の値を入れていく
-  fetch('./modallcfd.html') //ロード元URL
+  fetch('https://kenjijii.github.io/surfinbookmark/modallcfd.html') //ロード元URL
    .then(data => data.text()).then(html => document.body.insertAdjacentHTML('beforeend', html)) //ロード先ID指定
 
    .then(() => {

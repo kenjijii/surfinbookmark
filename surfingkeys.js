@@ -316,8 +316,6 @@ addSearchAlias(
 mapkey('or', '#8Open Search with alias r', function () {
  Front.openOmnibar({ type: 'SearchEngine', extra: 'r' })
 })
-
-
 // 関数リスト
 const sleep = msec => new Promise(resolve => setTimeout(resolve, msec));
 // 数秒待ってから出し分けする
@@ -1278,7 +1276,6 @@ function rakutenFX() {
   });
  })
 };
-
 mapkey('qx', 'Choose a tab with omnibar', function () {
  RUNTIME('getSettings', {
   key: 'sessions'
@@ -1312,7 +1309,6 @@ mapkey('qx', 'Choose a tab with omnibar', function () {
  //     //   reader.readAsText('C:\Users\actpu\you.txt');
  // }
 })
-
 mapkey('Ts', 'Choose a tab with omnibar', function () {
  // api.Front.openOmnibar({ type: "Tabs" });
  tabOpenLink("/pages/options.html");
@@ -1349,8 +1345,6 @@ const options = {
  tag: 'test',
  data: 'このデータは何に使う？'
 };
-
-
 mapkey('gl', 'dddddddtab', function () {
  // ブラウザが通知をサポートしているか確認する
  if (!('Notification' in window)) {
@@ -1366,7 +1360,6 @@ mapkey('gl', 'dddddddtab', function () {
      var notification = new Notification("Hi there!", options);
      //var notification = new Notification("こんにちは！");
      setProperties(notification);
-
     } else if (permission == 'denied') {
      // 拒否
     } else if (permission == 'default') {
@@ -1393,173 +1386,129 @@ mapkey('gz', 'go to Cfd tab', function () {
  goToCfd();
 }, { repeatIgnore: true });
 // windowを一つにまとめる。
-
-
-
 // 出し分け
 (async () => {
  console.log('スタート');
  await sleep(1000);
-
  switch (location.href) {
   case 'https://drrrkari.com/lounge/':
    setTimeout(() => {
-    let a = document.getElementById('zatsu').innerText.includes('noname')
-    if (a) {
-     document.title = 'true'
-    }
-
+    // let a = document.getElementById('zatsu').innerText.includes('')
+    // if (a) {
+    //  document.title = 'true'
+    // }
    }, 999);
   case 'https://cweb.tfxclick.com/sbisec-kabu365/main/main.html':
-   //     // 15分単位
-
-
-   let ArrStockName = ['stock'];
-   let CheckedBS = ['sellbuy'];
-   let ArrNowPrice = ['price'];
-   let ArrTimer = ['timer'];
-   let ArrHow = ['alert'];
-
-   // function LocalStock() {
-   //  // ローカルから取得して配列リターン
-   //  const stock = localStorage.getItem('stock');
-   // ArrStockName = stock ? JSON.parse(stock) : [];
-   //  const sellbuy = localStorage.getItem('sellbuy');
-   // CheckedBS = sellbuy ? JSON.parse(sellbuy) : [];
-   //  const price = localStorage.getItem('price');
-   // ArrNowPrice = price ? JSON.parse(price) : [];
-   //  const timer = localStorage.getItem('timer');
-   // ArrTimer = timer ? JSON.parse(timer) : [];
-   //  const alert = localStorage.getItem('alert');
-   // ArrHow = alert ? JSON.parse(alert) : [];
-   // }
-
-
-   // function setLocalStock() {
-   //  // ローカルに保存
-   //  localStorage.setItem('stock', JSON.stringify(ArrStockName));
-   //  localStorage.setItem('sellbuy', JSON.stringify(CheckedBS));
-   //  localStorage.setItem('price', JSON.stringify(ArrNowPrice));
-   //  localStorage.setItem('timer', JSON.stringify(ArrTimer));
-   //  localStorage.setItem('alert', JSON.stringify(ArrHow));
-   // }
-
-
-   // テストすべき、ここで、5個の値を入れて、それを取り出す。
-
+   setItvl(100000, SbiCfdClicker);
    await sleep(1000);
    document.getElementById("pricePanelToggleMsg").click();
+   // 事前操作
 
-   setItvl(100000, SbiCfdClicker);
-
-
-
-   function getSelectedBrand() { // 選択されているstock要素を取得する関数
-    const selected_id = document.getElementById('main').contentDocument.getElementById('currencyPair-1').value;
-    return selected_id; //4014
-   };
-   function getNumOfStockes() { // 選択されている番号を取得する関数
-    const value = document.getElementById('main').contentDocument.getElementById('amount-1').value;
-    return value;
-   };
-   function getCheckedBS() {//選択されている売り買いを取得する関数
-    const checkedwhat = document.getElementById('main').contentDocument.getElementById('side-1-2').checked;
-    if (checkedwhat) {
-     // 売り
-     return true;
-    } else {
-     // 買い
-     return false;
-    }
-   };
-   // price
-   function getPriceOfStockes() {
-    let selected_id = getCheckedBS();
-    const stockId = getSelectedBrand();
-    const id = selected_id ? 'p2bid-p' + stockId : 'p2ask-p' + stockId;
-    const price = document.getElementById(id).querySelector('span').innerText;
-    return price;
-   };
-   // ページ上の処理
-   async function sleep(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
+   function LocalStock(value) {
+    // ローカルから取得して配列リターン
+    const jsonFromLocal = localStorage.getItem(value);
+    const ArrValue = jsonFromLocal ? JSON.parse(jsonFromLocal) : [value];
+    return ArrValue;
    };
 
 
+   function getPage() {
+    function getSelectedBrand() { // 選択されているstock要素を取得する関数
+     const selected_id = document.getElementById('main').contentDocument.getElementById('currencyPair-1').value;
+     return selected_id; //4014
+    };
+    function getNumOfStockes() { // 数量を取得する関数
+     const value = document.getElementById('main').contentDocument.getElementById('amount-1').value;
+     return value;
+    };
+    function getCheckedBS() {//選択されている売り買いを取得する関数
+     const checkedwhat = document.getElementById('main').contentDocument.getElementById('side-1-2').checked;
+     if (checkedwhat) {
+      // 売り
+      return true;
+     } else {
+      // 買い
+      return false;
+     }
+    };
+    // price
+    function getPriceOfStockes() {
+     // 現在の価格を取得する関数
+     let selected_id = getCheckedBS();
+     const stockId = getSelectedBrand();
+     const id = selected_id ? 'p2bid-p' + stockId : 'p2ask-p' + stockId;
+     const price = document.getElementById(id).querySelector('span').innerText;
+     return price;
+    };
+    ArrStockName.push(getSelectedBrand());
+    Pieces.push(getNumOfStockes());
+    CheckedBS.push(getCheckedBS());
+    ArrNowPrice.push(getPriceOfStockes());
+   };
+
+
+
+
+   let ArrStockName = LocalStock('stock');
+   let Pieces = LocalStock('pieces');
+   // 個数
+   let CheckedBS = LocalStock('sellbuy');
+   let ArrNowPrice = LocalStock('price');
+   let ArrTimer = LocalStock('timer');
+   let ArrHow = LocalStock('alert');
+   let ArrStockNumber = LocalStock('numberstock');
 
    // 買った時点での、数値を入れていく。これに
    document.getElementById('goShortcut-1').addEventListener('click', async (e) => {
     await sleep(1000);
+    // document.getElementById('main').contentDocument.getElementById('doOrderConfirm-1').addEventListener('click', (e) => {
 
-    alert('im on the')
-    document.getElementById('main').contentDocument.getElementById('doOrderConfirm-1').addEventListener('click', (e) => {
-     ArrStockName.push(getSelectedBrand());
-     CheckedBS.push(getCheckedBS());
-     ArrNowPrice.push(getPriceOfStockes());
-     ArrTimer.push(getNumOfStockes());
-     // 配列に入れる前の値をゲット
-     // 入っている状態にはなる。
 
-     // ここでモーダルを出して、配列の値を入れていく
-     fetch('https://kenjijii.github.io/surfinbookmark/modallcfd.html') //ロード元URL
-      .then(data => data.text()).then(html => document.body.insertAdjacentHTML('beforeend', html)) //ロード先ID指定
 
-      .then(() => {
-       console.log(ArrStockName)
-       console.log(CheckedBS)
-       console.log(ArrNowPrice)
-       console.log(ArrTimer)
 
-       alert(ArrStockName);
-       //ロード後の処理を記述   
-       document.getElementById('close').addEventListener('click', function () {
-        document.getElementById('myModal').style.display = 'none';
-       });
-       // alert('im on the sex on the beach')
-      });
-    });
 
+
+
+
+    mapkey('tcr', 'openarr', function () {
+     getPage();
+     alert('midasu');
+     alert(ArrStockName);
+    })
+
+
+    mapkey('tcr', 'openarr', function () {
+     getPage();
+     alert('midasu');
+     alert(ArrStockName);
+    })
+
+
+
+
+    //  fetch('https://kenjijii.github.io/surfinbookmark/modallcfd.html') //ロード元URL
+    //   .then(data => data.text()).then(html => document.body.insertAdjacentHTML('beforeend', html)) //ロード先ID指定
+    //   .then(() => {
+    //    console.log(ArrStockName)
+    //    console.log(CheckedBS)
+    //    console.log(ArrNowPrice)
+    //    console.log(ArrTimer)
+    //    alert(ArrStockName);
+    //    //ロード後の処理を記述   
+    //    document.getElementById('close').addEventListener('click', function () {
+    //     document.getElementById('myModal').style.display = 'none';
+    //    });
+    //    // alert('im on the sex on the beach')
+    //   });
+    // 
    });
-
-
-
-
    break;
-
-
-   break;
-
-  // // case 'https://www.rakuten-sec.co.jp/' || 'https://www.rakuten-sec.co.jp/web/fx/session_error.html':
-  // case 'https://www.rakuten-sec.co.jp/':
-  //     document.getElementById('form-login-id').value = 'BGYX3354'
-  //     document.getElementById('form-login-pass').value = 'RA_shiva_2u'
-  //     document.getElementById('login-btn').click();
-  //     break;
-  // case location.href.startsWith('https://member.rakuten-sec.co.jp/app/hom') && location.href: {
-  //     document.querySelector('#gmenu_fx > a:nth-child(1)').click();
-  //     break;
-  // }
-  // case location.href.startsWith('https://member.rakuten-sec.co.jp/app/fx_top') && location.href: {
-  //     await sleep(800);
-  //     document.querySelector('.pcmm-btlk-filled').click();
-  //     document.querySelector('div.pcm-gl-mega-menu__content:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > ul:nth-child(1) > li:nth-child(1) > ul:nth-child(2) > li:nth-child(1) > a:nth-child(1)').click();
-
-  //     break;
-  // }
-  // case location.href.startsWith('https://member.rakuten-sec.co.jp/app/ass_all_p') && location.href: {
-  //     await sleep(800);
-  //     setInterval(() => {
-  //         document.querySelector('div.pcm-gl-mega-menu__content:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > ul:nth-child(1) > li:nth-child(1) > ul:nth-child(2) > li:nth-child(1) > a:nth-child(1)').click();
-  //         console.log('doing');
-  //     }, 890000);
-  // }
   case 'https://fx.rakuten-sec.co.jp/web/top.action':
    rakutenFX();
    // await sleep(800);
    // document.querySelector('#nav-chart > a:nth-child(1)').click();
    // document.querySelector('#nav-order > a').click();
    // lookornot('決済注文/建玉選択');
-
    // setTimeout(() => {
    //     location.reload
    // }, 890000);
@@ -1567,8 +1516,6 @@ mapkey('gz', 'go to Cfd tab', function () {
   // case 'https://fx.rakuten-sec.co.jp/web/PIATT/chart.html?2.8':
   //     await sleep(800);
   //     document.querySelector('#sidebar > div:nth-child(1) > div:nth-child(1)').click();
-
   //     break;
-
  }
 })();

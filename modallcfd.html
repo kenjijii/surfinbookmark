@@ -5,8 +5,8 @@
  <meta charset="UTF-8">
  <meta name="viewport" content="width=device-width, initial-scale=1.0">
  <title>love the get money is happy.</title>
- <script src="./i.js" defer></script>
-</head>
+
+ </head>
 <style>
  #myModal.modal {
   position: fixed;
@@ -90,16 +90,17 @@
 
  #myModal li>*:first-child {
   width: 1.5rem;
-  margin-right: 2.2rem;
  }
 
 
  #myModal li>*:nth-child(2) {
-  width: 8rem;
+  width: 1rem;
+  margin-right: .2rem;
+
  }
 
  #myModal li>*:nth-child(3) {
-  width: 4em;
+  width: 12em;
  }
 
  #myModal li>*:nth-child(4) {
@@ -140,12 +141,17 @@
  <div id="myModal" class="modal">
   <!-- モーダルダイアログ -->
   <div class="modal-content">
-   <div id='close' class="close">閉じる</div>
+   <div id="close" class="close">閉じる</div>
+   <a href="#" id="clear" class="clear"
+    style="position: absolute; top: 10px; right: 10px; background-color: red; color: white; cursor: pointer;">clear</a>
+   <a href="#" id="save" class="save"
+    style="position: absolute; top: 10px; right: 60px; background-color: green; color: white; cursor: pointer;">セーブ</a>
    <ul class="list" id="sbi">
     <li>
-     <button class="plus">１
-
+     <button class="plus">＋
      </button>
+     <input class="numberstock" type="text" value="1">
+
      <select class="stockname">
       <option value="4014">日経225(2024)</option>
       <option value="4024">DAX(2024)</option>
@@ -153,7 +159,7 @@
       <option value="4044">NYダウ(2024)</option>
       <option value="4074">NDX-100(2024)</option>
       <option value="4084">RSL2000(2024)</option>
-      <option value="4054" selected="selected">金ETF(2024)</option>
+      <option value="4054">金ETF(2024)</option>
       <option value="4094">プラチナETF(2024)</option>
       <option value="4104">銀ETF(2024)</option>
       <option value="4064">原油ETF(2024)</option>
@@ -188,7 +194,7 @@
     </li>
 
    </ul>
-   <button class="button button--add">追加</button>
+   <button class="button button--add" id="pureadd">追加</button>
    </ul>
 
   </div>
