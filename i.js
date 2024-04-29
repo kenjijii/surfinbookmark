@@ -280,17 +280,17 @@ function alerttest() {
 
 
 document.querySelector('#goShortcut-1').addEventListener('click', function () {
- alert('ss');
+
+
+ const OrderButton = document.getElementById('main').contentDocument.getElementById('doOrderConfirm-1');
+ OrderButton.addEventListener('click', function () {
+  document.querySelector('body#no').style.display = 'block';
+
+
+  alert('modaleda');
+ });
 });
 
-
-const OrderButton = document.getElementById('main').contentDocument.getElementById('doOrderConfirm-1');
-OrderButton.addEventListener('click', function () {
- document.querySelector('body#no').style.display = 'block';
-
-
- alert('modaleda');
-});
 
 
 // LocalStock('stock');
