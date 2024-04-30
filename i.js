@@ -311,12 +311,10 @@ function orderdbutton() {
   getPage();
   await sleep(1000);
   ArrayToPage();
-  makelist();
-  listClone();
+
   await sleep(1700);
   returnButton();
   await sleep(700);
-  OrderButton.click();
 
  });
 
