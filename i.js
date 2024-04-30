@@ -89,6 +89,7 @@ function genericGetPage() {
 };
 // 最初に側つくって、いれてるよんぴ。最初
 async function ArrayToPage() {
+ clearPage();
  const list = document.querySelector(".list");
  const AddThis = list.children[0];
  //配列からページ各値を設定する
