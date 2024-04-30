@@ -70,7 +70,6 @@ function getMaxNumberFromArray(ArrStockNumber) {
  ArrStockNumber = ArrStockNumber.filter(num => !isNaN(num)).map(Number);
  return Math.max(...ArrStockNumber);
 };
-getMaxNumberFromArray(ArrStockNumber);
 
 
 
