@@ -345,7 +345,7 @@ document.querySelector('#buyit').addEventListener('click', async function () {
  document.querySelector('#myModal.modal').style.display = 'none';
 
  await sleep(199);
- document.getElementById('orderBtn').click();
+ document.getElementById('main').contentDocument.getElementById('orderBtn').click();
 });
 
 
