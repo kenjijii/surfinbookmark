@@ -340,6 +340,15 @@ document.querySelector('#goShortcut-1').addEventListener('click', async function
  orderdbutton()
  // event.preventDefault();
 });
+
+document.querySelector('#buyit').addEventListener('click', async function () {
+ document.querySelector('#myModal.modal').style.display = 'none';
+
+ await sleep(199);
+ document.getElementById('orderBtn').click();
+});
+
+
 // LocalStock('stock');
 // LocalStock('pieces');
 // LocalStock('sellbuy');
