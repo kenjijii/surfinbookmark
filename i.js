@@ -265,10 +265,17 @@ function buttons() {
  });
 };
 
+// 伝播禁止
 document.querySelector('#myModal').addEventListener('click', async function (event) {
- event.stopPropagation();
  document.getElementById('myModal').style.display = 'none';
+ event.stopPropagation();
 });
+document.querySelector('.modal-content').addEventListener('click', async function (event) {
+ event.stopPropagation();
+});
+// 伝播禁止
+
+
 
 document.querySelector('#returnButton').addEventListener('click', async function () {
  const OrderButton = document.getElementById('main').contentDocument.getElementById('doOrderConfirm-1');
@@ -276,7 +283,7 @@ document.querySelector('#returnButton').addEventListener('click', async function
 
 
  })
-};
+});
 
 
 document.querySelector('#goShortcut-1').addEventListener('click', async function () {
