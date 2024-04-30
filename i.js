@@ -305,7 +305,7 @@ document.querySelector('#sekai').addEventListener('click', async function (event
 function orderdbutton() {
  const OrderButton = document.getElementById('main').contentDocument.getElementById('doOrderConfirm-1');
  OrderButton.addEventListener('click', async function (event) {
-  event.preventDefault();
+  // event.preventDefault();
   document.querySelector('#myModal.modal').style.display = 'block';
   buttons();
   getPage();
