@@ -1,9 +1,6 @@
 async function sleep(ms) {
  return new Promise(resolve => setTimeout(resolve, ms));
 };//sleep関数
-
-
-
 // ローカルストレージから取得
 let ArrStockName;
 let Pieces;
@@ -19,7 +16,6 @@ function LocalStock(value) {
  const ArrValue = jsonFromLocal ? JSON.parse(jsonFromLocal) : [value];
  return ArrValue;
 };
-
 // これ本番ページで使いますから。でも使ってない。＜これのテストをする。すべき。
 // 最初 >ローカルストレージから取得あと>ページから配列にプッシュ・。
 function getPage() {
@@ -57,8 +53,6 @@ function getPage() {
  ArrTimer = LocalStock('timer');
  ArrHow = LocalStock('alert');
  ArrStockNumber = LocalStock('numberstock');
-
-
  ArrStockName.push(getSelectedBrand());
  Pieces.push(getNumOfStockes());
  CheckedBS.push(getCheckedBS());
@@ -76,12 +70,10 @@ function genericGetPage() {
  ArrHow = LocalStock('alert');
  ArrStockNumber = LocalStock('numberstock');
 };
-
 // 最初に側つくって、いれてるよんぴ。最初
 async function ArrayToPage() {
  const list = document.querySelector(".list");
  const AddThis = list.children[0];
-
  //配列からページ各値を設定する
  function NumberFromArray(num) {
   const selectElement = document.querySelector('ul#sbi>li:nth-child(' + num + ')>select.numOfStock');
@@ -111,12 +103,10 @@ async function ArrayToPage() {
   const selectElement = document.querySelector('ul#sbi>li:nth-child(' + num + ')>.how');
   selectElement.value = ArrHow[num];
  }
-
  for (let i = 1; i < ArrStockName.length - 1; i++) {
   cloneThis(AddThis);
  }
  for (let i = 1; i < ArrStockName.length; i++) {
-
   NumberFromArray(i);
   StocknameFromArray(i);
   PiecesFromArray(i)
@@ -126,7 +116,6 @@ async function ArrayToPage() {
   ArrHowFromArray(i);
  }
 };
-
 // 最後ちうかsaveボタン
 // 現在のページから配列に入れ込む(保存)
 async function pageToArray() {
@@ -172,10 +161,7 @@ async function pageToArray() {
  SetLocalStock('timer', ArrTimer);
  SetLocalStock('alert', ArrHow);
 };
-
-
 // 機能
-
 // これは、追加ボタン
 function makelist() {
  document.getElementById('pureadd').addEventListener('click', (e) => {
@@ -203,7 +189,6 @@ function cloneThis(AddThis) {
   e.target.parentNode.remove();
  });
 };
-
 // これが＋ボタン
 function listClone() {
  const list = document.querySelector(".list");
@@ -214,9 +199,6 @@ function listClone() {
   cloneThis(AddThis);
  });
 }
-
-
-
 // 出口
 // 決済する。
 // 決済画面
@@ -235,9 +217,6 @@ async function sellThat(orderId) {
 function clearLocalStorage() {
  localStorage.clear(ArrStockName);
 }
-
-
-
 function cl() {
  console.log(ArrStockName);
  console.log(Pieces);
@@ -247,7 +226,6 @@ function cl() {
  console.log(ArrHow);
  console.log(ArrStockNumber);
 }
-
 function buttons() {
  document.getElementById('clear').addEventListener('click', () => {
   clearLocalStorage();
@@ -257,14 +235,9 @@ function buttons() {
   pageToArray();
  });
  document.getElementById('close').addEventListener('click', (e) => {
-
-
-
   document.getElementById('myModal').style.display = 'none';
-
  });
 };
-
 // 伝播禁止
 document.querySelector('#myModal').addEventListener('click', async function (event) {
  document.getElementById('myModal').style.display = 'none';
@@ -274,42 +247,24 @@ document.querySelector('.modal-content').addEventListener('click', async functio
  event.stopPropagation();
 });
 // 伝播禁止
-
-
-
 document.querySelector('#returnButton').addEventListener('click', async function () {
  const OrderButton = document.getElementById('main').contentDocument.getElementById('doOrderConfirm-1');
  OrderButton.addEventListener('click', function (event) {
-
-
  })
 });
-
-
 document.querySelector('#goShortcut-1').addEventListener('click', async function () {
-
  await sleep(1200);
  const OrderButton = document.getElementById('main').contentDocument.getElementById('doOrderConfirm-1');
  OrderButton.addEventListener('click', function (event) {
   document.querySelector('#myModal.modal').style.display = 'block';
   buttons();
   getPage();
-
   ArrayToPage();
-
-
   makelist();
   listClone();
   // event.preventDefault();
-
-
  });
 });
-
-
-
-
-
 // LocalStock('stock');
 // LocalStock('pieces');
 // LocalStock('sellbuy');
