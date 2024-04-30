@@ -247,6 +247,9 @@ function buttons() {
   pageToArray();
  });
  document.getElementById('load').addEventListener('click', () => {
+
+  clearPage();
+
   ArrayToPage();
  });
  document.getElementById('close').addEventListener('click', (e) => {
