@@ -257,6 +257,13 @@ document.querySelector('#goShortcut-1').addEventListener('click', async function
   ArrayToPage();
   makelist();
   listClone();
+
+  const BackButton = document.getElementById('main').contentDocument.getElementById('returnButton');
+  BackButton.addEventListener('click', function (event) {
+   document.querySelector('#myModal.modal').style.display = 'none';
+  });
+  
+
   // event.preventDefault();
  });
 });
