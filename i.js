@@ -311,7 +311,7 @@ function orderdbutton() {
   ArrayToPage();
   makelist();
   listClone();
-  await sleep(1000);
+  await sleep(3900);
   returnButton();
 
  });
