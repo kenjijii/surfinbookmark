@@ -285,7 +285,7 @@ document.querySelector('#goShortcut-1').addEventListener('click', async function
 
   makelist();
   listClone();
-  event.preventDefault();
+  // event.preventDefault();
 
 
  });
