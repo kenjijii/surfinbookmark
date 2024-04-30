@@ -258,7 +258,6 @@ function buttons() {
  });
  document.getElementById('close').addEventListener('click', (e) => {
 
-  e.preventDefault();
 
 
   document.getElementById('myModal').style.display = 'none';
@@ -270,6 +269,15 @@ document.querySelector('#myModal').addEventListener('click', async function (eve
  event.stopPropagation();
  document.getElementById('myModal').style.display = 'none';
 });
+
+document.querySelector('#returnButton').addEventListener('click', async function () {
+ const OrderButton = document.getElementById('main').contentDocument.getElementById('doOrderConfirm-1');
+ OrderButton.addEventListener('click', function (event) {
+
+
+ })
+};
+
 
 document.querySelector('#goShortcut-1').addEventListener('click', async function () {
 
