@@ -216,7 +216,14 @@ async function sellThat(orderId) {
 }
 function clearLocalStorage() {
  localStorage.clear(ArrStockName);
+ clearPage();
 }
+function clearPage() {
+ const list = document.querySelector(".list");
+ while (list.children.length > 1) {
+  list.removeChild(list.lastChild);
+ }
+};
 function cl() {
  console.log(ArrStockName);
  console.log(Pieces);
@@ -227,7 +234,12 @@ function cl() {
  console.log(ArrStockNumber);
 }
 function buttons() {
+ document.getElementById('clearpage').addEventListener('click', () => {
+  clearPage();
+
+ });
  document.getElementById('clear').addEventListener('click', () => {
+  clearPage();
   clearLocalStorage();
  });
  // Save button
