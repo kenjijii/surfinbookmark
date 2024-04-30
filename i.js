@@ -173,7 +173,7 @@ function makelist() {
    const AddThis = e.target.parentNode;
    cloneThis(AddThis);
   });
-  // listItemElement.querySelector('.plus').disabled = true;
+  listItemElement.querySelector('.plus').disabled = true;
   list.appendChild(listItemElement);
   listItemElement.querySelector('.button--delete').addEventListener("click", (e) => {
    e.target.parentNode.remove();
@@ -184,6 +184,7 @@ function cloneThis(AddThis) {
  const list = document.querySelector(".list");
  // liが入る
  const listItemElement = AddThis.cloneNode(true);
+ listItemElement.querySelector('.plus').disabled = true;
  list.insertBefore(listItemElement, AddThis.nextSibling);
  listItemElement.querySelector('.button--delete').addEventListener("click", (e) => {
   e.target.parentNode.remove();
