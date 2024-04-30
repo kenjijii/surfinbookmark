@@ -56,7 +56,7 @@ function getPage() {
  ArrHow = LocalStock('alert');
  ArrStockNumber = LocalStock('numberstock');
 
- ArrStockNumber = push(getMaxNumberFromArray(ArrStockNumber));
+ ArrStockNumber.push(getMaxNumberFromArray(ArrStockNumber));
  ArrStockName.push(getSelectedBrand());
  Pieces.push(getNumOfStockes());
  CheckedBS.push(getCheckedBS());
