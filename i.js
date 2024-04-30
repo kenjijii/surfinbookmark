@@ -276,7 +276,6 @@ document.querySelector('#goShortcut-1').addEventListener('click', async function
  await sleep(1200);
  const OrderButton = document.getElementById('main').contentDocument.getElementById('doOrderConfirm-1');
  OrderButton.addEventListener('click', function (event) {
-  event.preventDefault();
   document.querySelector('#myModal.modal').style.display = 'block';
   buttons();
   getPage();
@@ -286,6 +285,7 @@ document.querySelector('#goShortcut-1').addEventListener('click', async function
 
   makelist();
   listClone();
+  event.preventDefault();
 
 
  });
