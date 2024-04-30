@@ -247,11 +247,6 @@ document.querySelector('.modal-content').addEventListener('click', async functio
  event.stopPropagation();
 });
 // 伝播禁止
-document.querySelector('#returnButton').addEventListener('click', async function () {
- const OrderButton = document.getElementById('main').contentDocument.getElementById('doOrderConfirm-1');
- OrderButton.addEventListener('click', function (event) {
- })
-});
 document.querySelector('#goShortcut-1').addEventListener('click', async function () {
  await sleep(1200);
  const OrderButton = document.getElementById('main').contentDocument.getElementById('doOrderConfirm-1');
