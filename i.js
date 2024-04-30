@@ -60,6 +60,21 @@ function getPage() {
  CheckedBS.push(getCheckedBS());
  ArrNowPrice.push(getPriceOfStockes());
 };
+
+
+
+// いちばん上の数値を割り出す
+function getMaxNumberFromArray(ArrStockNumber) {
+ ArrStockNumber = ArrStockNumber.filter(num => !isNaN(num)).map(Number);
+
+ return Math.max(...ArrStockNumber);
+};
+getMaxNumberFromArray(ArrStockNumber);
+
+
+
+
+
 // ARR完成
 // genericやねｎこれで、ローカルストックから持ってきてるがジェネリック
 // これに最新のプッシュを追加でケナン製。
