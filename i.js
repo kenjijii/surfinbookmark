@@ -266,6 +266,19 @@ document.querySelector('#myModal').addEventListener('click', async function (eve
 document.querySelector('.modal-content').addEventListener('click', async function (event) {
  event.stopPropagation();
 });
+
+
+document.querySelector('#sekai').addEventListener('click', async function (event) {
+ document.querySelector('#myModal.modal').style.display = 'block';
+ buttons();
+ getPage();
+ ArrayToPage();
+ makelist();
+ listClone();
+});
+
+
+
 // 伝播禁止
 
 
