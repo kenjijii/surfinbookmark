@@ -303,18 +303,30 @@ document.querySelector('#sekai').addEventListener('click', async function (event
 
 function orderdbutton() {
  const OrderButton = document.getElementById('main').contentDocument.getElementById('doOrderConfirm-1');
- OrderButton.addEventListener('click', function (event) {
+ OrderButton.addEventListener('click', async function (event) {
   document.querySelector('#myModal.modal').style.display = 'block';
   buttons();
   getPage();
+  await sleep(1000);
   ArrayToPage();
   makelist();
   listClone();
+  await sleep(1000);
+  returnButton();
+
  });
 
 };
 
+function returnButton() {
+ const ReturnButton = document.getElementById('main').contentDocument.getElementById('returnButton');
+ ReturnButton.addEventListener('click', async function (event) {
+  await sleep(500);
+  orderdbutton();
+ });
 
+
+}
 
 // ddd
 
