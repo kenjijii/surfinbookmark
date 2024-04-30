@@ -55,6 +55,8 @@ function getPage() {
  ArrTimer = LocalStock('timer');
  ArrHow = LocalStock('alert');
  ArrStockNumber = LocalStock('numberstock');
+
+ ArrStockNumber = push(getMaxNumberFromArray(ArrStockNumber));
  ArrStockName.push(getSelectedBrand());
  Pieces.push(getNumOfStockes());
  CheckedBS.push(getCheckedBS());
@@ -66,7 +68,6 @@ function getPage() {
 // いちばん上の数値を割り出す
 function getMaxNumberFromArray(ArrStockNumber) {
  ArrStockNumber = ArrStockNumber.filter(num => !isNaN(num)).map(Number);
-
  return Math.max(...ArrStockNumber);
 };
 getMaxNumberFromArray(ArrStockNumber);
