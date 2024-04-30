@@ -271,7 +271,7 @@ document.querySelector('.modal-content').addEventListener('click', async functio
 document.querySelector('#sekai').addEventListener('click', async function (event) {
  document.querySelector('#myModal.modal').style.display = 'block';
  buttons();
- getPage();
+ // getPage();
  ArrayToPage();
  makelist();
  listClone();
