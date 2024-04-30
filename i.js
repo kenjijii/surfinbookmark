@@ -234,7 +234,7 @@ function cl() {
  console.log(ArrStockNumber);
 }
 function buttons() {
- document.getElementById('clearpage').addEventListener('click', () => {
+ document.getElementById('clearPage').addEventListener('click', () => {
   clearPage();
 
  });
