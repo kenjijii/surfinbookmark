@@ -19,7 +19,14 @@
      document.body.appendChild(el);
     });
   });
- </script>/* モーダル */dd
+
+
+  function openModal() {
+   document.getElementById('myModal').style.display = 'block';
+  }
+ </script>
+
+ /* モーダル */dd
 </head>
 <!-- <script src="./i.js" defer></script> -->
 <style>
@@ -29,7 +36,10 @@
 </style>
 
 <body>
- <div id="mainA">myufuactore,
+ <div id="mainA">myufuactore
+
+
+  <button id="myBtn" onclick="openModal()">Open Modal</button>,
   dddddd
   dddddddddddddddddddddddddddddddddd
   <br>

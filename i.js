@@ -247,8 +247,9 @@ document.querySelector('.modal-content').addEventListener('click', async functio
  event.stopPropagation();
 });
 // 伝播禁止
-document.querySelector('#goShortcut-1').addEventListener('click', async function () {
- await sleep(1200);
+
+
+function orderdbutton() {
  const OrderButton = document.getElementById('main').contentDocument.getElementById('doOrderConfirm-1');
  OrderButton.addEventListener('click', function (event) {
   document.querySelector('#myModal.modal').style.display = 'block';
@@ -257,15 +258,24 @@ document.querySelector('#goShortcut-1').addEventListener('click', async function
   ArrayToPage();
   makelist();
   listClone();
-
-  const BackButton = document.getElementById('main').contentDocument.getElementById('returnButton');
-  BackButton.addEventListener('click', function (event) {
-   document.querySelector('#myModal.modal').style.display = 'none';
-  });
-  
-
-  // event.preventDefault();
  });
+
+};
+
+
+
+const BackButton = document.getElementById('main').contentDocument.getElementById('returnButton');
+BackButton.addEventListener('click', function (event) {
+ document.querySelector('#myModal.modal').style.display = 'none';
+});
+
+
+
+
+document.querySelector('#goShortcut-1').addEventListener('click', async function () {
+ await sleep(1800);
+ orderdbutton()
+ // event.preventDefault();
 });
 // LocalStock('stock');
 // LocalStock('pieces');
