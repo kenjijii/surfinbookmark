@@ -347,6 +347,11 @@ document.querySelector('#buyit').addEventListener('click', async function () {
  await sleep(199);
  document.getElementById('main').contentDocument.getElementById('orderBtn').click();
 });
+document.querySelector('#cancel').addEventListener('click', async function () {
+ document.querySelector('#myModal.modal').style.display = 'none';
+ await sleep(199);
+ document.getElementById('main').contentDocument.getElementById('returnButton').click();
+});
 
 
 // LocalStock('stock');
