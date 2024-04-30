@@ -246,6 +246,9 @@ function buttons() {
  document.getElementById('save').addEventListener('click', () => {
   pageToArray();
  });
+ document.getElementById('load').addEventListener('click', () => {
+  ArrayToPage();
+ });
  document.getElementById('close').addEventListener('click', (e) => {
   document.getElementById('myModal').style.display = 'none';
  });
