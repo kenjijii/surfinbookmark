@@ -268,6 +268,9 @@ document.querySelector('.modal-content').addEventListener('click', async functio
 });
 
 
+document.querySelector('#getPage').addEventListener('click', async function (event) {
+ getPage();
+});
 document.querySelector('#sekai').addEventListener('click', async function (event) {
  document.querySelector('#myModal.modal').style.display = 'block';
  buttons();
