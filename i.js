@@ -83,8 +83,13 @@ document.getElementById('getPageArray').addEventListener('click', async function
  await sleep(300);
  document.querySelector('#myModal.modal').style.display = 'block';
  await getArrpage();
- await sleep(4880);
- ArrayToPage()
+ clearPage();
+ const list = document.querySelector(".list");
+ const AddThis = list.children[0];
+ for (let i = 1; i < ArrStockName.length - 1; i++) {
+  cloneThis(AddThis);
+ }
+ alert('isnotgood');
 
 
 });
@@ -129,7 +134,7 @@ function ArrayToPage() {
  for (let i = 1; i < ArrStockName.length; i++) {
   NumberFromArray(i);
   StocknameFromArray(i);
-  PiecesFromArray(i)
+  PiecesFromArray(i);
   SellBuyFromArray(i);
   PriceNowFromArray(i);
   TimerFromArray(i);
