@@ -92,7 +92,7 @@ document.getElementById('getPageArray').addEventListener('click', async function
 
 });
 // 最初に側つくって、いれてるよんぴ。最初
-async function ArrayToPage() {
+function ArrayToPage() {
  clearPage();
  const list = document.querySelector(".list");
  const AddThis = list.children[0];
@@ -175,7 +175,7 @@ async function pageToArray() {
  console.log(ArrNowPrice);
  console.log(ArrTimer);
  console.log(ArrHow);
- await sleep(1000);
+ // await sleep(1000);
  // ローカルストレージに保存
  SetLocalStock('stock', ArrStockName);
  SetLocalStock('pieces', Pieces);
