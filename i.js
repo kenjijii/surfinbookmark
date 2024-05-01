@@ -86,7 +86,7 @@ function ArrayToPage() {
  const AddThis = list.children[0];
  //配列からページ各値を設定する
  function NumberFromArray(num) {
-  const selectElement = document.querySelector('ul#sbi>li:nth-child(' + num + ')>input.numOfStock');
+  const selectElement = document.querySelector('ul#sbi>li:nth-child(' + num + ')>input.numberstock');
   selectElement.value = ArrStockNumber[num];
  }
  function StocknameFromArray(num) {
