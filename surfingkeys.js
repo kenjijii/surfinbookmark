@@ -1401,7 +1401,7 @@ const time = new Date().getTime();
    }, 999);
   case 'https://cweb.tfxclick.com/sbisec-kabu365/main/main.html':
   case 'https://cweb.tfxclick.com/sbisec-kabu365/main/main.html#':
-   await sleep(1000);
+   await sleep(1400);
    document.getElementById("pricePanelToggleMsg").click();
    // 事前操作
    await sleep(100);
@@ -1413,7 +1413,7 @@ const time = new Date().getTime();
      document.body.appendChild(el);
     });
    setItvl(100000, SbiCfdClicker);
-   
+
    mapkey('tcpw', 'openarr', function () {
     alert('ss');
    });

@@ -68,7 +68,7 @@ function genericGetPage() {
 document.getElementById('getPageArray').addEventListener('click', async function () {
  genericGetPage();
 
-};
+});
 // 最初に側つくって、いれてるよんぴ。最初
 async function ArrayToPage() {
  clearPage();
