@@ -4,6 +4,7 @@ async function sleep(ms) {
 // ローカルストレージから取得
 
 (async function () {
+ await sleep(1000);
  buttons();
  makelist();
  listClone();
