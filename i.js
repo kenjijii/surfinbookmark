@@ -49,13 +49,12 @@ async function getArrpage() {
   const stNum = document.getElementById('main').contentDocument.querySelector(`#row${i} > td:nth-child(7) > div:nth-child(1)`).innerText;
   const stPrc = document.getElementById('main').contentDocument.querySelector(`#row${i} > td:nth-child(9) > div:nth-child(1)`).innerText;
   const stNowPrc = document.getElementById('main').contentDocument.querySelector(`#row${i} > td:nth-child(12) > div:nth-child(1)`).innerText;
-  if (ArrStockNumber.includes(i - 1) == false) {
-   ArrStockNumber.push(i);
-   ArrStockName.push(stName);
-   Pieces.push(stNum);
-   CheckedBS.push(stSB == '売' ? 1 : 2);
-   ArrNowPrice.push(stPrc);
-  };
+
+  ArrStockNumber.push(i);
+  ArrStockName.push(stName);
+  Pieces.push(stNum);
+  CheckedBS.push(stSB == '売' ? 1 : 2);
+  ArrNowPrice.push(stPrc);
  };
 };
 // ページから取得
