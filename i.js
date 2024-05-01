@@ -59,6 +59,7 @@ async function getArrpage() {
   const stPrc = document.getElementById('main').contentDocument.querySelector(`#row${i} > td:nth-child(9) > div:nth-child(1)`).innerText;
   const stNowPrc = document.getElementById('main').contentDocument.querySelector(`#row${i} > td:nth-child(12) > div:nth-child(1)`).innerText;
 
+  ArrStockNumber.push(i);
   ArrStockName.push(stName);
   Pieces.push(stNum);
   CheckedBS.push(stSB == '売' ? 1 : 2);
@@ -86,8 +87,7 @@ function ArrayToPage() {
  //配列からページ各値を設定する
  function NumberFromArray(num) {
   const selectElement = document.querySelector('ul#sbi>li:nth-child(' + num + ')>select.numOfStock');
-
-  selectElement.value = num;
+  selectElement.value = ArrStockNumber[num];
  }
  function StocknameFromArray(num) {
   const selectElement = document.querySelector('ul#sbi>li:nth-child(' + num + ')>select.stockname');
