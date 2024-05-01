@@ -68,7 +68,7 @@ document.getElementById('getPageArray').addEventListener('click', async function
 // 最初に側つくって、いれてるよんぴ。最初
 function ArrayToPage() {
  clearPage();
- const list = document.querySelector(".hidden-item");
+ const list = document.querySelector(".list");
  const AddThis = list.children[0];
  //配列からページ各値を設定する
  function NumberFromArray(num) {
