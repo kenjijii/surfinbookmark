@@ -20,48 +20,48 @@ function LocalStock(value) {
 };
 // これ本番ページで使いますから。でも使ってない。＜これのテストをする。すべき。
 // 最初 >ローカルストレージから取得あと>ページから配列にプッシュ・。
-function getPage() {
- function getSelectedBrand() { // 選択されているstock要素を取得する関数
-  const selected_id = document.getElementById('main').contentDocument.getElementById('currencyPair-1').value;
-  return selected_id; //4014
- };
- function getNumOfStockes() { // 数量を取得する関数
-  const value = document.getElementById('main').contentDocument.getElementById('amount-1').value;
-  return value;
- };
- function getCheckedBS() {//選択されている売り買いを取得する関数
-  const checkedwhat = document.getElementById('main').contentDocument.getElementById('side-1-2').checked;
-  if (checkedwhat) {
-   // 売り
-   return "1";
-  } else {
-   // 買い
-   return "2";
-  }
- };
- // price
- function getPriceOfStockes() {
-  // 現在の価格を取得する関数
-  let selected_id = getCheckedBS();
-  const stockId = getSelectedBrand();
-  const id = selected_id ? 'p2bid-p' + stockId : 'p2ask-p' + stockId;
-  const price = document.getElementById(id).querySelector('span').innerText;
-  return price;
- };
- ArrStockName = LocalStock('stock');
- Pieces = LocalStock('pieces');
- CheckedBS = LocalStock('sellbuy');
- ArrNowPrice = LocalStock('price');
- ArrTimer = LocalStock('timer');
- ArrHow = LocalStock('alert');
- ArrStockNumber = LocalStock('numberstock');
+// function getPage() {
+//  function getSelectedBrand() { // 選択されているstock要素を取得する関数
+//   const selected_id = document.getElementById('main').contentDocument.getElementById('currencyPair-1').value;
+//   return selected_id; //4014
+//  };
+//  function getNumOfStockes() { // 数量を取得する関数
+//   const value = document.getElementById('main').contentDocument.getElementById('amount-1').value;
+//   return value;
+//  };
+//  function getCheckedBS() {//選択されている売り買いを取得する関数
+//   const checkedwhat = document.getElementById('main').contentDocument.getElementById('side-1-2').checked;
+//   if (checkedwhat) {
+//    // 売り
+//    return "1";
+//   } else {
+//    // 買い
+//    return "2";
+//   }
+//  };
+//  // price
+//  function getPriceOfStockes() {
+//   // 現在の価格を取得する関数
+//   let selected_id = getCheckedBS();
+//   const stockId = getSelectedBrand();
+//   const id = selected_id ? 'p2bid-p' + stockId : 'p2ask-p' + stockId;
+//   const price = document.getElementById(id).querySelector('span').innerText;
+//   return price;
+//  };
+//  ArrStockName = LocalStock('stock');
+//  Pieces = LocalStock('pieces');
+//  CheckedBS = LocalStock('sellbuy');
+//  ArrNowPrice = LocalStock('price');
+//  ArrTimer = LocalStock('timer');
+//  ArrHow = LocalStock('alert');
+//  ArrStockNumber = LocalStock('numberstock');
 
- ArrStockNumber.push(getMaxNumberFromArray(ArrStockNumber));
- ArrStockName.push(getSelectedBrand());
- Pieces.push(getNumOfStockes());
- CheckedBS.push(getCheckedBS());
- ArrNowPrice.push(getPriceOfStockes());
-};
+//  ArrStockNumber.push(getMaxNumberFromArray(ArrStockNumber));
+//  ArrStockName.push(getSelectedBrand());
+//  Pieces.push(getNumOfStockes());
+//  CheckedBS.push(getCheckedBS());
+//  ArrNowPrice.push(getPriceOfStockes());
+// };
 
 
 
@@ -302,6 +302,7 @@ document.querySelector('#sekai').addEventListener('click', async function (event
 // 伝播禁止
 
 
+
 function orderdbutton() {
  const OrderButton = document.getElementById('main').contentDocument.getElementById('doOrderConfirm-1');
  OrderButton.addEventListener('click', async function (event) {
@@ -341,6 +342,9 @@ document.querySelector('#goShortcut-1').addEventListener('click', async function
  // event.preventDefault();
 });
 
+
+
+
 document.querySelector('#buyit').addEventListener('click', async function () {
  document.querySelector('#myModal.modal').style.display = 'none';
 
@@ -361,3 +365,41 @@ document.querySelector('#cancel').addEventListener('click', async function () {
 // LocalStock('timer');
 // LocalStock('alert');
 // LocalStock('numberstock');
+
+
+function getArrpage() {
+ const col = document.getElementById('main').contentDocument.querySelector('#positionInquiry')
+ for (let i = 0; i < col.rows.length; i++) {
+  const stName = document.getElementById('main').contentDocument.querySelector(`#row${i} > td:nth-child(3) > div:nth-child(1)`).innerText;
+  const stSB = document.getElementById('main').contentDocument.querySelector(`#row${i} > td:nth-child(4) > div:nth-child(1)`).innerText;;
+  const stNum = document.getElementById('main').contentDocument.querySelector(`#row${i} > td:nth-child(9) > div:nth-child(1)`).innerText;;
+  const stPrc = document.getElementById('main').contentDocument.querySelector(`#row${i} > td:nth-child(11) > div:nth-child(1)`).innerText;;
+  const stNowPrc = document.getElementById('main').contentDocument.querySelector(`#row${i} > td:nth-child(12) > div:nth-child(1)`).innerText;;
+  console.log(stName);
+  console.log(stSB == '売' ? 1 : 2);
+  console.log(stNum);
+  console.log(stPrc);
+  console.log(stNowPrc);
+  // console.log(stLU);
+ };
+};
+getArrpage();
+
+
+
+ // ローカルストレージから取得
+
+ //  ArrStockNumber.push(getMaxNumberFromArray(ArrStockNumber));
+ //  ArrStockName.push(getSelectedBrand());
+ //  Pieces.push(getNumOfStockes());
+ //  CheckedBS.push(getCheckedBS());
+ //  ArrNowPrice.push(getPriceOfStockes());
+
+
+
+
+ // pushで追加。＜ページから、取る。
+ // ARRリスト。genelicから。＜localから取る。
+
+
+}
