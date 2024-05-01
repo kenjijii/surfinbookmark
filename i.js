@@ -5,6 +5,7 @@ async function sleep(ms) {
 
 (async function () {
  await sleep(1000);
+ alert('this truth')
  buttons();
  makelist();
  listClone();
