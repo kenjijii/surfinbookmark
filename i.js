@@ -80,13 +80,14 @@ function getArrpage() {
 // ページから取得
 document.getElementById('getPageArray').addEventListener('click', async function () {
  genericGetPage();
- await sleep(1000);
+ await sleep(300);
  getArrpage();
 
  await sleep(1000);
 
- ArrayToPage()
  document.querySelector('#myModal.modal').style.display = 'block';
+ await sleep(1000);
+ ArrayToPage()
 
 
 });
