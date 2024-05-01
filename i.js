@@ -58,11 +58,11 @@ async function getArrpage() {
   const stNum = document.getElementById('main').contentDocument.querySelector(`#row${i} > td:nth-child(9) > div:nth-child(1)`).innerText;
   const stPrc = document.getElementById('main').contentDocument.querySelector(`#row${i} > td:nth-child(11) > div:nth-child(1)`).innerText;
   const stNowPrc = document.getElementById('main').contentDocument.querySelector(`#row${i} > td:nth-child(12) > div:nth-child(1)`).innerText;
-  console.log(stName);
-  console.log(stSB == '売' ? 1 : 2);
-  console.log(stNum);
-  console.log(stPrc);
-  console.log(stNowPrc);
+  alert(stName);
+  alert(stSB == '売' ? 1 : 2);
+  alert(stNum);
+  alert(stPrc);
+  alert(stNowPrc);
   // console.log(stLU);
 
 
