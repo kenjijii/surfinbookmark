@@ -58,13 +58,6 @@ async function getArrpage() {
   const stNum = document.getElementById('main').contentDocument.querySelector(`#row${i} > td:nth-child(7) > div:nth-child(1)`).innerText;
   const stPrc = document.getElementById('main').contentDocument.querySelector(`#row${i} > td:nth-child(9) > div:nth-child(1)`).innerText;
   const stNowPrc = document.getElementById('main').contentDocument.querySelector(`#row${i} > td:nth-child(12) > div:nth-child(1)`).innerText;
-  alert(stName);
-  alert(stSB == '売' ? 1 : 2);
-  alert(stNum);
-  alert(stPrc);
-  alert(stNowPrc);
-  // console.log(stLU);
-
 
   ArrStockName.push(stName);
   Pieces.push(stNum);
@@ -84,7 +77,6 @@ document.getElementById('getPageArray').addEventListener('click', async function
  document.querySelector('#myModal.modal').style.display = 'block';
  await getArrpage();
  ArrayToPage();
-
 });
 // 最初に側つくって、いれてるよんぴ。最初
 function ArrayToPage() {
