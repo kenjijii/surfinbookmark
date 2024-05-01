@@ -68,7 +68,7 @@ document.getElementById('getPageArray').addEventListener('click', async function
 // 最初に側つくって、いれてるよんぴ。最初
 function ArrayToPage() {
  clearPage();
- const list = document.querySelector(".list");
+ const list = document.querySelector(".hidden-item");
  const AddThis = list.children[0];
  //配列からページ各値を設定する
  function NumberFromArray(num) {
@@ -161,7 +161,7 @@ async function pageToArray() {
 // これは、追加ボタン
 function makelist() {
  document.getElementById('pureadd').addEventListener('click', (e) => {
-  const list = document.querySelector(".list");
+  const list = document.querySelector(".hidden-item");
   const listItem = list.children;
   const listItemElement = listItem[0].cloneNode(true);
   const addButton = listItemElement.querySelector(".plus");
