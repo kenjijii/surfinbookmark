@@ -208,9 +208,7 @@ function cloneThis(AddThis) {
  listItemElement.querySelector('.button--delete').addEventListener("click", (e) => {
   e.target.parentNode.remove();
  });
- listItemElement.querySelector(".plus").addEventListener("click", (e) => {
-  cloneThis(listItemElement);
- });
+
 };
 // これが＋ボタン
 function listClone() {
