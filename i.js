@@ -50,7 +50,7 @@ function genericGetPage() {
 
 
 
-function getArrpage() {
+async function getArrpage() {
  const col = document.getElementById('main').contentDocument.querySelector('#positionInquiry')
  for (let i = 0; i < col.rows.length; i++) {
   const stName = document.getElementById('main').contentDocument.querySelector(`#row${i} > td:nth-child(3) > div:nth-child(1)`).innerText;
@@ -81,11 +81,8 @@ function getArrpage() {
 document.getElementById('getPageArray').addEventListener('click', async function () {
  genericGetPage();
  await sleep(300);
- getArrpage();
-
-
- await sleep(1000);
  document.querySelector('#myModal.modal').style.display = 'block';
+ await getArrpage();
  await sleep(4880);
  ArrayToPage()
 
