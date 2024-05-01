@@ -190,11 +190,13 @@ function makelist() {
   });
  });
 };
-function cloneThis(AddThis) {
+function cloneThis(AddThis, plusfalse = false) {
  const list = document.querySelector(".list");
  // liが入る
  const listItemElement = AddThis.cloneNode(true);
- listItemElement.querySelector('.plus').disabled = true;
+ if (plusfalse) {
+  listItemElement.querySelector('.plus').disabled = true;
+ };
 
  list.insertBefore(listItemElement, AddThis.nextSibling);
  listItemElement.querySelector('.button--delete').addEventListener("click", (e) => {
@@ -205,10 +207,11 @@ function cloneThis(AddThis) {
 function listClone() {
  const list = document.querySelector(".list");
  const listItem = list.children;
+
  const addButton = document.querySelector(".plus");
  addButton.addEventListener("click", (e) => {
   const AddThis = e.target.parentNode;
-  cloneThis(AddThis);
+  cloneThis(AddThis, true);
  });
 }
 // 出口
