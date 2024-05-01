@@ -66,10 +66,10 @@ async function getArrpage() {
   // console.log(stLU);
 
 
-  // ArrStockName.push(stName);
-  // Pieces.push(stNum);
-  // CheckedBS.stSB == '売' ? 1 : 2;
-  // ArrNowPrice.push(stPrc);
+  ArrStockName.push(stName);
+  Pieces.push(stNum);
+  CheckedBS.stSB == '売' ? 1 : 2;
+  ArrNowPrice.push(stPrc);
  };
 };
 
@@ -104,12 +104,10 @@ function ArrayToPage() {
  function PiecesFromArray(num) {
   const selectElement = document.querySelector('ul#sbi>li:nth-child(' + num + ')>select.numOfStock');
   selectElement.value = Pieces[num];
-  console.log('%c' + Pieces[num], 'color:deepblue; font-size:3em', 'This is good/');
  };
  function SellBuyFromArray(num) {
   const selectElement = document.querySelector('ul#sbi>li:nth-child(' + num + ')>.sellbuy');
   selectElement.value = CheckedBS[num];
-  console.log('%c' + CheckedBS[num], 'color:deepblue; font-size:3em', 'This is good/');
  };
  function PriceNowFromArray(num) {
   const priceNowElement = document.querySelector('ul#sbi>li:nth-child(' + num + ')>.settlementValue');
