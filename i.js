@@ -83,10 +83,10 @@ document.getElementById('getPageArray').addEventListener('click', async function
  await sleep(300);
  getArrpage();
 
- await sleep(1000);
 
- document.querySelector('#myModal.modal').style.display = 'block';
  await sleep(1000);
+ document.querySelector('#myModal.modal').style.display = 'block';
+ await sleep(4880);
  ArrayToPage()
 
 
@@ -103,7 +103,7 @@ async function ArrayToPage() {
  }
  function StocknameFromArray(num) {
   const selectElement = document.querySelector('ul#sbi>li:nth-child(' + num + ')>select.stockname');
-  alert(ArrStockName[num])
+
   selectElement.value = ArrStockName[num];
  };
  function PiecesFromArray(num) {
