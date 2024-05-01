@@ -54,10 +54,10 @@ async function getArrpage() {
  const col = document.getElementById('main').contentDocument.querySelector('#positionInquiry')
  for (let i = 0; i < col.rows.length; i++) {
   const stName = document.getElementById('main').contentDocument.querySelector(`#row${i} > td:nth-child(3) > div:nth-child(1)`).innerText;
-  const stSB = document.getElementById('main').contentDocument.querySelector(`#row${i} > td:nth-child(4) > div:nth-child(1)`).innerText;;
-  const stNum = document.getElementById('main').contentDocument.querySelector(`#row${i} > td:nth-child(9) > div:nth-child(1)`).innerText;;
-  const stPrc = document.getElementById('main').contentDocument.querySelector(`#row${i} > td:nth-child(11) > div:nth-child(1)`).innerText;;
-  const stNowPrc = document.getElementById('main').contentDocument.querySelector(`#row${i} > td:nth-child(12) > div:nth-child(1)`).innerText;;
+  const stSB = document.getElementById('main').contentDocument.querySelector(`#row${i} > td:nth-child(4) > div:nth-child(1)`).innerText;
+  const stNum = document.getElementById('main').contentDocument.querySelector(`#row${i} > td:nth-child(9) > div:nth-child(1)`).innerText;
+  const stPrc = document.getElementById('main').contentDocument.querySelector(`#row${i} > td:nth-child(11) > div:nth-child(1)`).innerText;
+  const stNowPrc = document.getElementById('main').contentDocument.querySelector(`#row${i} > td:nth-child(12) > div:nth-child(1)`).innerText;
   console.log(stName);
   console.log(stSB == '売' ? 1 : 2);
   console.log(stNum);
@@ -99,7 +99,6 @@ function ArrayToPage() {
  }
  function StocknameFromArray(num) {
   const selectElement = document.querySelector('ul#sbi>li:nth-child(' + num + ')>select.stockname');
-
   selectElement.value = ArrStockName[num];
  };
  function PiecesFromArray(num) {
