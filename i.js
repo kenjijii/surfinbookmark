@@ -67,9 +67,7 @@ document.getElementById('getPageArray').addEventListener('click', async function
 });
 // 最初に側つくって、いれてるよんぴ。最初
 function ArrayToPage() {
- clearPage();
- const list = document.querySelector(".list");
- const AddThis = list.children[0];
+
  //配列からページ各値を設定する
  function NumberFromArray(num) {
   const selectElement = document.querySelector('ul#sbi>li:nth-child(' + num + ')>input.numberstock');
@@ -99,6 +97,14 @@ function ArrayToPage() {
   const selectElement = document.querySelector('ul#sbi>li:nth-child(' + num + ')>.how');
   selectElement.value = ArrHow[num];
  }
+
+
+ clearPage();
+ // 0にしたい。少なくとも。＜
+ const list = document.querySelector(".list");
+ const AddThis = list.children[0];
+ // ここだけが最初だろう。何か・・。
+ // クリアーと１の関係ダニは殺す。
  for (let i = 1; i < ArrStockName.length - 1; i++) {
   cloneThis(AddThis);
  }
