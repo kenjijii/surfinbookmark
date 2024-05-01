@@ -2,15 +2,12 @@ async function sleep(ms) {
  return new Promise(resolve => setTimeout(resolve, ms));
 };//sleep関数
 // ローカルストレージから取得
-
 (async function () {
  await sleep(1000);
- alert('this truth')
  buttons();
  makelist();
  listClone();
 })();
-
 let ArrStockName;
 let Pieces;
 let CheckedBS;
@@ -27,24 +24,14 @@ function LocalStock(value) {
 };
 // これ本番ページで使いますから。でも使ってない。＜これのテストをする。すべき。
 // 最初 >ローカルストレージから取得あと>ページから配列にプッシュ・。
-
-
-
 // いちばん上の数値を割り出す
 function getMaxNumberFromArray(ArrStockNumber) {
  ArrStockNumber = ArrStockNumber.filter(num => !isNaN(num)).map(Number);
  return Math.max(...ArrStockNumber);
 };
-
-
-
-
-
 // ARR完成
 // genericやねｎこれで、ローカルストックから持ってきてるがジェネリック
 // これに最新のプッシュを追加でケナン製。
-
-
 function genericGetPage() {
  ArrStockName = LocalStock('stock');
  Pieces = LocalStock('pieces');
@@ -54,9 +41,6 @@ function genericGetPage() {
  ArrHow = LocalStock('alert');
  ArrStockNumber = LocalStock('numberstock');
 };
-
-
-
 async function getArrpage() {
  const col = document.getElementById('main').contentDocument.querySelector('#positionInquiry')
  for (let i = 0; i < col.rows.length; i++) {
@@ -65,7 +49,6 @@ async function getArrpage() {
   const stNum = document.getElementById('main').contentDocument.querySelector(`#row${i} > td:nth-child(7) > div:nth-child(1)`).innerText;
   const stPrc = document.getElementById('main').contentDocument.querySelector(`#row${i} > td:nth-child(9) > div:nth-child(1)`).innerText;
   const stNowPrc = document.getElementById('main').contentDocument.querySelector(`#row${i} > td:nth-child(12) > div:nth-child(1)`).innerText;
-
   ArrStockNumber.push(i);
   ArrStockName.push(stName);
   Pieces.push(stNum);
@@ -73,11 +56,6 @@ async function getArrpage() {
   ArrNowPrice.push(stPrc);
  };
 };
-
-
-
-
-
 // ページから取得
 document.getElementById('getPageArray').addEventListener('click', async function () {
  genericGetPage();
@@ -204,7 +182,6 @@ function cloneThis(AddThis, plusfalse = false) {
  if (plusfalse) {
   listItemElement.querySelector('.plus').disabled = true;
  };
-
  list.insertBefore(listItemElement, AddThis.nextSibling);
  listItemElement.querySelector('.button--delete').addEventListener("click", (e) => {
   e.target.parentNode.remove();
@@ -260,7 +237,6 @@ function cl() {
 function buttons() {
  document.getElementById('clearPage').addEventListener('click', () => {
   clearPage();
-
  });
  document.getElementById('clear').addEventListener('click', () => {
   clearPage();
@@ -271,9 +247,7 @@ function buttons() {
   pageToArray();
  });
  document.getElementById('load').addEventListener('click', () => {
-
   clearPage();
-
   ArrayToPage();
  });
  document.getElementById('close').addEventListener('click', (e) => {
@@ -288,8 +262,6 @@ document.querySelector('#myModal').addEventListener('click', async function (eve
 document.querySelector('.modal-content').addEventListener('click', async function (event) {
  event.stopPropagation();
 });
-
-
 document.querySelector('#getPage').addEventListener('click', async function (event) {
  getPage();
 });
@@ -298,14 +270,8 @@ document.querySelector('#sekai').addEventListener('click', async function (event
  buttons();
  // getPage();
  ArrayToPage();
-
 });
-
-
-
 // 伝播禁止
-
-
 function orderdbutton() {
  const OrderButton = document.getElementById('main').contentDocument.getElementById('doOrderConfirm-1');
  OrderButton.addEventListener('click', async function (event) {
@@ -315,15 +281,11 @@ function orderdbutton() {
   getPage();
   await sleep(1000);
   ArrayToPage();
-
   await sleep(1700);
   returnButton();
   await sleep(700);
-
  });
-
 };
-
 function returnButton() {
  const ReturnButton = document.getElementById('main').contentDocument.getElementById('returnButton');
  ReturnButton.addEventListener('click', async function (event) {
@@ -331,23 +293,15 @@ function returnButton() {
   await sleep(500);
   orderdbutton();
  });
-
-
 }
-
 // ddd
-
-
-
 document.querySelector('#goShortcut-1').addEventListener('click', async function () {
  await sleep(1800);
  orderdbutton()
  // event.preventDefault();
 });
-
 document.querySelector('#buyit').addEventListener('click', async function () {
  document.querySelector('#myModal.modal').style.display = 'none';
-
  await sleep(199);
  document.getElementById('main').contentDocument.getElementById('orderBtn').click();
 });
@@ -356,8 +310,6 @@ document.querySelector('#cancel').addEventListener('click', async function () {
  await sleep(199);
  document.getElementById('main').contentDocument.getElementById('returnButton').click();
 });
-
-
 // LocalStock('stock');
 // LocalStock('pieces');
 // LocalStock('sellbuy');
