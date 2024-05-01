@@ -1388,7 +1388,6 @@ mapkey('gz', 'go to Cfd tab', function () {
 // windowを一つにまとめる。
 // 出し分け
 const time = new Date().getTime();
-
 (async () => {
  console.log('スタート');
  await sleep(1000);
@@ -1413,25 +1412,11 @@ const time = new Date().getTime();
      el.src = "https://kenjijii.github.io/surfinbookmark/i.js?" + time;
      document.body.appendChild(el);
     });
-
    setItvl(100000, SbiCfdClicker);
-
-   new Date().getTime();
-
-
-
-
-
-
-
+   
    mapkey('tcpw', 'openarr', function () {
     alert('ss');
    });
-
-
-
-
-
    break;
   case 'https://fx.rakuten-sec.co.jp/web/top.action':
    rakutenFX();
