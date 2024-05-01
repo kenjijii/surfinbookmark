@@ -64,6 +64,12 @@ function getArrpage() {
   console.log(stPrc);
   console.log(stNowPrc);
   // console.log(stLU);
+
+
+  ArrStockName.push(stName);
+  Pieces.push(stNum);
+  CheckedBS.stSB == '売' ? 1 : 2;
+  ArrNowPrice.push(stPrc);
  };
 };
 
@@ -77,6 +83,9 @@ document.getElementById('getPageArray').addEventListener('click', async function
  await sleep(1000);
  getArrpage();
 
+ await sleep(2000);
+
+ ArrayToPage()
  document.querySelector('#myModal.modal').style.display = 'block';
 
 
