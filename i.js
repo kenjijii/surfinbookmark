@@ -2,8 +2,13 @@ async function sleep(ms) {
  return new Promise(resolve => setTimeout(resolve, ms));
 };//sleep関数
 // ローカルストレージから取得
-makelist();
-listClone();
+
+(async function () {
+ buttons();
+ makelist();
+ listClone();
+})();
+
 let ArrStockName;
 let Pieces;
 let CheckedBS;
