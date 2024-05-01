@@ -99,8 +99,6 @@ function ArrayToPage() {
  }
  function StocknameFromArray(num) {
   const selectElement = document.querySelector('ul#sbi>li:nth-child(' + num + ')>select.stockname');
-  console.log('%c' + selectElement, 'color:deepblue; font-size:3em', 'This is good/');
-  console.log('%c' + selectElement, 'color:deepblue; font-size:3em', 'This is good/');
 
   selectElement.value = ArrStockName[num];
  };
