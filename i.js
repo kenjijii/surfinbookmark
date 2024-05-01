@@ -83,14 +83,7 @@ document.getElementById('getPageArray').addEventListener('click', async function
  await sleep(300);
  document.querySelector('#myModal.modal').style.display = 'block';
  await getArrpage();
- clearPage();
- const list = document.querySelector(".list");
- const AddThis = list.children[0];
- for (let i = 1; i < ArrStockName.length - 1; i++) {
-  cloneThis(AddThis);
- }
- alert('isnotgood');
-
+ ArrayToPage();
 
 });
 // 最初に側つくって、いれてるよんぴ。最初
@@ -101,10 +94,12 @@ function ArrayToPage() {
  //配列からページ各値を設定する
  function NumberFromArray(num) {
   const selectElement = document.querySelector('ul#sbi>li:nth-child(' + num + ')>select.numOfStock');
+
   selectElement.value = num;
  }
  function StocknameFromArray(num) {
   const selectElement = document.querySelector('ul#sbi>li:nth-child(' + num + ')>select.stockname');
+  console.log('%c' + selectElement, 'color:deepblue; font-size:3em', 'This is good/');
 
   selectElement.value = ArrStockName[num];
  };
