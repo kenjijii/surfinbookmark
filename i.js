@@ -4,7 +4,6 @@ async function sleep(ms) {
 // ローカルストレージから取得
 makelist();
 listClone();
-buttons();
 let ArrStockName;
 let Pieces;
 let CheckedBS;
@@ -68,7 +67,6 @@ function genericGetPage() {
 
 document.getElementById('getPageArray').addEventListener('click', async function () {
  genericGetPage();
- document.querySelector('#myModal.modal').style.display = 'block';
 
 };
 // 最初に側つくって、いれてるよんぴ。最初
@@ -275,6 +273,7 @@ document.querySelector('#getPage').addEventListener('click', async function (eve
 });
 document.querySelector('#sekai').addEventListener('click', async function (event) {
  document.querySelector('#myModal.modal').style.display = 'block';
+ buttons();
  // getPage();
  ArrayToPage();
 
