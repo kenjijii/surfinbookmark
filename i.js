@@ -83,7 +83,7 @@ document.getElementById('getPageArray').addEventListener('click', async function
  await sleep(1000);
  getArrpage();
 
- await sleep(2000);
+ await sleep(1000);
 
  ArrayToPage()
  document.querySelector('#myModal.modal').style.display = 'block';
