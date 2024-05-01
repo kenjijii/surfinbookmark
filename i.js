@@ -208,10 +208,9 @@ function cloneThis(AddThis, plusfalse = false) {
 };
 // これが＋ボタン
 function listClone() {
+ const addButton = document.querySelector(".plus");
  const list = document.querySelector(".list");
  const listItem = list.children;
-
- const addButton = document.querySelector(".plus");
  addButton.addEventListener("click", (e) => {
   const AddThis = e.target.parentNode;
   cloneThis(AddThis, true);
