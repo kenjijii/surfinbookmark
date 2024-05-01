@@ -55,8 +55,8 @@ async function getArrpage() {
  for (let i = 0; i < col.rows.length; i++) {
   const stName = document.getElementById('main').contentDocument.querySelector(`#row${i} > td:nth-child(3) > div:nth-child(1)`).innerText;
   const stSB = document.getElementById('main').contentDocument.querySelector(`#row${i} > td:nth-child(4) > div:nth-child(1)`).innerText;
-  const stNum = document.getElementById('main').contentDocument.querySelector(`#row${i} > td:nth-child(9) > div:nth-child(1)`).innerText;
-  const stPrc = document.getElementById('main').contentDocument.querySelector(`#row${i} > td:nth-child(11) > div:nth-child(1)`).innerText;
+  const stNum = document.getElementById('main').contentDocument.querySelector(`#row${i} > td:nth-child(7) > div:nth-child(1)`).innerText;
+  const stPrc = document.getElementById('main').contentDocument.querySelector(`#row${i} > td:nth-child(9) > div:nth-child(1)`).innerText;
   const stNowPrc = document.getElementById('main').contentDocument.querySelector(`#row${i} > td:nth-child(12) > div:nth-child(1)`).innerText;
   alert(stName);
   alert(stSB == '売' ? 1 : 2);
@@ -68,7 +68,7 @@ async function getArrpage() {
 
   ArrStockName.push(stName);
   Pieces.push(stNum);
-  CheckedBS.stSB == '売' ? 1 : 2;
+  CheckedBS.push(stSB == '売' ? 1 : 2);
   ArrNowPrice.push(stPrc);
  };
 };
