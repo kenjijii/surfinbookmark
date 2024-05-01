@@ -67,6 +67,8 @@ function genericGetPage() {
 
 document.getElementById('getPageArray').addEventListener('click', async function () {
  genericGetPage();
+ document.querySelector('#myModal.modal').style.display = 'block';
+
 
 });
 // 最初に側つくって、いれてるよんぴ。最初
