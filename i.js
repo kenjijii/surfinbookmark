@@ -59,7 +59,6 @@ function getArrpage() {
    ArrStockName.push(stName);
    Pieces.push(stNum);
    CheckedBS.push(stSB == '売' ? 1 : 2);
-   return
    ArrNowPrice.push(stPrc);
   }
  };
