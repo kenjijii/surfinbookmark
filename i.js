@@ -55,6 +55,8 @@ function getArrpage() {
   Pieces.push(stNum);
   CheckedBS.push(stSB == '売' ? 1 : 2);
   ArrNowPrice.push(stPrc);
+
+  // ローカルストックのみにするか？。
  };
 };
 // ページから取得
