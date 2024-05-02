@@ -72,7 +72,7 @@ document.getElementById('getPageArray').addEventListener('click', async function
  genericGetPage();
  await sleep(300);
  document.querySelector('#myModal.modal').style.display = 'block';
- await getArrpage();
+ getArrpage();
  ArrayToPage();
 });
 // 最初に側つくって、いれてるよんぴ。最初
