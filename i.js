@@ -50,7 +50,7 @@ async function getArrpage() {
   const stPrc = document.getElementById('main').contentDocument.querySelector(`#row${i} > td:nth-child(9) > div:nth-child(1)`).innerText;
   const stNowPrc = document.getElementById('main').contentDocument.querySelector(`#row${i} > td:nth-child(12) > div:nth-child(1)`).innerText;
 
-  ArrStockNumber.push(i);
+  ArrStockNumber.push(i + 1);
   ArrStockName.push(stName);
   Pieces.push(stNum);
   CheckedBS.push(stSB == '売' ? 1 : 2);
@@ -104,7 +104,15 @@ function ArrayToPage() {
  const list = document.querySelector(".list");
  const AddThis = list.children[0];
  // ここだけが最初だろう。何か・・。
- // クリアーと１の関係ダニは殺す。
+ // クリアーと１の関係
+
+ // リストの出し分けは。リストのlengthとArrStockNumのmaxを比較して。maxの最大値以上の部分を、追加。
+
+ // 数字の割がおかしい。＜あと一番目問題。
+
+ // 追加の際の、項目のコピーは必要。特に数値か。あとは消せたら消したい　inactive
+
+
  for (let i = 1; i < ArrStockName.length - 1; i++) {
   cloneThis(AddThis);
  }
