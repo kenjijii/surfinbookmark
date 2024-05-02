@@ -50,7 +50,7 @@ async function getArrpage() {
   const stPrc = document.getElementById('main').contentDocument.querySelector(`#row${i} > td:nth-child(9) > div:nth-child(1)`).innerText;
   const stNowPrc = document.getElementById('main').contentDocument.querySelector(`#row${i} > td:nth-child(12) > div:nth-child(1)`).innerText;
 
-  ArrStockNumber.push(i + 1);
+  ArrStockNumber.push(i);
   ArrStockName.push(stName);
   Pieces.push(stNum);
   CheckedBS.push(stSB == '売' ? 1 : 2);
