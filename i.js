@@ -41,9 +41,9 @@ function genericGetPage() {
 
 
 function getArrpage() {
- function getMaxNumberFromArray(ArrStockNumber) {
-  ArrStockNumber = ArrStockNumber.filter(num => !isNaN(num)).map(Number);
-  return Math.max(...ArrStockNumber);
+ function getMaxNumberFromArray(ArrS) {
+  ArrS = ArrS.filter(num => !isNaN(num)).map(Number);
+  return ArrS.length > 0 ? Math.max(...ArrS) : 0;
  };
  const colLength = document.getElementById('main').contentDocument.querySelector('#positionInquiry').rows.length;
  if (colLength > getMaxNumberFromArray(ArrStockNumber)) {
