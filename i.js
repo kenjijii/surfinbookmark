@@ -113,7 +113,7 @@ function ArrayToPage() {
  // 追加の際の、項目のコピーは必要。特に数値か。あとは消せたら消したい　inactive
 
 
- for (let i = 1; i < ArrStockName.length - 1; i++) {
+ for (let i = 0; i < ArrStockName.length; i++) {
   cloneThis(AddThis);
  }
  for (let i = 1; i < ArrStockName.length; i++) {
