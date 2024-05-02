@@ -46,8 +46,8 @@ function getArrpage() {
   return Math.max(...ArrStockNumber);
  };
  const colLength = document.getElementById('main').contentDocument.querySelector('#positionInquiry').rows.length;
- if (colLength > getMaxNumberFromArray()) {
-  for (let i = getMaxNumberFromArray() + 1; i < colLength; i++) {
+ if (colLength > getMaxNumberFromArray(ArrStockNumber)) {
+  for (let i = getMaxNumberFromArray(ArrStockNumber) + 1; i < colLength; i++) {
    const stName = document.getElementById('main').contentDocument.querySelector(`#row${i} > td:nth-child(3) > div:nth-child(1)`).innerText;
    const stSB = document.getElementById('main').contentDocument.querySelector(`#row${i} > td:nth-child(4) > div:nth-child(1)`).innerText;
    const stNum = document.getElementById('main').contentDocument.querySelector(`#row${i} > td:nth-child(7) > div:nth-child(1)`).innerText;
