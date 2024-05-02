@@ -40,12 +40,14 @@ function genericGetPage() {
 };
 
 
+// 表のすべてを入れる。　getmaxで番号stocknumberの最大値を見つけ、それ以上のセルがある場合に追加する。としている。
 function getArrpage() {
  function getMaxNumberFromArray(ArrS) {
   ArrS = ArrS.filter(num => !isNaN(num)).map(Number);
   return ArrS.length > 0 ? Math.max(...ArrS) : 0;
  };
  const colLength = document.getElementById('main').contentDocument.querySelector('#positionInquiry').rows.length;
+ //4
  if (colLength > getMaxNumberFromArray(ArrStockNumber)) {
   for (let i = getMaxNumberFromArray(ArrStockNumber); i < colLength; i++) {
    const stName = document.getElementById('main').contentDocument.querySelector(`#row${i} > td:nth-child(3) > div:nth-child(1)`).innerText;
@@ -53,7 +55,7 @@ function getArrpage() {
    const stNum = document.getElementById('main').contentDocument.querySelector(`#row${i} > td:nth-child(7) > div:nth-child(1)`).innerText;
    const stPrc = document.getElementById('main').contentDocument.querySelector(`#row${i} > td:nth-child(9) > div:nth-child(1)`).innerText;
    const stNowPrc = document.getElementById('main').contentDocument.querySelector(`#row${i} > td:nth-child(12) > div:nth-child(1)`).innerText;
-   ArrStockNumber.push(i);
+   ArrStockNumber.push(i + 1);
    ArrStockName.push(stName);
    Pieces.push(stNum);
    CheckedBS.push(stSB == '売' ? 1 : 2);
