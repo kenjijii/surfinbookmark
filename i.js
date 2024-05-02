@@ -25,10 +25,7 @@ function LocalStock(value) {
 // これ本番ページで使いますから。でも使ってない。＜これのテストをする。すべき。
 // 最初 >ローカルストレージから取得あと>ページから配列にプッシュ・。
 // いちばん上の数値を割り出す
-function getMaxNumberFromArray(ArrStockNumber) {
- ArrStockNumber = ArrStockNumber.filter(num => !isNaN(num)).map(Number);
- return Math.max(...ArrStockNumber);
-};
+
 // ARR完成
 // genericやねｎこれで、ローカルストックから持ってきてるがジェネリック
 // これに最新のプッシュを追加でケナン製。
@@ -41,23 +38,34 @@ function genericGetPage() {
  ArrHow = LocalStock('alert');
  ArrStockNumber = LocalStock('numberstock');
 };
+
+
 function getArrpage() {
- const col = document.getElementById('main').contentDocument.querySelector('#positionInquiry')
- for (let i = 0; i < col.rows.length; i++) {
-  const stName = document.getElementById('main').contentDocument.querySelector(`#row${i} > td:nth-child(3) > div:nth-child(1)`).innerText;
-  const stSB = document.getElementById('main').contentDocument.querySelector(`#row${i} > td:nth-child(4) > div:nth-child(1)`).innerText;
-  const stNum = document.getElementById('main').contentDocument.querySelector(`#row${i} > td:nth-child(7) > div:nth-child(1)`).innerText;
-  const stPrc = document.getElementById('main').contentDocument.querySelector(`#row${i} > td:nth-child(9) > div:nth-child(1)`).innerText;
-  const stNowPrc = document.getElementById('main').contentDocument.querySelector(`#row${i} > td:nth-child(12) > div:nth-child(1)`).innerText;
 
-  ArrStockNumber.push(i);
-  ArrStockName.push(stName);
-  Pieces.push(stNum);
-  CheckedBS.push(stSB == '売' ? 1 : 2);
-  ArrNowPrice.push(stPrc);
-
-  // ローカルストックのみにするか？。
+ function getMaxNumberFromArray(ArrStockNumber) {
+  ArrStockNumber = ArrStockNumber.filter(num => !isNaN(num)).map(Number);
+  return Math.max(...ArrStockNumber);
  };
+ const colLength = document.getElementById('main').contentDocument.querySelector('#positionInquiry').rows.length;
+ if (colLength > getMaxNumberFromArray()) {
+  for (let i = getMaxNumberFromArray() + 1; i < colLength; i++) {
+   const stName = document.getElementById('main').contentDocument.querySelector(`#row${i} > td:nth-child(3) > div:nth-child(1)`).innerText;
+   const stSB = document.getElementById('main').contentDocument.querySelector(`#row${i} > td:nth-child(4) > div:nth-child(1)`).innerText;
+   const stNum = document.getElementById('main').contentDocument.querySelector(`#row${i} > td:nth-child(7) > div:nth-child(1)`).innerText;
+   const stPrc = document.getElementById('main').contentDocument.querySelector(`#row${i} > td:nth-child(9) > div:nth-child(1)`).innerText;
+   const stNowPrc = document.getElementById('main').contentDocument.querySelector(`#row${i} > td:nth-child(12) > div:nth-child(1)`).innerText;
+
+   ArrStockNumber.push(i);
+   ArrStockName.push(stName);
+   Pieces.push(stNum);
+   CheckedBS.push(stSB == '売' ? 1 : 2);
+   ArrNowPrice.push(stPrc);
+  }
+
+
+ }
+
+
 };
 // ページから取得
 document.getElementById('getPageArray').addEventListener('click', async function () {
