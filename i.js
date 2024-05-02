@@ -241,12 +241,12 @@ async function sellThat(orderId) {
  document.getElementById('main').contentDocument.getElementById('orderSubmit').click();
 }
 function clearLocalStorage() {
- localStorage.clear(stock);
- localStorage.clear(pieces);
- localStorage.clear(sellbuy);
- localStorage.clear(price);
- localStorage.clear(timer);
- localStorage.clear(alert);
+ localStorage.clear('stock');
+ localStorage.clear('pieces');
+ localStorage.clear('sellbuy');
+ localStorage.clear('price');
+ localStorage.clear('timer');
+ localStorage.clear('alert');
  clearPage();
 }
 function clearPage() {
