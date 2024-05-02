@@ -41,7 +41,6 @@ function genericGetPage() {
 
 
 function getArrpage() {
-
  function getMaxNumberFromArray(ArrStockNumber) {
   ArrStockNumber = ArrStockNumber.filter(num => !isNaN(num)).map(Number);
   return Math.max(...ArrStockNumber);
@@ -54,16 +53,15 @@ function getArrpage() {
    const stNum = document.getElementById('main').contentDocument.querySelector(`#row${i} > td:nth-child(7) > div:nth-child(1)`).innerText;
    const stPrc = document.getElementById('main').contentDocument.querySelector(`#row${i} > td:nth-child(9) > div:nth-child(1)`).innerText;
    const stNowPrc = document.getElementById('main').contentDocument.querySelector(`#row${i} > td:nth-child(12) > div:nth-child(1)`).innerText;
-
    ArrStockNumber.push(i);
    ArrStockName.push(stName);
    Pieces.push(stNum);
    CheckedBS.push(stSB == '売' ? 1 : 2);
    ArrNowPrice.push(stPrc);
   }
+ };
 
 
- }
 
 
 };
@@ -77,7 +75,6 @@ document.getElementById('getPageArray').addEventListener('click', async function
 });
 // 最初に側つくって、いれてるよんぴ。最初
 function ArrayToPage() {
-
  //配列からページ各値を設定する
  function NumberFromArray(num) {
   const selectElement = document.querySelector('ul#sbi>li:nth-child(' + num + ')>input.numberstock');
