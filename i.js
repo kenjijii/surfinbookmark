@@ -41,7 +41,7 @@ function genericGetPage() {
  ArrHow = LocalStock('alert');
  ArrStockNumber = LocalStock('numberstock');
 };
-async function getArrpage() {
+function getArrpage() {
  const col = document.getElementById('main').contentDocument.querySelector('#positionInquiry')
  for (let i = 0; i < col.rows.length; i++) {
   const stName = document.getElementById('main').contentDocument.querySelector(`#row${i} > td:nth-child(3) > div:nth-child(1)`).innerText;
