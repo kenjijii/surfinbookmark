@@ -239,6 +239,12 @@ async function sellThat(orderId) {
 }
 function clearLocalStorage() {
  localStorage.clear(ArrStockName);
+ localStorage.clear(Pieces);
+ localStorage.clear(CheckedBS);
+ localStorage.clear(ArrNowPrice);
+ localStorage.clear(ArrTimer);
+ localStorage.clear(ArrHow);
+ localStorage.clear(ArrStockNumber);
  clearPage();
 }
 function clearPage() {
