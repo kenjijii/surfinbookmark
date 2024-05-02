@@ -269,7 +269,6 @@ function buttons() {
   clearPage();
  });
  document.getElementById('clear').addEventListener('click', () => {
-  clearPage();
   clearLocalStorage();
  });
  // Save button
