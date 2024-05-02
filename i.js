@@ -60,11 +60,9 @@ function getArrpage() {
    ArrNowPrice.push(stPrc);
   }
  };
-
-
-
-
 };
+
+
 // ページから取得
 document.getElementById('getPageArray').addEventListener('click', async function () {
  genericGetPage();
