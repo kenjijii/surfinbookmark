@@ -135,11 +135,16 @@ function ArrayToPage() {
 };
 // 最後ちうかsaveボタン
 // 現在のページから配列に入れ込む(保存)
-async function pageToArray() {
- function SetLocalStock(title, value) {
-  // ローカルに保存
-  localStorage.setItem(title, JSON.stringify(value));
- }
+
+function SetLocalStock(title, value) {
+ // ローカルに保存
+ localStorage.setItem(title, JSON.stringify(value));
+}
+
+
+
+function pageToArray() {
+
  const numbername = document.querySelectorAll('ul#sbi>li>input.numberstock');
  const stockname = document.querySelectorAll('ul#sbi>li>select.stockname');
  const pieces = document.querySelectorAll('ul#sbi>li>select.numOfStock');
@@ -147,13 +152,8 @@ async function pageToArray() {
  const price = document.querySelectorAll('ul#sbi>li>.settlementValue');
  const timer = document.querySelectorAll('ul#sbi>li>.timer');
  const how = document.querySelectorAll('ul#sbi>li>.how');
- ArrStockNumber = ['numberstock'];
- ArrStockName = ['stock'];
- Pieces = ['pieces'];
- CheckedBS = ['sellbuy'];
- ArrNowPrice = ['price'];
- ArrTimer = ['timer'];
- ArrHow = ['alert'];
+
+
  for (let i = 0; i < stockname.length; i++) {
   ArrStockNumber.push(numbername[i].value);
   ArrStockName.push(stockname[i].value);
