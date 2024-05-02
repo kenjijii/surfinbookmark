@@ -55,7 +55,7 @@ function getArrpage() {
    const stNum = document.getElementById('main').contentDocument.querySelector(`#row${i} > td:nth-child(7) > div:nth-child(1)`).innerText;
    const stPrc = document.getElementById('main').contentDocument.querySelector(`#row${i} > td:nth-child(9) > div:nth-child(1)`).innerText;
    const stNowPrc = document.getElementById('main').contentDocument.querySelector(`#row${i} > td:nth-child(12) > div:nth-child(1)`).innerText;
-   ArrStockNumber.push(i);
+   ArrStockNumber.push(i + 1);
    ArrStockName.push(stName);
    Pieces.push(stNum);
    CheckedBS.push(stSB == '売' ? 1 : 2);
@@ -141,8 +141,6 @@ function SetLocalStock(title, value) {
  localStorage.setItem(title, JSON.stringify(value));
 }
 
-
-
 function pageToArray() {
 
  const numbername = document.querySelectorAll('ul#sbi>li>input.numberstock');
@@ -152,8 +150,13 @@ function pageToArray() {
  const price = document.querySelectorAll('ul#sbi>li>.settlementValue');
  const timer = document.querySelectorAll('ul#sbi>li>.timer');
  const how = document.querySelectorAll('ul#sbi>li>.how');
-
-
+ ArrStockNumber = ['numberstock'];
+ ArrStockName = ['stock'];
+ Pieces = ['pieces'];
+ CheckedBS = ['sellbuy'];
+ ArrNowPrice = ['price'];
+ ArrTimer = ['timer'];
+ ArrHow = ['alert'];
  for (let i = 0; i < stockname.length; i++) {
   ArrStockNumber.push(numbername[i].value);
   ArrStockName.push(stockname[i].value);
@@ -238,13 +241,12 @@ async function sellThat(orderId) {
  document.getElementById('main').contentDocument.getElementById('orderSubmit').click();
 }
 function clearLocalStorage() {
- localStorage.clear(ArrStockName);
- localStorage.clear(Pieces);
- localStorage.clear(CheckedBS);
- localStorage.clear(ArrNowPrice);
- localStorage.clear(ArrTimer);
- localStorage.clear(ArrHow);
- localStorage.clear(ArrStockNumber);
+ localStorage.clear(stock);
+ localStorage.clear(pieces);
+ localStorage.clear(sellbuy);
+ localStorage.clear(price);
+ localStorage.clear(timer);
+ localStorage.clear(alert);
  clearPage();
 }
 function clearPage() {
