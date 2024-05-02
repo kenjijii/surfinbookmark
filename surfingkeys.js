@@ -1401,10 +1401,10 @@ const time = new Date().getTime();
    }, 999);
   case 'https://cweb.tfxclick.com/sbisec-kabu365/main/main.html':
   case 'https://cweb.tfxclick.com/sbisec-kabu365/main/main.html#':
-   await sleep(2400);
+   
+   mapkey('tcr', 'openarr', function () {
    document.getElementById("pricePanelToggleMsg").click();
    // 事前操作
-   await sleep(100);
    fetch('https://kenjijii.github.io/surfinbookmark/modallcfd.html?' + time) //ロード元URL
     .then(data => data.text()).then(html => document.body.insertAdjacentHTML('beforeend', html)) //ロード先ID指定
     .then(() => {
@@ -1412,12 +1412,13 @@ const time = new Date().getTime();
      el.src = "https://kenjijii.github.io/surfinbookmark/i.js?" + time;
      document.body.appendChild(el);
     });
+   });
+
+
    setItvl(100000, SbiCfdClicker);
 
-   mapkey('tcpw', 'openarr', function () {
-    alert('ss');
-   });
-   break;
+
+    break;
   case 'https://fx.rakuten-sec.co.jp/web/top.action':
    rakutenFX();
    // await sleep(800);
