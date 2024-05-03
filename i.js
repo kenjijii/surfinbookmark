@@ -324,16 +324,16 @@ function returnButton() {
  });
 }
 // ddd
-document.querySelector('#goShortcut-1').addEventListener('click', async function () {
- await sleep(1800);
- orderdbutton()
- // event.preventDefault();
-});
-document.querySelector('#buyit').addEventListener('click', async function () {
- document.querySelector('#myModal.modal').style.display = 'none';
- await sleep(199);
- document.getElementById('main').contentDocument.getElementById('orderBtn').click();
-});
+// document.querySelector('#goShortcut-1').addEventListener('click', async function () {
+//  await sleep(1800);
+//  orderdbutton()
+//  // event.preventDefault();
+// });
+// document.querySelector('#buyit').addEventListener('click', async function () {
+//  document.querySelector('#myModal.modal').style.display = 'none';
+//  await sleep(199);
+//  document.getElementById('main').contentDocument.getElementById('orderBtn').click();
+// });
 document.querySelector('#cancel').addEventListener('click', async function () {
  document.querySelector('#myModddal.modal').style.display = 'none';
  await sleep(199);
