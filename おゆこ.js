@@ -1,37 +1,3 @@
-document.getElementById('over').addEventListener('click', function () {
- const consoleElement = document.getElementById('my-console');
- if (consoleElement.style.display === 'none') {
-  consoleElement.style.display = 'block';
- } else {
-  consoleElement.style.display = 'none';
- }
-});
-// Log generator function
-function generateLog(flag) {
- const logElement = document.getElementById('my-console');
- const log = 'New log entry';
- logElement.insertAdjacentText('beforeend', log + '\n');
- // Scroll to bottom
-
-}
-
-
-let Scrollflag = true;
-// let intervalId;
-document.getElementById('scrollStopButton').addEventListener('click', function () {
- Scrollflag = !Scrollflag;
-});
-document.getElementById('prevent').addEventListener('click', function (event) {
- event.preventDefault();
-});
-
-
-
-// Scroll stop button
-
-// Generate logs every 1 second
-
-
 async function sleep(ms) {
  return new Promise(resolve => setTimeout(resolve, ms));
 };//sleep関数
@@ -61,8 +27,7 @@ function LocalStock(value) {
 // いちばん上の数値を割り出す
 // ARR完成
 // genericやねｎこれで、ローカルストックから持ってきてるがジェネリック
-
-// これに最新のプッシュを追加
+// これに最新のプッシュを追加でケナン製。
 function genericGetPage() {
  ArrStockName = LocalStock('stock');
  Pieces = LocalStock('pieces');
@@ -83,35 +48,26 @@ function getArrpage() {
  //4
  genericGetPage();
 
- for (let i = getMaxNumberFromArray(ArrStockNumber) - 1; i < colLength; i++) {
-  const stName = document.getElementById('main').contentDocument.querySelector(`#row${i} > td:nth-child(3) > div:nth-child(1)`).innerText;
-  const stSB = document.getElementById('main').contentDocument.querySelector(`#row${i} > td:nth-child(4) > div:nth-child(1)`).innerText;
-  const stNum = document.getElementById('main').contentDocument.querySelector(`#row${i} > td:nth-child(7) > div:nth-child(1)`).innerText;
-  const stPrc = document.getElementById('main').contentDocument.querySelector(`#row${i} > td:nth-child(9) > div:nth-child(1)`).innerText;
-  const stNowPrc = document.getElementById('main').contentDocument.querySelector(`#row${i} > td:nth-child(12) > div:nth-child(1)`).innerText;
-  console.log(stName);
-  alert(stName)
-  ArrStockNumber.push(i);
-  ArrStockName.push(stName);
-  Pieces.push(stNum);
-  CheckedBS.push(stSB == '売' ? 1 : 2);
-  ArrNowPrice.push(stPrc);
+ if (colLength > getMaxNumberFromArray(ArrStockNumber)) {
+  for (let i = getMaxNumberFromArray(ArrStockNumber); i < colLength; i++) {
+   const stName = document.getElementById('main').contentDocument.querySelector(`#row${i} > td:nth-child(3) > div:nth-child(1)`).innerText;
+   const stSB = document.getElementById('main').contentDocument.querySelector(`#row${i} > td:nth-child(4) > div:nth-child(1)`).innerText;
+   const stNum = document.getElementById('main').contentDocument.querySelector(`#row${i} > td:nth-child(7) > div:nth-child(1)`).innerText;
+   const stPrc = document.getElementById('main').contentDocument.querySelector(`#row${i} > td:nth-child(9) > div:nth-child(1)`).innerText;
+   const stNowPrc = document.getElementById('main').contentDocument.querySelector(`#row${i} > td:nth-child(12) > div:nth-child(1)`).innerText;
+   ArrStockNumber.push(i);
+   ArrStockName.push(stName);
+   Pieces.push(stNum);
+   CheckedBS.push(stSB == '売' ? 1 : 2);
+   ArrNowPrice.push(stPrc);
+  }
  };
 };
 // ページから取得
-
-
-
 document.getElementById('getPageArray').addEventListener('click', async function () {
- document.getElementById('goShortcut-3').click();
-
- // await sleep(20);
  // genericGetPage();
- await sleep(1200);
+ await sleep(300);
  document.querySelector('#myModal.modal').style.display = 'block';
-
- console.log('this');
-
  getArrpage();
  ArrayToPage();
 });
@@ -215,16 +171,18 @@ function pageToArray() {
 // 初期追加ボタンにおいて、元のデータの元がそこになくては。
 function makelist() {
  document.getElementById('pureadd').addEventListener('click', (e) => {
-  const list = document.querySelector(".hide");
+  const list = document.querySelector(".list");
   const listItem = list.children;
   const listItemElement = listItem[0].cloneNode(true);
-  const listSecond = document.querySelector(".list");
-  listSecond.appendChild(listItemElement);
+  const addButton = listItemElement.querySelector(".plus");
+  addButton.addEventListener("click", (e) => {
+   const AddThis = e.target.parentNode;
+   cloneThis(AddThis);
+  });
+  // listItemElement.querySelector('.plus').disabled = true;
+  list.appendChild(listItemElement);
   listItemElement.querySelector('.button--delete').addEventListener("click", (e) => {
    e.target.parentNode.remove();
-  });
-  listItemElement.querySelector('.plus').addEventListener("click", (e) => {
-   cloneThis(e.target.parentNode, true);
   });
  });
 };
@@ -240,7 +198,7 @@ function cloneThis(AddThis, plusfalse = false) {
   const originalStock = AddThis.querySelector('select.stockname').value;
   const originalPieces = AddThis.querySelector('select.numOfStock').value;
   const originalSellBuy = AddThis.querySelector('select.sellbuy').value;
-  const originalPrice = AddThis.querySelector('.settlementValue').value;
+  const originalPrice = AddThis.querySelector('.settlementValue').textContent;
   const originalTimer = AddThis.querySelector('.timer').value;
   const originalHow = AddThis.querySelector('.how').value;
   const clonedNumber = listItemElement.querySelector('input.numberstock');
@@ -348,7 +306,7 @@ function buttons() {
   ArrayToPage();
  });
  document.getElementById('close').addEventListener('click', (e) => {
-  document.getElementById('myModal').style.display = 'none';
+  document.getElementByarrId('myModal').style.display = 'none';
  });
 };
 // 伝播禁止
@@ -362,8 +320,12 @@ document.querySelector('.modal-content').addEventListener('click', async functio
 document.querySelector('#getPage').addEventListener('click', async function (event) {
  getPage();
 });
-
-
+document.querySelector('#sekai').addEventListener('click', async function (event) {
+ document.querySelector('#myModal.modal').style.display = 'block';
+ buttons();
+ // getPage();
+ ArrayToPage();
+});
 // 伝播禁止
 function orderdbutton() {
  const OrderButton = document.getElementById('main').contentDocument.getElementById('doOrderConfirm-1');
@@ -382,8 +344,7 @@ function orderdbutton() {
 function returnButton() {
  const ReturnButton = document.getElementById('main').contentDocument.getElementById('returnButton');
  ReturnButton.addEventListener('click', async function (event) {
-
-
+  alert('itswork')
   await sleep(500);
   orderdbutton();
  });
@@ -411,143 +372,3 @@ document.querySelector('#cancel').addEventListener('click', async function () {
 // LocalStock('timer');
 // LocalStock('alert');
 // LocalStock('numberstock');
-
-
-
-function MyConsole(log) {
- document.getElementById('my-console').insertAdjacentText('beforeend', log + '\n');
- if (Scrollflag) {
-  const logElement = document.getElementById('my-console');
-  logElement.scrollTop = logElement.scrollHeight;
- };
-};
-
-
-const sbiMutgation = (mutation, number) => {
-
- // もし、ナンバーが1なら、とか。
-
-
- let sbiAlertPrice = 222222;
-
- const mTxt = mutation.addedNodes[0].innerHTML.replace(/,/g, '.') - 0;
- // const mTxt = mutation.addedNodes[0].innerHTML - 0;
- MyConsole(mTxt);
- MyConsole(number);
- // alert(typeof mTxt)
-
- // ここでどうなるか分ける
-
- if (mTxt > sbiAlertPrice) {
- }
- console.log(mutation.addedNodes[0].innerHTML);
-};
-
-const MutationProsesser = (mutation, number) => {
- // mutationを加工する各ページごとの処理 各関数を。
- sbiMutgation(mutation, number);
-
-};
-
-
-
-function mutationRecords(target, number = 1) {
- const callback = (mutations) => {
-  mutations.forEach((mutation) => {
-   MutationProsesser(mutation, number);
-  })
- }
- // オブザーバー宣言
- const observer = new MutationObserver(callback);
- const config = {
-  subtree: true,
-  childList: true,
-  attributes: true,
-  characterData: true,
-  subtree: true,
- };
- observer.observe(target, config);
-}
-
-
-const target = document.getElementById("p2bid-p4014");
-
-
-
-// mutationRecords(target);
-
-// modalとつなげる。ボタンで、じゃなくて。もだるの数値いれてセーブしたらその通り動きたいので。
-
-// モーダルのテスト用のものを作る必要があるの。
-// モーダル追加ボタン何もないとやっぱできないこと。＜つまり、モーダルに追加するボタンが必要。＜エミュレート用に。
-
-// 売り買いのタイミング計りたい。
-
-const targets = `日経225(2024) p2bid-s4014 p2ask-s4014
-金ETF(2024) p2bid-s4054 p2ask-s4054
-NYダウ(2024) p2bid-s4044 p2ask-s4044
-NDX-100(2024) p2bid-s4074 p2ask-s4074
-プラチナETF(2024) p2bid-s4094 p2ask-s4094
-銀ETF(2024) p2bid-s4104 p2ask-s4104
-原油ETF(2024) p2bid-s4064 p2ask-s4064
-DAX(2024) p2bid-s4024 p2ask-ask24
-FTSE100(2024) p2bid-s4034 p2bid-s4034`;
-
-const targetElements = targets.split('\n').map(target => {
- const [name, bidId, askId] = target.split(' ');
- return {
-  name,
-  bidElement: document.getElementById(bidId),
-  askElement: document.getElementById(askId)
- };
-});
-
-document.querySelector('#sekai').addEventListener('click', async function (event) {
- genericGetPage();
- mutationRecords(target, ArrStockNumber[0]);
-
-
- const myConsole = document.getElementById('my-console');
- for (let i = 0; i < ArrStockNumber.length; i++) {
-  const div = document.createElement('div');
-  div.textContent = ArrStockNumber[i];
-  myConsole.appendChild(div);
- }
-
-
- for (let i = 0; i < ArrStockNumber.length; i++) {
-
-  ArrStockNumber[i]
- }
- // ArrStockNumber;
-
- // ArrStockName;
- // Pieces;
- // CheckedBS;
- // ArrNowPrice;
- // ArrTimer;
- // ArrHow;
-
-
-});
-
-
-
-// 必ず、俺はブログを作ろう、mdで。はてな。
-
-
-// 1. まず、ターゲットはできた各種。それと、モーダルからの配列で出し分けさせる必要がある。
-// 2. 配列から世界でボタンを押すと、ターゲットで出し分け。１は、１の行的なものにする。できれば、createele使いたい。
-// 3.
-
-
-
-// targetElements[1].name
-// targetElements[1].bidElement
-// targetElements[1].askElement
-// // Example usagejazz
-// targetElements.forEach(target => {
-//  console.log(target.name);
-//  console.log(target.bidElement);
-//  console.log(target.askElement);
-// });

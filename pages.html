@@ -5,67 +5,437 @@
  <meta charset="UTF-8">
  <meta name="viewport" content="width=device-width, initial-scale=1.0">
  <title>make money because you happy</title>
- <script>
-  window.addEventListener('DOMContentLoaded', function () {
-   fetch('./modallcfd.html') //ロード元URL
-    .then(data => data.text()).then(html => document.body.insertAdjacentHTML('beforeend', html)) //ロード先ID指定
-    .then(() => {
-     //ロード後の処理を記述   
-     // SCRIPTタグの生成
-     var el = document.createElement("script");
-     // SCRIPTタグのSRC属性に読み込みたいファイルを指定
-     el.src = "./i.js";
-     // BODY要素の最後に追加
-     document.body.appendChild(el);
-    });
-  });
 
+ <style>
+  #draggable-price-box {
 
-  function openModal() {
-   document.getElementById('myModal').style.display = 'block';
+   user-select: none;
+   display: flex;
+   flex-wrap: wrap;
+   background-color: white;
   }
- </script>
+ </style>
 
  /* モーダル */dd
 </head>
 <!-- <script src="./i.js" defer></script> -->
 <style>
  body {
-  background-color: blue;
+  background-color: white;
+ }
+
+ #main {
+  background-color: red;
+  width: 100%;
+ }
+
+ #draggable-price-box {
+  list-style: none;
+  justify-self: space-between;
  }
 </style>
 
 <body>
- <div id="mainA">myufuactore
-  <iframe src="in.html"></iframe>
 
+ <div id="mainA">
+  <div style="display: block;" id="pricePanel2">
+   <div class="panel">
+    <ul id="draggable-price-box" class="ui-sortable" unselectable="on" style="user-select: none;"><!-- Contents -->
+     <li id="p2cp4014">
+      <div class="price-panel-box portlet">
+       <table>
+        <tbody>
+         <tr class="title-header">
+          <td class="currency-pair" colspan="2">
+           <div class="currency-pair-n">日経225(2024)</div> <a href="javascript:void(0)"
+            onclick="onRemovePrice(4014); return false;"> </a>
+          </td>
+         </tr>
+
+
+         <tr>
+          <td class="caption">
+           <button id="up-button-id">up</button>
+           <button id="down-button-id">down</button>
+          </td>
+          <td class="caption"> <a href="javascript:void(0)"
+            onclick="PricePanel.redirectOrder(4014, 1); return false;"></a>
+          </td>
+         </tr>
+         <tr>
+          <td class="price-cell bid-cell" id="p2bid-c4014">
+           <div class="bid-sign" id="p2bid-s4014">　</div>
+           <div class="bid-price" id="p2bid-p4014"><span class="cfdprice">222222</span></div>
+          </td>
+          <td class="price-cell ask-cell" id="p2ask-c4014">
+           <div class="ask-sign" id="p2ask-s4014">　</div>
+           <div class="ask-price" id="p2ask-p4014">--</div>
+          </td>
+         </tr>
+         <tr>
+          <td class="high-price">H：<span id="p2high4014">--</span></td>
+          <td class="low-price">L：<span id="p2low4014">--</span></td>
+         </tr>
+        </tbody>
+       </table>
+      </div>
+     </li>
+     <li id="p2cp4054">
+      <div class="price-panel-box portlet">
+       <table>
+        <tbody>
+         <tr class="title-header">
+          <td class="currency-pair" colspan="2">
+           <div class="currency-pair-n">金ETF(2024)</div> <a href="javascript:void(0)"
+            onclick="onRemovePrice(4054); return false;"> </a>
+          </td>
+         </tr>
+         <tr>
+          <td class="caption"> <a href="javascript:void(0)"
+            onclick="PricePanel.redirectOrder(4054, 2); return false;"></a>
+          </td>
+          <td class="caption"> <a href="javascript:void(0)"
+            onclick="PricePanel.redirectOrder(4054, 1); return false;"></a>
+          </td>
+         </tr>
+         <tr>
+          <td class="price-cell bid-cell" id="p2bid-c4054">
+           <div class="bid-sign" id="p2bid-s4054">　</div>
+           <div class="bid-price" id="p2bid-p4054">--</div>
+          </td>
+          <td class="price-cell ask-cell" id="p2ask-c4054">
+           <div class="ask-sign" id="p2ask-s4054">　</div>
+           <div class="ask-price" id="p2ask-p4054">--</div>
+          </td>
+         </tr>
+         <tr>
+          <td class="high-price">H：<span id="p2high4054">--</span></td>
+          <td class="low-price">L：<span id="p2low4054">--</span></td>
+         </tr>
+        </tbody>
+       </table>
+      </div>
+     </li>
+     <li id="p2cp4044">
+      <div class="price-panel-box portlet">
+       <table>
+        <tbody>
+         <tr class="title-header">
+          <td class="currency-pair" colspan="2">
+           <div class="currency-pair-n">NYダウ(2024)</div> <a href="javascript:void(0)"
+            onclick="onRemovePrice(4044); return false;"> </a>
+          </td>
+         </tr>
+         <tr>
+          <td class="caption"> <a href="javascript:void(0)"
+            onclick="PricePanel.redirectOrder(4044, 2); return false;"></a>
+          </td>
+          <td class="caption"> <a href="javascript:void(0)"
+            onclick="PricePanel.redirectOrder(4044, 1); return false;"></a>
+          </td>
+         </tr>
+         <tr>
+          <td class="price-cell bid-cell" id="p2bid-c4044">
+           <div class="bid-sign" id="p2bid-s4044">　</div>
+           <div class="bid-price" id="p2bid-p4044">--</div>
+          </td>
+          <td class="price-cell ask-cell" id="p2ask-c4044">
+           <div class="ask-sign" id="p2ask-s4044">　</div>
+           <div class="ask-price" id="p2ask-p4044">--</div>
+          </td>
+         </tr>
+         <tr>
+          <td class="high-price">H：<span id="p2high4044">--</span></td>
+          <td class="low-price">L：<span id="p2low4044">--</span></td>
+         </tr>
+        </tbody>
+       </table>
+      </div>
+     </li>
+     <li id="p2cp4074">
+      <div class="price-panel-box portlet">
+       <table>
+        <tbody>
+         <tr class="title-header">
+          <td class="currency-pair" colspan="2">
+           <div class="currency-pair-n">NDX-100(2024)</div> <a href="javascript:void(0)"
+            onclick="onRemovePrice(4074); return false;"> </a>
+          </td>
+         </tr>
+         <tr>
+          <td class="caption"> <a href="javascript:void(0)"
+            onclick="PricePanel.redirectOrder(4074, 2); return false;"></a>
+          </td>
+          <td class="caption"> <a href="javascript:void(0)"
+            onclick="PricePanel.redirectOrder(4074, 1); return false;"></a>
+          </td>
+         </tr>
+         <tr>
+          <td class="price-cell bid-cell" id="p2bid-c4074">
+           <div class="bid-sign" id="p2bid-s4074">　</div>
+           <div class="bid-price" id="p2bid-p4074">--</div>
+          </td>
+          <td class="price-cell ask-cell" id="p2ask-c4074">
+           <div class="ask-sign" id="p2ask-s4074">　</div>
+           <div class="ask-price" id="p2ask-p4074">--</div>
+          </td>
+         </tr>
+         <tr>
+          <td class="high-price">H：<span id="p2high4074">--</span></td>
+          <td class="low-price">L：<span id="p2low4074">--</span></td>
+         </tr>
+        </tbody>
+       </table>
+      </div>
+     </li>
+     <li id="p2cp4094">
+      <div class="price-panel-box portlet">
+       <table>
+        <tbody>
+         <tr class="title-header">
+          <td class="currency-pair" colspan="2">
+           <div class="currency-pair-n">プラチナETF(2024)</div> <a href="javascript:void(0)"
+            onclick="onRemovePrice(4094); return false;"> </a>
+          </td>
+         </tr>
+         <tr>
+          <td class="caption"> <a href="javascript:void(0)"
+            onclick="PricePanel.redirectOrder(4094, 2); return false;"></a>
+          </td>
+          <td class="caption"> <a href="javascript:void(0)"
+            onclick="PricePanel.redirectOrder(4094, 1); return false;"></a>
+          </td>
+         </tr>
+         <tr>
+          <td class="price-cell bid-cell" id="p2bid-c4094">
+           <div class="bid-sign" id="p2bid-s4094">　</div>
+           <div class="bid-price" id="p2bid-p4094">--</div>
+          </td>
+          <td class="price-cell ask-cell" id="p2ask-c4094">
+           <div class="ask-sign" id="p2ask-s4094">　</div>
+           <div class="ask-price" id="p2ask-p4094">--</div>
+          </td>
+         </tr>
+         <tr>
+          <td class="high-price">H：<span id="p2high4094">--</span></td>
+          <td class="low-price">L：<span id="p2low4094">--</span></td>
+         </tr>
+        </tbody>
+       </table>
+      </div>
+     </li>
+     <li id="p2cp4104">
+      <div class="price-panel-box portlet">
+       <table>
+        <tbody>
+         <tr class="title-header">
+          <td class="currency-pair" colspan="2">
+           <div class="currency-pair-n">銀ETF(2024)</div> <a href="javascript:void(0)"
+            onclick="onRemovePrice(4104); return false;"> </a>
+          </td>
+         </tr>
+         <tr>
+          <td class="caption"> <a href="javascript:void(0)"
+            onclick="PricePanel.redirectOrder(4104, 2); return false;"></a>
+          </td>
+          <td class="caption"> <a href="javascript:void(0)"
+            onclick="PricePanel.redirectOrder(4104, 1); return false;"></a>
+          </td>
+         </tr>
+         <tr>
+          <td class="price-cell bid-cell" id="p2bid-c4104">
+           <div class="bid-sign" id="p2bid-s4104">　</div>
+           <div class="bid-price" id="p2bid-p4104">--</div>
+          </td>
+          <td class="price-cell ask-cell" id="p2ask-c4104">
+           <div class="ask-sign" id="p2ask-s4104">　</div>
+           <div class="ask-price" id="p2ask-p4104">--</div>
+          </td>
+         </tr>
+         <tr>
+          <td class="high-price">H：<span id="p2high4104">--</span></td>
+          <td class="low-price">L：<span id="p2low4104">--</span></td>
+         </tr>
+        </tbody>
+       </table>
+      </div>
+     </li>
+     <li id="p2cp4064">
+      <div class="price-panel-box portlet">
+       <table>
+        <tbody>
+         <tr class="title-header">
+          <td class="currency-pair" colspan="2">
+           <div class="currency-pair-n">原油ETF(2024)</div> <a href="javascript:void(0)"
+            onclick="onRemovePrice(4064); return false;"> </a>
+          </td>
+         </tr>
+         <tr>
+          <td class="caption"> <a href="javascript:void(0)"
+            onclick="PricePanel.redirectOrder(4064, 2); return false;"></a>
+          </td>
+          <td class="caption"> <a href="javascript:void(0)"
+            onclick="PricePanel.redirectOrder(4064, 1); return false;"></a>
+          </td>
+         </tr>
+         <tr>
+          <td class="price-cell bid-cell" id="p2bid-c4064">
+           <div class="bid-sign" id="p2bid-s4064">　</div>
+           <div class="bid-price" id="p2bid-p4064">--</div>
+          </td>
+          <td class="price-cell ask-cell" id="p2ask-c4064">
+           <div class="ask-sign" id="p2ask-s4064">　</div>
+           <div class="ask-price" id="p2ask-p4064">--</div>
+          </td>
+         </tr>
+         <tr>
+          <td class="high-price">H：<span id="p2high4064">--</span></td>
+          <td class="low-price">L：<span id="p2low4064">--</span></td>
+         </tr>
+        </tbody>
+       </table>
+      </div>
+     </li>
+     <li id="p2cp4024">
+      <div class="price-panel-box portlet">
+       <table>
+        <tbody>
+         <tr class="title-header">
+          <td class="currency-pair" colspan="2">
+           <div class="currency-pair-n">DAX(2024)</div> <a href="javascript:void(0)"
+            onclick="onRemovePrice(4024); return false;"> </a>
+          </td>
+         </tr>
+         <tr>
+          <td class="caption"> <a href="javascript:void(0)"
+            onclick="PricePanel.redirectOrder(4024, 2); return false;"></a>
+          </td>
+          <td class="caption"> <a href="javascript:void(0)"
+            onclick="PricePanel.redirectOrder(4024, 1); return false;"></a>
+          </td>
+         </tr>
+         <tr>
+          <td class="price-cell bid-cell" id="p2bid-c4024">
+           <div class="bid-sign" id="p2bid-s4024">　</div>
+           <div class="bid-price" id="p2bid-p4024">--</div>
+          </td>
+          <td class="price-cell ask-cell" id="p2ask-c4024">
+           <div class="ask-sign" id="p2ask-s4024">　</div>
+           <div class="ask-price" id="p2ask-p4024">--</div>
+          </td>
+         </tr>
+         <tr>
+          <td class="high-price">H：<span id="p2high4024">--</span></td>
+          <td class="low-price">L：<span id="p2low4024">--</span></td>
+         </tr>
+        </tbody>
+       </table>
+      </div>
+     </li>
+     <li id="p2cp4034">
+      <div class="price-panel-box portlet">
+       <table>
+        <tbody>
+         <tr class="title-header">
+          <td class="currency-pair" colspan="2">
+           <div class="currency-pair-n">FTSE100(2024)</div> <a href="javascript:void(0)"
+            onclick="onRemovePrice(4034); return false;"> </a>
+          </td>
+         </tr>
+         <tr>
+          <td class="caption"> <a href="javascript:void(0)"
+            onclick="PricePanel.redirectOrder(4034, 2); return false;"></a>
+          </td>
+          <td class="caption"> <a href="javascript:void(0)"
+            onclick="PricePanel.redirectOrder(4034, 1); return false;"></a>
+          </td>
+         </tr>
+         <tr>
+          <td class="price-cell bid-cell" id="p2bid-c4034">
+           <div class="bid-sign" id="p2bid-s4034">　</div>
+           <div class="bid-price" id="p2bid-p4034">--</div>
+          </td>
+          <td class="price-cell ask-cell" id="p2ask-c4034">
+           <div class="ask-sign" id="p2ask-s4034">　</div>
+           <div class="ask-price" id="p2ask-p4034">--</div>
+          </td>
+         </tr>
+         <tr>
+          <td class="high-price">H：<span id="p2high4034">--</span></td>
+          <td class="low-price">L：<span id="p2low4034">--</span></td>
+         </tr>
+        </tbody>
+       </table>
+      </div>
+     </li>
+    </ul>
+   </div>
+  </div>
+  <iframe src="in.html" id="main" style="width: 100%;"></iframe>
   <button id="myBtn" onclick="openModal()">Open Modal</button>,
 
-
-
-  dddddd
-  dddddddddddddddddddddddddddddddddd
-  <br>
-  dddmyufuactore,
-  <br>
-  dddmyufuactore,
-  <br>
-  dddmyufuactore,
-  <br>
-  dddmyufuactore,
-  <br>
-  dddmyufuactore,
-  <br>
-  dddmyufuactore,
-  <br>
-  dddmyufuactore,
-  <br>
-  dddmyufuactore,
-  <br>
-  dddmyufuactore,
-  <br>
-  ddd
  </div>
 </body>
+
+<script>
+ window.addEventListener('DOMContentLoaded', function () {
+  fetch('./modallcfd.html') //ロード元URL
+   .then(data => data.text()).then(html => document.body.insertAdjacentHTML('beforeend', html)) //ロード先ID指定
+   .then(() => {
+    //ロード後の処理を記述   
+    // SCRIPTタグの生成
+    var el = document.createElement("script");
+    // SCRIPTタグのSRC属性に読み込みたいファイルを指定
+    el.src = "./i.js";
+    // BODY要素の最後に追加
+    document.body.appendChild(el);
+   });
+ });
+
+ function openModal() {
+  document.getElementById('myModal').style.display = 'block';
+ }
+ function upkeyiloveyou() {
+  // Get the span element
+  const spanElement = document.getElementById("p2bid-p4014").querySelector("span");
+
+  // Function to increase the value
+  function increaseValue() {
+   let value = parseInt(spanElement.innerHTML);
+   value++;
+   spanElement.innerHTML = value;
+  }
+
+  // Function to decrease the value
+  function decreaseValue() {
+   let value = parseInt(spanElement.innerHTML);
+   value--;
+   spanElement.innerHTML = value;
+  }
+
+  // Add event listeners to the up and down buttons
+  const upButton = document.getElementById("up-button-id");
+  const downButton = document.getElementById("down-button-id");
+
+  upButton.addEventListener("click", increaseValue);
+  downButton.addEventListener("click", decreaseValue);
+
+  // Function to handle key events
+  function handleKeyEvent(event) {
+   if (event.key === "p") {
+    increaseValue();
+   } else if (event.key === "-") {
+    decreaseValue();
+   }
+  }
+
+  // Add event listener to the document for key events
+  document.addEventListener("keydown", handleKeyEvent);
+
+ };
+ upkeyiloveyou();
+
+</script>
+
 
 </html>

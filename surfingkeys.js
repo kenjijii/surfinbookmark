@@ -421,6 +421,7 @@ function rakutenFX() {
  let cutLoss = () => {
   document.querySelector('#nav-order-close > a').click();
   let pt = prompt('何番を切る？', 1)
+
   if (pt) {
    let pst = pt + 1
    const exec = async () => {
@@ -606,7 +607,10 @@ function rakutenFX() {
   let NumOfCP = 1
   NumOfCP = prompt('どれを建値をコピペするか', NumOfCP)
   NumOfCP = NumOfCP - 1;
+
+
   const exec = async () => {
+   // ユーザーがキャンセルボタンをクリックする場合、この関数は、 null を返します
    document.querySelector('#nav-order-change > a').click();
    hufu = await newpro(700)
    let ag = [...document.getElementById("mainFrame").contentDocument.querySelectorAll('.align-R>div:nth-child(2)')].map((c) => c.textContent);
@@ -635,11 +639,14 @@ function rakutenFX() {
     // else内でコピペして処理してる。
    }
   }
-  exec();
-  if (NumOfCP != '0') {
+
+  if (NumOfCP == -1) {
+   return false;
   } else {
-   console.log(';ab')
+   exec();
   }
+
+
  }
  mapkey('pc', "チャートから取得する", function () {
   // map1
@@ -1401,24 +1408,41 @@ const time = new Date().getTime();
    }, 999);
   case 'https://cweb.tfxclick.com/sbisec-kabu365/main/main.html':
   case 'https://cweb.tfxclick.com/sbisec-kabu365/main/main.html#':
-   
+  case 'https://drrrkari.com/room/':
+   function sbi() {
+    document.getElementById("pricePanelToggleMsg").click();
+    // 事前操作
+    fetch('http://127.0.0.1:5500/modallcfd.html?' + time) //ロード元URL
+     // fetch('https://kenjijii.github.io/surfinbookmark/modallcfd.html?' + time) //ロード元URL
+     .then(data => data.text()).then(html => document.body.insertAdjacentHTML('beforeend', html)) //ロード先ID指定
+     .then(() => {
+      var el = document.createElement("script");
+      // el.src = "https://kenjijii.github.io/surfinbookmark/modallcfd.html?/i.js?" + time;
+      el.src = "http://127.0.0.1:5500/i.js?" + time;
+      document.body.appendChild(el);
+     });
+   };
+   await sleep(1500);
+   sbi();
+
+
    mapkey('tcr', 'openarr', function () {
-   document.getElementById("pricePanelToggleMsg").click();
-   // 事前操作
-   fetch('https://kenjijii.github.io/surfinbookmark/modallcfd.html?' + time) //ロード元URL
-    .then(data => data.text()).then(html => document.body.insertAdjacentHTML('beforeend', html)) //ロード先ID指定
-    .then(() => {
-     var el = document.createElement("script");
-     el.src = "https://kenjijii.github.io/surfinbookmark/i.js?" + time;
-     document.body.appendChild(el);
-    });
+    sbi()
    });
 
 
    setItvl(100000, SbiCfdClicker);
 
+   mapkey('zq', 'うまくいけるか。', function () {
 
-    break;
+    var el = document.createElement("script");
+    el.src = "http://127.0.0.1:5500/i.js?" + time;
+    document.body.appendChild(el);
+
+   });
+
+
+   break;
   case 'https://fx.rakuten-sec.co.jp/web/top.action':
    rakutenFX();
    // await sleep(800);
@@ -1433,5 +1457,18 @@ const time = new Date().getTime();
   //     await sleep(800);
   //     document.querySelector('#sidebar > div:nth-child(1) > div:nth-child(1)').click();
   //     break;
+
+  case location.href.startsWith('https://raw1001.net/manga/') && location.href: {
+   mapkey('zz', 'dddddddtab', function () {
+    scrollBy(0, 789.317);
+   });
+   mapkey('za', 'dddddddtab', function () {
+    scrollBy(0, -789.317);
+   });
+  }
  }
 })();
+
+
+
+

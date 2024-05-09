@@ -4,7 +4,7 @@
 <head>
  <meta charset="UTF-8">
  <meta name="viewport" content="width=device-width, initial-scale=1.0">
- <title>love the get money is happy.</title>
+ <title>make them happy for get money to watasino happy.</title>
 
 </head>
 <style>
@@ -14,7 +14,7 @@
   left: 0;
   top: 0;
   width: 100%;
-  height: 100%;
+  height: 80%;
   overflow: auto;
   background-color: rgba(0, 0, 0, 0.814);
   transition: 0.6s;
@@ -138,33 +138,167 @@
   background-color: green;
   padding: 12px;
   color: white;
-  margin-top: -45px;
  }
 
- #getPageArray {
+ #getPageArray,
+ #over {
   background-color: blue;
   padding: 12px;
   color: white;
   font-weight: 900;
-  margin-top: -45px;
  }
 
 
 
  #sbi>li:nth-child(1) {
-  display: none;
+  /* display: none; */
+ }
+
+ ul.hide>li {
+  display: none !important;
+ }
+
+ #my-console {
+  position: absolute;
+  min-width: 380px;
+  height: 200px;
+  background: rgba(14, 14, 14, 0.78);
+  padding: 1.3em 1em;
+  color: white;
+  top: 2px;
+  word-wrap: break-word;
+  white-space: pre-line;
+  width: 49%;
+  z-index: 999;
+  overflow: auto;
+  /* pointer-events: none; */
+  /* position: relative; */
+  display: flex;
+  flex-wrap: wrap;
+
+ }
+
+ #my-console div {
+  min-width: 20px;
+
+
+
+
+ }
+
+
+ .buttons {
+  left: 0%;
+  bottom: 0%;
+  position: fixed;
+  display: flex;
+  justify-content: left;
+  margin-top: 1rem;
+ }
+
+ .buttons>button {
+  padding: 10px;
+  /* background-color: blue; */
+  /* color: white; */
+  font-weight: 900;
+  cursor: pointer;
+  font-size: .7rem;
+ }
+
+
+ #scrollStopButton {
+
+  /* right: 20px; */
+  background-color: white;
+ }
+
+ #my-console {
+  /* display: none; */
+  pointer-events: none;
+ }
+
+ #prevent {
+  pointer-events: none;
  }
 </style>
 
 
 <body id="no">
+
+ <div id="my-console">
+  <!-- <div class="1">333</div>
+  <div class="1">222</div> -->
+
+
+ </div>
  <!-- モーダル表示ボタン -->
  <!-- モーダル -->
- <button id="sekai">sekai</button>
- <button id="getPageArray">getPageArray</button>
+ <div class="buttons">
+  <button id="over">over</button>
+  <button id="sekai">sekai</button>
+  <button id="getPageArray">getPageArray</button>
+  <button id="scrollStopButton">スクロール</button>
+  <button id="prevent">ぷれべんと</button>
+ </div>
+
+ </div>
+
+
  <div id="myModal" class="modal">
+
   <!-- モーダルダイアログ -->
   <div class="modal-content">
+   <ul class="hide">
+    <li>
+     <button class="plus">＋
+     </button>
+     <input class="numberstock" type="text" value="1">
+
+     <select class="stockname">
+      <option value="nothing">　</option>
+      <option value="日経225(2024)">日経225(2024)</option>
+      <option value="DAX(2024)">DAX(2024)</option>
+      <option value="FTSE100(2024)">FTSE100(2024)</option>
+      <option value="NYダウ(2024)">NYダウ(2024)</option>
+      <option value="NDX-100(2024)">NDX-100(2024)</option>
+      <option value="RSL2000(2024)">RSL2000(2024)</option>
+      <option value="金ETF(2024)">金ETF(2024)</option>
+      <option value="プラチナETF(2024)">プラチナETF(2024)</option>
+      <option value="銀ETF(2024)">銀ETF(2024)</option>
+      <option value="原油ETF(2024)">原油ETF(2024)</option>
+      <!-- elect.options[1].selected = true; -->
+     </select>
+     <select class="numOfStock">
+      <option value=""></option>
+      <option value="1">１個</option>
+      <option value="2">２個</option>
+      <option value="3">３個</option>
+      <option value="4">４個</option>
+      <option value="5">５個</option>
+      <option value="6">６個</option>
+      <option value="7">７個</option>
+      <option value="8">８個</option>
+      <option value="9">９個</option>
+      <option value="10">１０個</option>
+     </select>
+
+     <select class="sellbuy">
+      <option value=""></option>
+      <option value="1">売</option>
+      <option value="2">買</option>
+     </select>
+     <!-- 買いの値 -->
+     <input type="text" class="settlementValue" value="35555"></input>
+     <input class="timer" type="text" value="333">
+     <select name="" class="how">
+      <option value="alert">アラート</option>
+      <option value="relinquish">手放す</option>
+     </select>
+     <!-- アラートか、売るか、特殊な売り買いかかな。mutationに渡し動作させる -->
+     <button class="button button--delete">削除</button>
+    </li>
+   </ul>
+
 
    <a id="close" class="close">
     <div class="close">閉じる</div>
@@ -176,8 +310,6 @@
      style="background-color: red; color: white; cursor: pointer;font-size: 1.2rem;">cancel</a>　
     <a href="#" id="getPage" class="getPage" style="background-color: red; color: white; cursor: pointer;">getPage</a>　
 
-    <a href="#" id="clearPage" class="clearPage"
-     style="background-color: red; color: white; cursor: pointer;">clearPage</a>　
 
     <a href="#" id="clear" class="clear" style="background-color: red; color: white; cursor: pointer;">clear</a>
     <a href="#" id="save" class="save"
@@ -222,8 +354,10 @@
       <option value="2">買</option>
      </select>
      <!-- 買いの値 -->
-     <span class="settlementValue">35555</span>
-     <input class="timer" type="number">
+     <input type="text" class="settlementValue" value="35555"></input>
+
+
+     <input class="timer" type="text" value="333">
      <select name="" class="how">
       <option value="alert">アラート</option>
       <option value="relinquish">手放す</option>
