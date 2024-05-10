@@ -108,6 +108,7 @@ unmap("s");
 unmap("x");
 unmap("p");
 unmap("a");
+unmap("sr");
 mapkey('ymd', "Copy current page's link for markdown", function () {
  const url = new URL(window.location.href);
  var title = window.document.title.replace(/(<|>)/g, '\\$1')
@@ -356,9 +357,10 @@ function setItvl(int, callback) {
 function SbiCfdClicker(params) {
  const btn3 = document.getElementById('goShortcut-3')
  // const btn4 = document.getElementById('goShortcut-4')
- let event = new Event('mousedown');
- btn3.dispatchEvent(event);
- // btn4.dispatchEvent(event);
+ // let event = new Event('mousedown');
+ // btn3.dispatchEvent(event);
+ // // btn4.dispatchEvent(event);
+ btn3.click();
 }
 function rakutenFX() {
  let OrderValue = 1

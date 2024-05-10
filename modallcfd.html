@@ -161,30 +161,33 @@
  #my-console {
   position: absolute;
   min-width: 380px;
-  height: 200px;
+  height: 100px;
   background: rgba(14, 14, 14, 0.78);
-  padding: 1.3em 1em;
+  padding: 0 1em;
   color: white;
   top: 2px;
   word-wrap: break-word;
   white-space: pre-line;
   width: 49%;
   z-index: 999;
-  overflow: auto;
+  overflow: hidden;
   /* pointer-events: none; */
   /* position: relative; */
   display: flex;
   flex-wrap: wrap;
-
+  justify-content: space-between;
  }
 
- #my-console div {
+ #my-console>div {
   min-width: 20px;
-
-
-
-
+  overflow: auto;
+  height: 100%;
+  scrollbar-width: auto;
+  scrollbar-color: #fff #ffffff;
  }
+
+
+
 
 
  .buttons {
@@ -214,11 +217,21 @@
 
  #my-console {
   /* display: none; */
-  pointer-events: none;
+  /* pointer-events: none; */
+
  }
 
  #prevent {
-  pointer-events: none;
+  /* pointer-events: none; */
+ }
+
+ .titleStock {
+  position: sticky;
+  top: 0;
+  background: #333;
+  color: white;
+  text-align: center;
+
  }
 </style>
 

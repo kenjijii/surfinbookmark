@@ -22,14 +22,16 @@ document.getElementById('scrollStopButton').addEventListener('click', function (
  Scrollflag = !Scrollflag;
 });
 document.getElementById('prevent').addEventListener('click', function (event) {
- event.preventDefault();
+ const button = event.target;
+ const modalContent = document.querySelector('#my-console');
+ if (modalContent.style.pointerEvents === 'none') {
+  modalContent.style.pointerEvents = 'auto';
+  button.textContent = 'Disable';
+ } else {
+  modalContent.style.pointerEvents = 'none';
+  button.textContent = 'Enable';
+ }
 });
-
-
-
-// Scroll stop button
-
-// Generate logs every 1 second
 
 
 async function sleep(ms) {
@@ -44,7 +46,7 @@ async function sleep(ms) {
 })();
 let ArrStockName;
 let Pieces;
-let CheckedBS;
+let ArrBS;
 let ArrNowPrice;
 let ArrTimer;
 let ArrHow;
@@ -66,7 +68,7 @@ function LocalStock(value) {
 function genericGetPage() {
  ArrStockName = LocalStock('stock');
  Pieces = LocalStock('pieces');
- CheckedBS = LocalStock('sellbuy');
+ ArrBS = LocalStock('sellbuy');
  ArrNowPrice = LocalStock('price');
  ArrTimer = LocalStock('timer');
  ArrHow = LocalStock('alert');
@@ -90,11 +92,10 @@ function getArrpage() {
   const stPrc = document.getElementById('main').contentDocument.querySelector(`#row${i} > td:nth-child(9) > div:nth-child(1)`).innerText;
   const stNowPrc = document.getElementById('main').contentDocument.querySelector(`#row${i} > td:nth-child(12) > div:nth-child(1)`).innerText;
   console.log(stName);
-  alert(stName)
   ArrStockNumber.push(i);
   ArrStockName.push(stName);
   Pieces.push(stNum);
-  CheckedBS.push(stSB == '売' ? 1 : 2);
+  ArrBS.push(stSB == '売' ? 1 : 2);
   ArrNowPrice.push(stPrc);
  };
 };
@@ -132,7 +133,7 @@ function ArrayToPage() {
  };
  function SellBuyFromArray(num) {
   const selectElement = document.querySelector('ul#sbi>li:nth-child(' + num + ')>.sellbuy');
-  selectElement.value = CheckedBS[num];
+  selectElement.value = ArrBS[num];
  };
  function PriceNowFromArray(num) {
   const priceNowElement = document.querySelector('ul#sbi>li:nth-child(' + num + ')>.settlementValue');
@@ -186,7 +187,7 @@ function pageToArray() {
   ArrStockNumber.push(numbername[i].value);
   ArrStockName.push(stockname[i].value);
   Pieces.push(pieces[i].value);
-  CheckedBS.push(sellbuy[i].value);
+  ArrBS.push(sellbuy[i].value);
   ArrNowPrice.push(price[i].textContent);
   ArrTimer.push(timer[i].value);
   ArrHow.push(how[i].value);
@@ -194,7 +195,7 @@ function pageToArray() {
  console.log(ArrStockName);
  console.log(ArrStockNumber);
  console.log(Pieces);
- console.log(CheckedBS);
+ console.log(ArrBS);
  console.log(ArrNowPrice);
  console.log(ArrTimer);
  console.log(ArrHow);
@@ -205,7 +206,7 @@ function pageToArray() {
  SetLocalStock('stock', ArrStockName);
  SetLocalStock('numberstock', ArrStockNumber);
  SetLocalStock('pieces', Pieces);
- SetLocalStock('sellbuy', CheckedBS);
+ SetLocalStock('sellbuy', ArrBS);
  SetLocalStock('price', ArrNowPrice);
  SetLocalStock('timer', ArrTimer);
  SetLocalStock('alert', ArrHow);
@@ -299,7 +300,7 @@ function clearArray() {
  ArrStockNumber = ['numberstock'];
  ArrStockName = ['stock'];
  Pieces = ['pieces'];
- CheckedBS = ['sellbuy'];
+ ArrBS = ['sellbuy'];
  ArrNowPrice = ['price'];
  ArrTimer = ['timer'];
  ArrHow = ['alert'];
@@ -324,7 +325,7 @@ function clearPage() {
 function cl() {
  console.log(ArrStockName);
  console.log(Pieces);
- console.log(CheckedBS);//"sellbuy", false 
+ console.log(ArrBS);//"sellbuy", false 
  console.log(ArrNowPrice);//price", "38,670"
  console.log(ArrTimer);
  console.log(ArrHow);
@@ -414,34 +415,47 @@ document.querySelector('#cancel').addEventListener('click', async function () {
 
 
 
-function MyConsole(log) {
- document.getElementById('my-console').insertAdjacentText('beforeend', log + '\n');
+function MyConsole(log, number = 0) {
+ number = Number(number) + 1;
+ document.querySelector('#my-console>div:nth-child(' + number + ')').insertAdjacentText('beforeend', log + '\n');
  if (Scrollflag) {
-  const logElement = document.getElementById('my-console');
+  const logElement = document.querySelector('#my-console>div:nth-child(' + number + ')');
   logElement.scrollTop = logElement.scrollHeight;
  };
 };
 
 
+function logscroll() {
+ const logElement = document.querySelector('#my-console>div:nth-child(1)');
+ logElement.scrollTop = logElement.scrollHeight;
+}
+
+
+
 const sbiMutgation = (mutation, number) => {
-
- // もし、ナンバーが1なら、とか。
-
-
+ // numberで、配列から、出す
+ // ArrStockName[]
  let sbiAlertPrice = 222222;
-
+ if (ArrStockNumber == 1) {
+ }
+ // ナンバーで表示出し分け　1は１
+ // numberでアラートを取得して出し分け。
+ if (number == 0) {
+ }
+ // もし、ナンバーが1なら、とか。
  const mTxt = mutation.addedNodes[0].innerHTML.replace(/,/g, '.') - 0;
  // const mTxt = mutation.addedNodes[0].innerHTML - 0;
- MyConsole(mTxt);
- MyConsole(number);
+ MyConsole(mTxt, number);
+ // MyConsole(number);
  // alert(typeof mTxt)
-
  // ここでどうなるか分ける
-
  if (mTxt > sbiAlertPrice) {
  }
  console.log(mutation.addedNodes[0].innerHTML);
 };
+
+
+
 
 const MutationProsesser = (mutation, number) => {
  // mutationを加工する各ページごとの処理 各関数を。
@@ -451,7 +465,7 @@ const MutationProsesser = (mutation, number) => {
 
 
 
-function mutationRecords(target, number = 1) {
+function mutationRecords(target, number = 1,) {
  const callback = (mutations) => {
   mutations.forEach((mutation) => {
    MutationProsesser(mutation, number);
@@ -470,7 +484,6 @@ function mutationRecords(target, number = 1) {
 }
 
 
-const target = document.getElementById("p2bid-p4014");
 
 
 
@@ -483,15 +496,15 @@ const target = document.getElementById("p2bid-p4014");
 
 // 売り買いのタイミング計りたい。
 
-const targets = `日経225(2024) p2bid-s4014 p2ask-s4014
-金ETF(2024) p2bid-s4054 p2ask-s4054
-NYダウ(2024) p2bid-s4044 p2ask-s4044
-NDX-100(2024) p2bid-s4074 p2ask-s4074
-プラチナETF(2024) p2bid-s4094 p2ask-s4094
-銀ETF(2024) p2bid-s4104 p2ask-s4104
-原油ETF(2024) p2bid-s4064 p2ask-s4064
-DAX(2024) p2bid-s4024 p2ask-ask24
-FTSE100(2024) p2bid-s4034 p2bid-s4034`;
+const targets = `日経225(2024) p2bid-p4014 p2ask-p4014
+金ETF(2024) p2bid-p4054 p2ask-p4054
+NYダウ(2024) p2bid-p4044 p2ask-p4044
+NDX-100(2024) p2bid-p4074 p2ask-p4074
+プラチナETF(2024) p2bid-p4094 p2ask-p4094
+銀ETF(2024) p2bid-p4104 p2ask-p4104
+原油ETF(2024) p2bid-p4064 p2ask-p4064
+DAX(2024) p2bid-p4024 p2ask-ask24
+FTSE100(2024) p2bid-p4034 p2bid-p4034`;
 
 const targetElements = targets.split('\n').map(target => {
  const [name, bidId, askId] = target.split(' ');
@@ -502,52 +515,53 @@ const targetElements = targets.split('\n').map(target => {
  };
 });
 
+
+// function alertArray(arr) {
+//  arr.forEach(item => {
+//   alert(item);
+//  });
+// }
+
 document.querySelector('#sekai').addEventListener('click', async function (event) {
  genericGetPage();
- mutationRecords(target, ArrStockNumber[0]);
-
-
  const myConsole = document.getElementById('my-console');
- for (let i = 0; i < ArrStockNumber.length; i++) {
+ myConsole.innerHTML = '';
+ const uniqueArrStockNumber = ArrStockNumber.filter((value, index, self) => {
+  return self.indexOf(value) === index;
+ });
+ const uniqueArrStockName = uniqueArrStockNumber.map((number) => {
+  const index = ArrStockNumber.indexOf(number);
+  return ArrStockName[index];
+ });
+ // 箱作って、タイトル入れた
+ // 出来るなら機能も入れたい。やるとしたら、
+ uniqueArrStockNumber.slice(1).forEach((stNumber) => {
   const div = document.createElement('div');
-  div.textContent = ArrStockNumber[i];
+  const titleStock = document.createElement('div');
+  titleStock.classList.add('titleStock');
+  titleStock.textContent = ArrStockName[ArrStockNumber.indexOf(stNumber)];
+
+
+  // ArrStockNumber.indexOf(stNumber)で、indexわかる
+  div.appendChild(titleStock);
+  // div.textContent = stNumber;
   myConsole.appendChild(div);
- }
+
+  const target = targetElements.find(target => target.name === ArrStockName[ArrStockNumber.indexOf(stNumber)]);
+  const BS = ArrBS[ArrStockNumber.indexOf(stNumber)] == 1 ? target.bidElement : target.askElement;
 
 
- for (let i = 0; i < ArrStockNumber.length; i++) {
+  mutationRecords(BS, stNumber);
 
-  ArrStockNumber[i]
- }
- // ArrStockNumber;
+  // 価格画面作り
 
- // ArrStockName;
- // Pieces;
- // CheckedBS;
- // ArrNowPrice;
- // ArrTimer;
- // ArrHow;
+ });
+
+
+
+
+
+ // 必ず、俺はブログを作ろう、mdで。はてな。
 
 
 });
-
-
-
-// 必ず、俺はブログを作ろう、mdで。はてな。
-
-
-// 1. まず、ターゲットはできた各種。それと、モーダルからの配列で出し分けさせる必要がある。
-// 2. 配列から世界でボタンを押すと、ターゲットで出し分け。１は、１の行的なものにする。できれば、createele使いたい。
-// 3.
-
-
-
-// targetElements[1].name
-// targetElements[1].bidElement
-// targetElements[1].askElement
-// // Example usagejazz
-// targetElements.forEach(target => {
-//  console.log(target.name);
-//  console.log(target.bidElement);
-//  console.log(target.askElement);
-// });
