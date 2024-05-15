@@ -108,7 +108,6 @@ unmap("s");
 unmap("x");
 unmap("p");
 unmap("a");
-unmap("sr");
 mapkey('ymd', "Copy current page's link for markdown", function () {
  const url = new URL(window.location.href);
  var title = window.document.title.replace(/(<|>)/g, '\\$1')
@@ -309,11 +308,6 @@ addSearchAlias(
 addSearchAlias('wbr', 'brave', 'https://search.brave.com/search?q=')
 addSearchAlias('wbi', 'bing', 'https://www.bing.com/search?q=')
 // Yahoo!リアルタイム検索
-addSearchAlias(
- 'r',
- 'Yahoo!リアルタイム検索',
- 'http://realtime.search.yahoo.co.jp/search?ei=UTF-8&p='
-)
 mapkey('or', '#8Open Search with alias r', function () {
  Front.openOmnibar({ type: 'SearchEngine', extra: 'r' })
 })
@@ -419,12 +413,24 @@ function rakutenFX() {
    document.querySelector('#nav-order-close > a').click();
   }
   exec()
- }
- let cutLoss = () => {
+ };
+
+ function ControlPanel() {
+
+  const footer = document.getElementById("mainFrame").contentDocument.querySelector('#footer');
+  const div = document.createElement('div');
+  div.innerHTML = '<div id="controlPanel" style="position: fixed; bottom: 0; right: 0; background-color: #f1f1f1; border: 1px solid #d3d3d3; padding: 10px; z-index: 1000;"> <h2>Control Panel</h2> <button id="sellMoney">Sell Money</button> <button id="buyMoney">Buy Money</button> <button id="sellMoneyWithPips">Sell Money With Pips</button> <button id="buyMoneyWithPips">Buy Money With Pips</button> </div>';
+  footer.insertAdjacentHTML('beforeend', 'sss');
+ };
+
+
+ // 買う。そのあと、ｐｔの下を入れる。
+ let cutLoss = (callback) => {
   document.querySelector('#nav-order-close > a').click();
   let pt = prompt('何番を切る？', 1)
-
   if (pt) {
+
+   //ここにあれが入ってるよ。出してもいいね。
    let pst = pt + 1
    const exec = async () => {
     hufu = await newpro(1000)
@@ -448,6 +454,9 @@ function rakutenFX() {
     // document.getElementById("mainFrame").contentDocument.getElementById('orderFlashPanel').contentDocument.querySelector('body > div > div.BidAskRate.Large > div.part.buy').click();
     // ページ変遷
     // アウェイと
+    if (callback) {
+     callback();
+    }
    }
    exec()
   }
@@ -464,13 +473,13 @@ function rakutenFX() {
  const noLoose = async () => {
   document.getElementById("mainFrame").contentDocument.querySelector("#text_01").value = CopyedNum
   document.getElementById("mainFrame").contentDocument.querySelector("#text_01").type = 'number'
-  document.getElementById("mainFrame").contentDocument.querySelector("#text_01").step = '0.01'
+  document.getElementById("mainFrame").contentDocument.querySelector("#text_01").step = '0.0022'
   document.getElementById("mainFrame").contentDocument.querySelector("#text_01").focus()
  }
  const noLooseO = async () => {
   document.getElementById("mainFrame").contentDocument.querySelector("#text_02").value = CopyedNum
   document.getElementById("mainFrame").contentDocument.querySelector("#text_02").type = 'number'
-  document.getElementById("mainFrame").contentDocument.querySelector("#text_02").step = '0.01'
+  document.getElementById("mainFrame").contentDocument.querySelector("#text_02").step = '0.0022'
   document.getElementById("mainFrame").contentDocument.querySelector("#text_02").focus()
  }
  const zen = () => {
@@ -1014,9 +1023,9 @@ function rakutenFX() {
    const bana02 = document.querySelector('#bana_02');
    const bana03 = document.querySelector('#bana_03');
    hufu = await newpro(500);
-   bana01.step = '0.01';
-   bana02.step = '0.01';
-   bana03.step = '0.01';
+   bana01.step = '0.002';
+   bana02.step = '0.002';
+   bana03.step = '0.002';
    bana01.value = Teiyaku;
    bana02.value = '';
    bana03.value = '';
@@ -1080,6 +1089,16 @@ function rakutenFX() {
  mapkey('aaz', "もダル消す", async function () {
   document.getElementById("myModal").style.visibility = "hidden";
   document.getElementById("myModal").style.opacity = 0;
+ });
+ mapkey('az', "fromU", function () {
+  document.querySelector('#bana_01').value = document.getElementById("mainFrame").contentDocument.querySelector('#text_01').value;
+
+ })
+ mapkey('po', "paddingtop ", async function () {
+  document.getElementById("mainFrame").contentDocument.getElementById('orderFlashPanel').contentDocument.querySelector('body > div > div.BidAskRate.Large > div.part.sell').click();
+ });
+ mapkey('pi', "paddingtop ", async function () {
+  document.getElementById("mainFrame").contentDocument.getElementById('orderFlashPanel').contentDocument.querySelector('body > div > div.BidAskRate.Large > div.part.buy').click();
  });
  mapkey('pn', "paddingtop ", async function () {
   // document.querySelector('body').style.paddingTop = '100px'
@@ -1343,6 +1362,21 @@ mapkey('Ts', 'Choose a tab with omnibar', function () {
  });
 });
 mapkey('g1', 'dddddddtab', function () {
+ setTimeout(() => {
+  new Notification("3 minutes have passed", {
+   body: "This is a notification after 3 minutes"
+  });
+ }, 3 * 60 * 1000);
+ setTimeout(() => {
+  new Notification("3 minutes have passed", {
+   body: "This is a notification after 3 minutes"
+  });
+ }, 0.5 * 60 * 1000);
+ setTimeout(() => {
+  new Notification("3 minutes have passed", {
+   body: "3swecond"
+  });
+ }, 3 * 3000);
  console.log('toutatu')
  new Notification("テスト", {
   body: "テストです"
@@ -1352,7 +1386,8 @@ const options = {
  lang: 'JA',
  body: 'こんにちは！',
  tag: 'test',
- data: 'このデータは何に使う？'
+ data: 'このデータは何に使う？',
+ icon: 'https://drrrkari.com/css/icon_girl.png'
 };
 mapkey('gl', 'dddddddtab', function () {
  // ブラウザが通知をサポートしているか確認する
@@ -1408,9 +1443,9 @@ const time = new Date().getTime();
      document.title = 'true'
     }
    }, 999);
+   break;
   case 'https://cweb.tfxclick.com/sbisec-kabu365/main/main.html':
   case 'https://cweb.tfxclick.com/sbisec-kabu365/main/main.html#':
-  case 'https://drrrkari.com/room/':
    function sbi() {
     document.getElementById("pricePanelToggleMsg").click();
     // 事前操作
@@ -1419,7 +1454,6 @@ const time = new Date().getTime();
      .then(data => data.text()).then(html => document.body.insertAdjacentHTML('beforeend', html)) //ロード先ID指定
      .then(() => {
       var el = document.createElement("script");
-      // el.src = "https://kenjijii.github.io/surfinbookmark/modallcfd.html?/i.js?" + time;
       el.src = "http://127.0.0.1:5500/i.js?" + time;
       document.body.appendChild(el);
      });
@@ -1428,8 +1462,17 @@ const time = new Date().getTime();
    sbi();
 
 
+
    mapkey('tcr', 'openarr', function () {
-    sbi()
+    let pt = prompt('お金ほしい', 199999);
+    function anyfuckdontcry(pt) {
+     const p2bidElement = document.getElementById('p2bid-p4074');
+     const spanElement = document.createElement('span');
+     spanElement.classList.add('cfdprice');
+     spanElement.textContent = pt;
+     p2bidElement.innerHTML = spanElement.outerHTML;
+    };
+    anyfuckdontcry(pt);
    });
 
 
@@ -1442,23 +1485,36 @@ const time = new Date().getTime();
     document.body.appendChild(el);
 
    });
-
-
    break;
+
+
+  // case location.href.startsWith('https://drrrkari.com') && location.href: {
+  case 'https://kenjijii.github.io/surfinbookmark/in.html': {
+
+   function rakuten() {
+    // 事前操作
+    fetch('http://127.0.0.1:5500/rakuten.html?' + time) //ロード元URL
+     // fetch('https://kenjijii.github.io/surfinbookmark/rakuten.html?' + time) //ロード元URL
+     .then(data => data.text()).then(html => document.body.insertAdjacentHTML('afterbegin', html)) //ロード先ID指定 
+     .then(() => {
+      var el = document.createElement("script");
+      el.src = "http://127.0.0.1:5500/rakui.js?" + time;
+      document.body.appendChild(el);
+     });
+   };
+   // await sleep(100);
+   rakuten();
+
+   mapkey('tcr', 'openarr', function () {
+    rakuten()
+   });
+   break;
+  };
+
   case 'https://fx.rakuten-sec.co.jp/web/top.action':
    rakutenFX();
-   // await sleep(800);
-   // document.querySelector('#nav-chart > a:nth-child(1)').click();
-   // document.querySelector('#nav-order > a').click();
-   // lookornot('決済注文/建玉選択');
-   // setTimeout(() => {
-   //     location.reload
-   // }, 890000);
    break;
-  // case 'https://fx.rakuten-sec.co.jp/web/PIATT/chart.html?2.8':
-  //     await sleep(800);
-  //     document.querySelector('#sidebar > div:nth-child(1) > div:nth-child(1)').click();
-  //     break;
+
 
   case location.href.startsWith('https://raw1001.net/manga/') && location.href: {
    mapkey('zz', 'dddddddtab', function () {

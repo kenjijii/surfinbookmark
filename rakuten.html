@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>make them happy for get money to watasino happy.</title>
+
+</head>
+<style>
+ #myModal.modal {
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 80%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.814);
+  transition: 0.6s;
+  visibility: visible;
+  opacity: 1;
+  display: none;
+ }
+
+ /* モーダルダイアログ */
+ .modal-content {
+  background-color: rgba(0, 0, 0, 0.14);
+  margin: 3% auto;
+  padding: 2px;
+  border: 1px solid #888;
+  width: 93%;
+ }
+
+ #myModal span {
+  margin-top: 12px;
+  background-color: #fefefe;
+ }
+
+ #myModal .modal-content>input {
+  font-size: 2rem;
+  width: 5rem;
+ }
+
+ #myModal .modal-content>span {
+  width: 100%;
+  display: block;
+ }
+
+ /* 閉じるボタン*/
+ #myModal #close {
+  color: #aaa;
+  float: right;
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin-right: 12px;
+  position: absolute;
+  top: .2rem;
+  left: .6rem;
+ }
+
+ /* 閉じるボタン（ホーバー／フォーカス時）*/
+
+ #myModal .close:hover,
+ #myModal .close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+ }
+
+ #myModal .case {
+  border-left: 3px solid #ccc;
+ }
+
+ #myModal li {
+  list-style: none;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  justify-content: start;
+  align-items: center;
+  padding: 0 .3rem;
+  border-bottom: 1px solid #ccc;
+  flex-wrap: wrap;
+ }
+
+ #myModal li>* {
+  font-size: 1rem;
+  margin-right: .2rem;
+ }
+
+ #myModal li>*:first-child {
+  width: 1.5rem;
+ }
+
+
+ #myModal li>*:nth-child(2) {
+  width: 1rem;
+  margin-right: .2rem;
+
+ }
+
+ #myModal li>*:nth-child(3) {
+  width: 12em;
+ }
+
+ #myModal li>*:nth-child(4) {
+  width: 4em;
+ }
+
+ #myModal li>*:nth-child(5) {
+  width: 20%;
+ }
+
+ #myModal li>*:nth-child(6) {
+  width: 10%;
+ }
+
+ #myModal ul {
+  padding: 0;
+ }
+
+ #myModal select:disabled {
+  color: #ccc;
+  /* background: #ccc; */
+ }
+
+ #myModal .lits {
+  width: 1rem;
+ }
+
+ #myModal .settlementValue {
+  font-size: 1.6rem;
+  margin-bottom: .7rem;
+ }
+
+ #sekai {
+  background-color: green;
+  padding: 12px;
+  color: white;
+ }
+
+ #getPageArray,
+ #over {
+  background-color: blue;
+  padding: 12px;
+  color: white;
+  font-weight: 900;
+ }
+
+
+
+ #sbi>li:nth-child(1) {
+  /* display: none; */
+ }
+
+ ul.hide>li {
+  display: none !important;
+ }
+
+ #my-console {
+  position: absolute;
+  min-width: 380px;
+  height: 100px;
+  background: rgba(14, 14, 14, 0.78);
+  padding: 0 1em;
+  color: white;
+  top: 2px;
+  word-wrap: break-word;
+  white-space: pre-line;
+  width: 49%;
+  z-index: 999;
+  overflow: hidden;
+  /* pointer-events: none; */
+  /* position: relative; */
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+ }
+
+ #my-console>div {
+  min-width: 20px;
+  overflow: auto;
+  height: 100%;
+  scrollbar-width: auto;
+  scrollbar-color: #fff #ffffff;
+ }
+
+
+
+
+
+ .buttons {
+  left: 0%;
+  bottom: 0%;
+  position: fixed;
+  display: flex;
+  justify-content: left;
+  margin-top: 1rem;
+ }
+
+ .buttons>button {
+  padding: 10px;
+  /* background-color: blue; */
+  /* color: white; */
+  font-weight: 900;
+  cursor: pointer;
+  font-size: .7rem;
+ }
+
+
+ #scrollStopButton {
+
+  /* right: 20px; */
+  background-color: white;
+ }
+
+ #my-console {
+  /* display: none; */
+  /* pointer-events: none; */
+
+ }
+
+ #prevent {
+  /* pointer-events: none; */
+ }
+
+ .titleStock {
+  position: sticky;
+  top: 0;
+  background: #333;
+  color: white;
+  text-align: center;
+
+ }
+
+ #e {
+  background-color: #333;
+  color: white;
+  text-align: center;
+ }
+
+ hide {
+  display: none;
+ }
+</style>
+
+
+<body>
+
+
+
+
+ <!-- これが読まれて -->
+ <div class="mutationBox">
+  <label for="">may</label>
+  <input type="number" name="rakutenMutation1" id="e1" value="111">
+  <label for="">june</label>
+  <input type="number" name="rakutenMutation2" id="e2" value="111">
+  <label for="">july</label>
+  <input type="number" name="rakutenMutation3" id="e3" value="111">
+  <label for="">august</label>
+  <input type="number" name="rakutenMutation4" id="e4" value="111">
+  <!-- 決定ボタン、もしくはエンターキーで、値をミューテーションに渡す。 -->
+  <!-- 配列にして、読み込ませる。 -->
+
+  <button id="gom">セット</button>
+  <button id="clear">clear</button>
+
+
+  <!-- xxの値を、xsomethingで、セット。ミューテーション付き。あとは、x何かでただこれを読ませる。どちらにせよ、セーブボタンと、エンターでゴー -->
+
+
+
+ </div>
+</body>
+
+</html>

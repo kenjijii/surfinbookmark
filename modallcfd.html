@@ -60,7 +60,6 @@
  }
 
  /* 閉じるボタン（ホーバー／フォーカス時）*/
-
  #myModal .close:hover,
  #myModal .close:focus {
   color: black;
@@ -77,7 +76,7 @@
   width: 100%;
   display: flex;
   justify-content: space-between;
-  justify-content: start;
+  /* justify-content: start; */
   align-items: center;
   padding: 0 .3rem;
   border-bottom: 1px solid #ccc;
@@ -93,11 +92,9 @@
   width: 1.5rem;
  }
 
-
  #myModal li>*:nth-child(2) {
   width: 1rem;
   margin-right: .2rem;
-
  }
 
  #myModal li>*:nth-child(3) {
@@ -148,8 +145,6 @@
   font-weight: 900;
  }
 
-
-
  #sbi>li:nth-child(1) {
   /* display: none; */
  }
@@ -161,14 +156,14 @@
  #my-console {
   position: absolute;
   min-width: 380px;
-  height: 100px;
+  height: 70%;
   background: rgba(14, 14, 14, 0.78);
   padding: 0 1em;
   color: white;
   top: 2px;
   word-wrap: break-word;
   white-space: pre-line;
-  width: 49%;
+  width: 95%;
   z-index: 999;
   overflow: hidden;
   /* pointer-events: none; */
@@ -176,6 +171,7 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  display: none;
  }
 
  #my-console>div {
@@ -185,10 +181,6 @@
   scrollbar-width: auto;
   scrollbar-color: #fff #ffffff;
  }
-
-
-
-
 
  .buttons {
   left: 0%;
@@ -208,17 +200,14 @@
   font-size: .7rem;
  }
 
-
  #scrollStopButton {
-
   /* right: 20px; */
   background-color: white;
  }
 
  #my-console {
-  /* display: none; */
+  display: none;
   /* pointer-events: none; */
-
  }
 
  #prevent {
@@ -231,19 +220,211 @@
   background: #333;
   color: white;
   text-align: center;
+ }
 
+ #conpane {
+  position: absolute;
+  width: calc(100% - 18px);
+  bottom: 21%;
+  height: 1.5rem !important;
+  background: black;
+  color: white;
+  padding: 5px 0;
+  display: none;
+ }
+
+ #conpane>ul>li {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  justify-content: space-between;
+ }
+
+ body {
+  background: black;
+ }
+
+ .timer {
+  background-color: #888;
+  margin-right: 1px;
+ }
+
+ .order {
+  background-color: #280e0e;
+  margin-right: 1px;
+ }
+
+ .price {
+  background-color: #161111;
+  margin-right: 1px;
+ }
+
+ .how {
+  background-color: #360f0f;
+  margin-right: 1px;
+ }
+
+ .orders {
+  position: sticky;
+  top: 2.4rem;
+  background-color: #280e0e;
+  /* margin-right: 1px; */
+ }
+
+ .hide {
+  display: none;
  }
 </style>
 
 
 <body id="no">
 
- <div id="my-console">
-  <!-- <div class="1">333</div>
-  <div class="1">222</div> -->
+
+ <div class="hide">
+
+  <table style="" id="positionInquiry" cellpadding="0" cellspacing="0" border="0">
+   <tbody>
+    <tr id="row0">
+     <td align="center">
+      <div style="text-align: center; width: 30px;"><input type="checkbox" class="executeCheckBox"
+        value="2413000001358101" name="settlementEntryCiOrderId0" id="settlementEntryCiOrderId0"
+        onclick="$('#settlementEntryCiOrderId0').focus()"
+        onkeydown="if (event.keyCode == 13)$('#selectSettlementOrder').click();"></div>
+     </td>
+     <td align="center">
+      <div style="text-align: center; width: 90px;"><a href="javascript:positionArrangement('2413000001358101');"><img
+         src="../_img/btn_position_arrangement_s.gif" alt="建玉整理"></a></div>
+     </td>
+     <td align="center">
+      <div style="text-align: center; width: 30px;" class="sellLabel">買</div>
+     </td>
+     <td align="center">
+      <div style="text-align: center; width: 130px;">2413000002905001</div>
+     </td>
+     <td align="center">
+      <div style="text-align: center; width: 110px;">日経225(2024)</div>
+     </td>
+     <td align="center" class="sorted">
+      <div style="text-align: center; width: 150px;">2024/05/09 20:22:45</div>
+     </td>
+     <td align="center">
+      <div style="text-align: right; width: 90px;">1</div>
+     </td>
+     <td align="center">
+      <div style="text-align: right; width: 90px;">1</div>
+     </td>
+     <td align="center">
+      <div style="text-align: right; width: 60px;">18,032</div>
+     </td>
+     <td align="center">
+      <div style="text-align: right; width: 90px;">18,202</div>
+     </td>
+     <td align="center">
+      <div style="text-align: right; width: 60px;">18,164</div>
+     </td>
+     <td align="center">
+      <div style="text-align: right; width: 110px;"><span class="loss">-1,320</span></div>
+     </td>
+     <td align="center">
+      <div style="text-align: right; width: 120px;"><span class="plofit">86</span></div>
+     </td>
+     <td align="center">
+      <div style="text-align: right; width: 120px;"><span class="loss">-36</span></div>
+     </td>
+     <td align="center">
+      <div style="text-align: right; width: 110px;"><span class="loss">-1,270</span></div>
+     </td>
+    </tr>
+    <tr id="row1">
+     <td align="center">
+      <div style="text-align: center; width: 30px;"><input type="checkbox" class="executeCheckBox"
+        value="2413000001358101" name="settlementEntryCiOrderId0" id="settlementEntryCiOrderId0"
+        onclick="$('#settlementEntryCiOrderId0').focus()"
+        onkeydown="if (event.keyCode == 13)$('#selectSettlementOrder').click();"></div>
+     </td>
+     <td align="center">
+      <div style="text-align: center; width: 90px;"><a href="javascript:positionArrangement('2413000001358101');"><img
+         src="../_img/btn_position_arrangement_s.gif" alt="建玉整理"></a></div>
+     </td>
+     <td align="center">
+      <div style="text-align: center; width: 30px;" class="sellLabel">売</div>
+     </td>
+     <td align="center">
+      <div style="text-align: center; width: 130px;">2413000002905001</div>
+     </td>
+     <td align="center">
+      <div style="text-align: center; width: 110px;">日経225(2024)</div>
+     </td>
+     <td align="center" class="sorted">
+      <div style="text-align: center; width: 150px;">2024/05/09 20:22:45</div>
+     </td>
+     <td align="center">
+      <div style="text-align: right; width: 90px;">1</div>
+     </td>
+     <td align="center">
+      <div style="text-align: right; width: 90px;">1</div>
+     </td>
+     <td align="center">
+      <div style="text-align: right; width: 60px;">18,032</div>
+     </td>
+     <td align="center">
+      <div style="text-align: right; width: 90px;">18,202</div>
+     </td>
+     <td align="center">
+      <div style="text-align: right; width: 60px;">18,164</div>
+     </td>
+     <td align="center">
+      <div style="text-align: right; width: 110px;"><span class="loss">-1,320</span></div>
+     </td>
+     <td align="center">
+      <div style="text-align: right; width: 120px;"><span class="plofit">86</span></div>
+     </td>
+     <td align="center">
+      <div style="text-align: right; width: 120px;"><span class="loss">-36</span></div>
+     </td>
+     <td align="center">
+      <div style="text-align: right; width: 110px;"><span class="loss">-1,270</span></div>
+     </td>
+    </tr>
+   </tbody>
+  </table>
+
 
 
  </div>
+
+ <div id="my-console">
+ </div>
+ <div id="conpane">
+
+  <ul class="con">
+   <li>
+    <button id="plusOne">＋
+    </button>
+    <input id="stock" type="number" value="0" style="width: 2rem;">
+    <label for="now">the Price</label>
+    <span id="nowPrice">8</span>
+
+    <input id="timer" type="number" value="35333">
+    <label for="when">when</label>
+
+    <select id="how" name="how">
+     <option value="alert">アラート</option>
+     <option value="relinquish">手放す</option>
+     <option value="other">other</option>
+    </select>
+
+
+    <!-- アラートか、売るか、特殊な売り買いかかな。mutationに渡し動作させる -->
+    <button class="button" id="saveP">save</button>
+    <button class="button" id="loadP">load</button>
+    <button class="button button--delete">削除</button>
+   </li>
+  </ul>
+
+ </div>
+
+
  <!-- モーダル表示ボタン -->
  <!-- モーダル -->
  <div class="buttons">
@@ -252,6 +433,7 @@
   <button id="getPageArray">getPageArray</button>
   <button id="scrollStopButton">スクロール</button>
   <button id="prevent">ぷれべんと</button>
+  <button id="SM">stopM</button>
  </div>
 
  </div>
@@ -301,6 +483,7 @@
       <option value="2">買</option>
      </select>
      <!-- 買いの値 -->
+
      <input type="text" class="settlementValue" value="35555"></input>
      <input class="timer" type="text" value="333">
      <select name="" class="how">

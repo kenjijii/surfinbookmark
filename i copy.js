@@ -1,140 +1,10 @@
-let flag = true;
 document.getElementById('over').addEventListener('click', function () {
  const consoleElement = document.getElementById('my-console');
- const conpane = document.getElementById('conpane');
  if (consoleElement.style.display === 'none') {
-  consoleElement.style.display = 'flex';
-  conpane.style.display = 'block';
+  consoleElement.style.display = 'block';
  } else {
   consoleElement.style.display = 'none';
-  conpane.style.display = 'none';
  }
-});
-let Order = [];
-let timer = [];
-let price = [];
-let how = [];
-function load() {
- Order = JSON.parse(localStorage.getItem('Order'));
- timer = JSON.parse(localStorage.getItem('timer'));
- price = JSON.parse(localStorage.getItem('price'));
- how = JSON.parse(localStorage.getItem('how'));
-}
-document.getElementById('loadP').addEventListener('click', function () {
- load();
- save();
-});
-document.querySelector('#saveP').addEventListener('click', function () {
- save();
-});
-document.querySelector('#plusOne').addEventListener('click', function () {
- Order.push(document.getElementById('stock').value);
- timer.push(document.getElementById('nowPrice').value);
- price.push(document.getElementById('timer').value);
- how.push(document.getElementById('how').value);
- save();
-});
-function save() {
- document.querySelectorAll('.timer').forEach((element) => {
-  element.remove();
- });
- for (let i = 0; i < timer.length; i++) {
-  const elementTimers = document.createElement('div');
-  elementTimers.classList.add('timer');
-  const order = document.createElement('order');
-  order.classList.add('order');
-  order.textContent = Order[i] + '番';
-  elementTimers.appendChild(order);
-  const priceElement = document.createElement('span');
-  priceElement.classList.add('price');
-  priceElement.textContent = price[i];
-  elementTimers.appendChild(priceElement);
-  const howElement = document.createElement('span');
-  howElement.classList.add('how');
-  howElement.textContent = how[i] == 1 ? 'alert' : 'll';
-  elementTimers.appendChild(howElement);
-  // elementTimers.textContent = timer[i];
-  const deleteButton = document.createElement('button');
-  deleteButton.textContent = 'Del';
-  deleteButton.addEventListener('click', function () {
-   const parentElement = this.parentElement;
-   const orderNumber = parentElement.querySelector('.order').textContent.replace('番', '');
-   Order.splice(orderNumber - 1, 1);
-   timer.splice(orderNumber - 1, 1);
-   price.splice(orderNumber - 1, 1);
-   how.splice(orderNumber - 1, 1);
-   parentElement.remove();
-  });
-  elementTimers.appendChild(deleteButton);
-  if (document.querySelector('div.stock' + Order[i] + ' >.orders')) {
-   document.querySelector('div.stock' + Order[i] + ' >.orders').insertAdjacentElement('beforeend', elementTimers);
-  } else {
-   // alert('no');
-  }
- };
- localStorage.setItem('Order', JSON.stringify(Order));
- localStorage.setItem('timer', JSON.stringify(timer));
- localStorage.setItem('price', JSON.stringify(price));
- localStorage.setItem('how', JSON.stringify(how));
-};
-document.querySelector('#getPage').addEventListener('click', async function () {
- await sleep(1200);
- document.querySelector('#myModal.modal').style.display = 'block';
- console.log('this');
- getArrpage();
- ArrayToPage();
-});
-document.querySelector('#sekai').addEventListener('click', async function (event) {
- let StockName = [];
- let StockBS = [];
- let StockPrice = [];
- let StockNum = [];
- // 画面クリアッ必要
- const MyConsoleDiv = document.getElementById('my-console');
- MyConsoleDiv.innerHTML = '';
- document.getElementById('goShortcut-3').click();
- await sleep(1000);
- const colLength = document.getElementById('main').contentDocument.querySelector('#positionInquiry').rows.length;
- for (let i = 0; i < colLength; i++) {
-  const stName = document.getElementById('main').contentDocument.querySelector(`#row${i} > td:nth-child(5) > div:nth-child(1)`).innerText;
-  const stSB = document.getElementById('main').contentDocument.querySelector(`#row${i} > td:nth-child(3) > div:nth-child(1)`).innerText;
-  const stPrc = document.getElementById('main').contentDocument.querySelector(`#row${i} > td:nth-child(9) > div:nth-child(1)`).innerText;
-  const stNowPrc = document.getElementById('main').contentDocument.querySelector(`#row${i} > td:nth-child(12) > div:nth-child(1)`).innerText;
-  StockName.push(stName);
-  StockBS.push(stSB == '売' ? 1 : 2)
-  StockPrice.push(stPrc);
-  StockNum.push(i)
- };
- if (flag) {
-  const col = document.querySelector('.hide #positionInquiry').rows.length + colLength;
-  for (let i = colLength; i < col; i++) {
-   const is = i - colLength;
-   const stName = document.querySelector(`.hide #row${is} > td:nth-child(5) > div:nth-child(1)`).innerText;
-   const stSB = document.querySelector(`.hide #row${is} > td:nth-child(3) > div:nth-child(1)`).innerText;
-   const stPrc = document.querySelector(`.hide #row${is} > td:nth-child(9) > div:nth-child(1)`).innerText;
-   const stNowPrc = document.querySelector(`.hide #row${is} > td:nth-child(12) > div:nth-child(1)`).innerText;
-   StockName.push(stName);
-   StockBS.push(stSB == '売' ? 1 : 2)
-   StockPrice.push(stPrc);
-   StockNum.push(i)
-  };
- };
- StockNum.forEach((number) => {
-  const div = document.createElement('div');
-  div.classList.add('stock' + number);
-  const titleStock = document.createElement('div');
-  titleStock.classList.add('titleStock');
-  titleStock.textContent = StockName[number] + '\n' + (StockBS[number] == 1 ? '売' : '買') + '\n' + StockPrice[number];
-  const orders = document.createElement('div');
-  orders.classList.add('orders');
-  div.appendChild(titleStock);
-  div.appendChild(orders);
-  MyConsoleDiv.appendChild(div);
-  // save(number);
-  const target = targetElements.find(target => target.name === StockName[number]);
-  const BS = StockBS[number] == 1 ? target.askElement : target.bidElement;
-  mutationRecords(BS, number);
- });
 });
 // Log generator function
 function generateLog(flag) {
@@ -142,7 +12,10 @@ function generateLog(flag) {
  const log = 'New log entry';
  logElement.insertAdjacentText('beforeend', log + '\n');
  // Scroll to bottom
+
 }
+
+
 let Scrollflag = true;
 // let intervalId;
 document.getElementById('scrollStopButton').addEventListener('click', function () {
@@ -159,6 +32,8 @@ document.getElementById('prevent').addEventListener('click', function (event) {
   button.textContent = 'Enable';
  }
 });
+
+
 async function sleep(ms) {
  return new Promise(resolve => setTimeout(resolve, ms));
 };//sleep関数
@@ -169,6 +44,13 @@ async function sleep(ms) {
  makelist();
  listClone();
 })();
+let ArrStockName;
+let Pieces;
+let ArrBS;
+let ArrNowPrice;
+let ArrTimer;
+let ArrHow;
+let ArrStockNumber;
 // ローカルから持ってくる軽い奴
 function LocalStock(value) {
  // ローカルから取得して配列リターン
@@ -181,6 +63,7 @@ function LocalStock(value) {
 // いちばん上の数値を割り出す
 // ARR完成
 // genericやねｎこれで、ローカルストックから持ってきてるがジェネリック
+
 // これに最新のプッシュを追加
 function genericGetPage() {
  ArrStockName = LocalStock('stock');
@@ -201,6 +84,7 @@ function getArrpage() {
  const colLength = document.getElementById('main').contentDocument.querySelector('#positionInquiry').rows.length;
  //4
  genericGetPage();
+
  for (let i = getMaxNumberFromArray(ArrStockNumber) - 1; i < colLength; i++) {
   const stName = document.getElementById('main').contentDocument.querySelector(`#row${i} > td:nth-child(5) > div:nth-child(1)`).innerText;
   const stSB = document.getElementById('main').contentDocument.querySelector(`#row${i} > td:nth-child(3) > div:nth-child(1)`).innerText;
@@ -216,12 +100,19 @@ function getArrpage() {
  };
 };
 // ページから取得
+
+
+
+
 document.getElementById('getPageArray').addEventListener('click', async function () {
  // document.getElementById('goShortcut-3').click();
+
  // await sleep(20);
  await sleep(1200);
  document.querySelector('#myModal.modal').style.display = 'block';
+
  console.log('this');
+
  getArrpage();
  ArrayToPage();
 });
@@ -277,7 +168,7 @@ function ArrayToPage() {
 function SetLocalStock(title, value) {
  // ローカルに保存
  localStorage.setItem(title, JSON.stringify(value));
-};
+}
 function pageToArray() {
  const numbername = document.querySelectorAll('ul#sbi>li>input.numberstock');
  const stockname = document.querySelectorAll('ul#sbi>li>select.stockname');
@@ -302,6 +193,8 @@ function pageToArray() {
  console.log(ArrNowPrice);
  console.log(ArrTimer);
  console.log(ArrHow);
+
+
  // await sleep(1000);
  // ローカルストレージに保存
  SetLocalStock('stock', ArrStockName);
@@ -395,6 +288,8 @@ async function sellThat(orderId) {
  await sleep(700)
  document.getElementById('main').contentDocument.getElementById('orderSubmit').click();
 }
+
+
 function clearArray() {
  ArrStockNumber = ['numberstock'];
  ArrStockName = ['stock'];
@@ -404,6 +299,8 @@ function clearArray() {
  ArrTimer = ['timer'];
  ArrHow = ['alert'];
 };
+
+
 function clearLocalStorage() {
  localStorage.clear('stock');
  localStorage.clear('pieces');
@@ -433,9 +330,11 @@ function buttons() {
   clearArray();
   clearLocalStorage();
   clearPage();
+
  });
  // Save button
  document.getElementById('save').addEventListener('click', () => {
+
   clearArray();
   pageToArray();
  });
@@ -458,6 +357,8 @@ document.querySelector('.modal-content').addEventListener('click', async functio
 document.querySelector('#getPage').addEventListener('click', async function (event) {
  getPage();
 });
+
+
 // 伝播禁止
 function orderdbutton() {
  const OrderButton = document.getElementById('main').contentDocument.getElementById('doOrderConfirm-1');
@@ -476,15 +377,38 @@ function orderdbutton() {
 function returnButton() {
  const ReturnButton = document.getElementById('main').contentDocument.getElementById('returnButton');
  ReturnButton.addEventListener('click', async function (event) {
+
+
   await sleep(500);
   orderdbutton();
  });
 }
+// ddd
+// document.querySelector('#goShortcut-1').addEventListener('click', async function () {
+//  await sleep(1800);
+//  orderdbutton()
+//  // event.preventDefault();
+// });
+// document.querySelector('#buyit').addEventListener('click', async function () {
+//  document.querySelector('#myModal.modal').style.display = 'none';
+//  await sleep(199);
+//  document.getElementById('main').contentDocument.getElementById('orderBtn').click();
+// });
 document.querySelector('#cancel').addEventListener('click', async function () {
  document.querySelector('#myModddal.modal').style.display = 'none';
  await sleep(199);
  document.getElementById('main').contentDocument.getElementById('returnButton').click();
 });
+// LocalStock('stock');
+// LocalStock('pieces');
+// LocalStock('sellbuy');
+// LocalStock('price');
+// LocalStock('timer');
+// LocalStock('alert');
+// LocalStock('numberstock');
+
+
+
 function MyConsole(log, number) {
  document.querySelector('#my-console>div:nth-child(' + number + ')').insertAdjacentText('beforeend', log + '\n');
  if (Scrollflag) {
@@ -492,23 +416,104 @@ function MyConsole(log, number) {
   logElement.scrollTop = logElement.scrollHeight;
  };
 };
+
+
 function logscroll() {
  const logElement = document.querySelector('#my-console>div:nth-child(1)');
  logElement.scrollTop = logElement.scrollHeight;
 };
+
+
 const sbiMutgation = (mutation, number) => {
+ const index = ArrStockNumber.indexOf(number);
+ const indexes = ArrStockNumber.reduce((acc, curr, index) => {
+  if (curr === number) {
+   acc.push(index);
+  }
+  return acc;
+ }, []);
+ const arrHowValues = indexes.map((index) => ArrHow[index]);
+ const arrTimerValues = indexes.map((index) => ArrTimer[index]);
+ // indexesの数だけマップで再度処理をする。それぞれの値を取得して、処理をする。
+
+
+ const arrHowValue = ArrHow[index];
+ // ここでifでログを出す・
  const mTxt = mutation.addedNodes[0].innerHTML.replace(/,/g, '.') - 0;
  number = Number(number) + 1;
+ // 000とかになる
+ // だからmyconsole用と、関数でのタイマーとは分ける。mutationRecordsを変える。
  MyConsole(mTxt, number);
+ // ここのは、numberがユニークな、numberのみで構築されている。。
+
+
+
+ // エルスで、出口関数を呼ぶ。
+
+
+
+
+
+
+
+
+ // alert(ArrHow[number])
+ if (ArrHow[number] == 'relinquish') {
+  // alert(number)
+  // alert(ArrStockName[number])
+  // alert(ArrHow[number])
+  // alert(ArrTimer[number])
+  // alert(ArrNowPrice[number])
+  // alert(ArrBS[number])
+  // alert(ArrStockNumber[number])
+  // alert(Pieces[number])
+  // alert(mTxt)
+ }
+
+
+
+ // 処理を分けるアラートとか。
+ // ArrTimer[number]
+ // 数値
+ // ArrHow[number]
+ // 出口
+
+ // 出口関数＜売る＜アラート＜タイマーか・・。複雑な処理。＜
+ // テストから始まる。
+
+ // ArrStockNumber[number]
  let sbiAlertPrice = 222;
  if (mTxt > sbiAlertPrice) {
   alert('sbiAlertPrice')
  }
+ //始める。２６までに骨を見つけたい。増やしたい。爆増するはず。みつけるんだ。小さくてもいいから真実
+
+
+ // 売り。を動作チェック。あとは・・・。細かいところがひどいと思うからやる。できればここまでやる。明日だけだ。
+ // まあちょうど
+ // アラートのためにchromeに戻るchrome域。
+
+ // 楽天も同じく、かう。
+ //  xm prompt 1　＞
+
+ //  、数値数ぴっぷすで自動売買。自動する。マイナスからプラスになったらｍボタン。もいいし、２ぴっぷすボタンもいい。
+
+ // 時間億必要はある気はするが、本気で、切り。切りきるんだ。きりすぐきる。楽天終わってもいいよＦＸ
+
+ // 出口
 };
+
+
+
+
 const MutationProsesser = (mutation, number) => {
  // mutationを加工する各ページごとの処理 各関数を。
  sbiMutgation(mutation, number);
+
 };
+
+
+
 function mutationRecords(target, number = 1,) {
  //いまのとこ、これは、000等になる。number間違えている。
  const callback = (mutations) => {
@@ -525,17 +530,22 @@ function mutationRecords(target, number = 1,) {
   characterData: true,
   subtree: true,
  };
- observer.disconnect();
- document.getElementById('SM').addEventListener('click', function () {
-  observer.disconnect();
- });
  observer.observe(target, config);
 }
+
+
+
+
+
 // mutationRecords(target);
+
 // modalとつなげる。ボタンで、じゃなくて。もだるの数値いれてセーブしたらその通り動きたいので。
+
 // モーダルのテスト用のものを作る必要があるの。
 // モーダル追加ボタン何もないとやっぱできないこと。＜つまり、モーダルに追加するボタンが必要。＜エミュレート用に。
+
 // 売り買いのタイミング計りたい。
+
 const targets = `日経225(2024) p2bid-p4014 p2ask-p4014
 金ETF(2024) p2bid-p4054 p2ask-p4054
 NYダウ(2024) p2bid-p4044 p2ask-p4044
@@ -545,6 +555,7 @@ NDX-100(2024) p2bid-p4074 p2ask-p4074
 原油ETF(2024) p2bid-p4064 p2ask-p4064
 DAX(2024) p2bid-p4024 p2ask-ask24
 FTSE100(2024) p2bid-p4034 p2bid-p4034`;
+
 const targetElements = targets.split('\n').map(target => {
  const [name, bidId, askId] = target.split(' ');
  return {
@@ -552,4 +563,49 @@ const targetElements = targets.split('\n').map(target => {
   bidElement: document.getElementById(bidId),
   askElement: document.getElementById(askId)
  };
+});
+
+
+// function alertArray(arr) {
+//  arr.forEach(item => {
+//   alert(item);
+//  });
+// }
+
+document.querySelector('#sekai').addEventListener('click', async function (event) {
+ genericGetPage();
+ const myConsole = document.getElementById('my-console');
+ myConsole.innerHTML = '';
+ const uniqueArrStockNumber = ArrStockNumber.filter((value, index, self) => {
+  return self.indexOf(value) === index;
+ });
+ const uniqueArrStockName = uniqueArrStockNumber.map((number) => {
+  const index = ArrStockNumber.indexOf(number);
+  return ArrStockName[index];
+ });
+ // 箱作って、タイトル入れた
+ // 出来るなら機能も入れたい。やるとしたら、
+ uniqueArrStockNumber.slice(1).forEach((stNumber) => {
+  const div = document.createElement('div');
+  const titleStock = document.createElement('div');
+  titleStock.classList.add('titleStock');
+  titleStock.textContent = ArrStockName[ArrStockNumber.indexOf(stNumber)];
+
+
+  // ArrStockNumber.indexOf(stNumber)で、indexわかる
+  div.appendChild(titleStock);
+  // div.textContent = stNumber;
+  myConsole.appendChild(div);
+
+  const target = targetElements.find(target => target.name === ArrStockName[ArrStockNumber.indexOf(stNumber)]);
+  const BS = ArrBS[ArrStockNumber.indexOf(stNumber)] == 1 ? target.askElement : target.bidElement;
+  // 価格画面作り　stNumber分のみが入る。つまりユニークないくつかのみ。
+  mutationRecords(BS, stNumber);
+ });
+
+
+ // 必ず、俺はブログを作ろう、mdで。はてな。
+ // mdに画像を載せることと、png書き出し、リンク、booxの問題どうしようどうしようどうしよううい。。
+
+
 });
