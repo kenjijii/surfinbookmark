@@ -16,7 +16,7 @@
 
   }
 
-  .chartbox {
+  /* .chartbox {
    width: 100%;
    display: flex;
    flex-wrap: wrap;
@@ -25,11 +25,15 @@
   .iframebox {
    width: auto;
    height: auto;
-  }
+  } */
  </style>
  <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
 
  <script>
+  const div = document.querySelector('.inputs')
+  // div.dataset.width = '440'
+  // div.dataset.height = '270'
+
   function AddChart() {
    var s = document.createElement("script");
    s.innerHTML = `
@@ -37,8 +41,8 @@
 
  new TradingView.widget(
  {
- "width": 440,
- "height": 270,
+    "width": ${div.dataset.width},
+     "height": ${div.dataset.height},
  "symbol": "FRED:NIKKEI225",
  "interval": "D",
  "timezone": "Etc/UTC",
@@ -261,8 +265,8 @@
   <script type="text/javascript">
    new TradingView.widget(
     {
-     "width": 440,
-     "height": 270,
+     "width": ${div.dataset.width},
+     "height": ${div.dataset.height},
      "symbol": "NYSE:UBER",
      "interval": "D",
      "timezone": "Etc/UTC",
@@ -279,8 +283,9 @@
 
  </div> -->aa
 
- <input type="text" class="inputs" data-width="wid" value="33"" maxlength=" 8" size="10" />
- <input type="text" class="inputs" data-width="heit"" maxlength=" 8" size="10" />
+
+ <input type="text" class="inputs" data-width="width" value="33"" maxlength=" 8" size="10" />
+ <input type="text" class="inputs" data-width="height" maxlength=" 8" size="10" />
 
  <button onclick="AddChart()">
   clickme
