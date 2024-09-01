@@ -1,3 +1,6 @@
+// 43a74d8d - 2f77 - 4a6a - 8684 - 84b8f3bcd1bf: fx
+// deepel
+
 // helpme
 const {
  RUNTIME,
@@ -357,6 +360,17 @@ function SbiCfdClicker(params) {
  btn3.click();
 }
 function rakutenFX() {
+ fetch('https://cdnjs.cloudflare.com/ajax/libs/bignumber.js/8.0.2/bignumber.min.js?').then(r => { return r.text() }).then(t => {
+  // "t"にimport.jsのファイル内容が格納されているので
+  eval(t); //その内容を実行する
+ });
+ // var el = document.createElement("script");
+ // el.src = "https://cdnjs.cloudflare.com/ajax/libs/bignumber.js/8.0.2/bignumber.min.js?" + time;
+ // document.body.appendChild(el);
+
+ ControlPanel();
+
+
  let OrderValue = 1
  let PipsValue = 15
  let Wpips = 4
@@ -400,10 +414,10 @@ function rakutenFX() {
    document.getElementById("mainFrame").contentDocument.getElementById('orderFlashPanel').contentDocument.querySelector('body > div > div.StreamingNewClose > div.LossPipsParam > div.LossPips > div > div.rtsStepperText.rtsStepperText-option.rtsWidget.rtsWidget-option > input').value = PipsValue
    //wingpips
    if (withpip == true) {
+    hufu = await newpro(300);
     hufu = await newpro(600);
     document.getElementById("mainFrame").contentDocument.getElementById('orderFlashPanel').contentDocument.querySelector('body > div > div.StreamingNewClose > div.ProfitPipsParam > div.ProfitPipsUseFlag.rtsWidget.rtsWidget-option > div > div.rtsCheckBoxContainer.rtsCheckBoxContainer-option > input').checked = true
     document.getElementById("mainFrame").contentDocument.getElementById('orderFlashPanel').contentDocument.querySelector('body > div > div.StreamingNewClose > div.ProfitPipsParam > div.ProfitPipsUseFlag.rtsWidget.rtsWidget-option > div > div.rtsCheckBoxContainer.rtsCheckBoxContainer-option > input').click()
-    hufu = await newpro(300);
     document.getElementById("mainFrame").contentDocument.getElementById('orderFlashPanel').contentDocument.querySelector('body > div > div.StreamingNewClose > div.ProfitPipsParam > div.ProfitPips > div > div.rtsStepperText.rtsStepperText-option.rtsWidget.rtsWidget-option > input').value = Wpips
     //wingpips
    }
@@ -417,10 +431,34 @@ function rakutenFX() {
 
  function ControlPanel() {
 
-  const footer = document.getElementById("mainFrame").contentDocument.querySelector('#footer');
+  const footer = document.body;
   const div = document.createElement('div');
-  div.innerHTML = '<div id="controlPanel" style="position: fixed; bottom: 0; right: 0; background-color: #f1f1f1; border: 1px solid #d3d3d3; padding: 10px; z-index: 1000;"> <h2>Control Panel</h2> <button id="sellMoney">Sell Money</button> <button id="buyMoney">Buy Money</button> <button id="sellMoneyWithPips">Sell Money With Pips</button> <button id="buyMoneyWithPips">Buy Money With Pips</button> </div>';
-  footer.insertAdjacentHTML('beforeend', 'sss');
+  div.id = 'controlPanel';
+  div.style = 'position: fixed; bottom: 0; right: 0; background: #fff; padding: 10px; z-index: 9999;';
+  div.innerHTML = `<h5>Control Panel</h5>
+   <button id="sellMoney">idf</button>
+
+  <input type="number" id="orderValue" value="1" style="width: 1rem;" />
+  <input type="number" id="orderValue2" value="1" style="width: 1rem;" />
+
+
+  <input type="radio" id="buyOption" name="tradeOption" value="buy" checked>
+  <label for="buyOption">Buy</label>
+  <input type="radio" id="sellOption" name="tradeOption" value="sell">
+  <label for="buyOption">Sell</label>
+  <input type="number" id="now" value="1" style="width: 5rem;"step="0.001" />
+  <label for="buyOption">now</label>
+  <input type="number" id="rikaku" value="1" style="width: 5rem;"step="0.001" />
+  <label for="rikaku">r</label>
+  <input type="number" id="songiri" value="1" style="width: 5rem;"step="0.001" />
+  <label for="songiri">s</label>
+
+   <button id="buyMoney">Buy Money</button>
+
+   <button id="sellMoneyWithPips">Sell Money With Pips</button>
+   <button id="buyMoneyWithPips">Buy Money With Pips</button>`;
+
+  footer.appendChild(div);
  };
 
 
@@ -684,21 +722,96 @@ function rakutenFX() {
  mapkey('ss', '売る', function () {
   buyMoney('sell')
  });
- mapkey('spb', '買う', function () {
-  buyMoney(true)
+ document.getElementById('sellMoney').addEventListener('click', function () {
+  execidf()
+ }
+ );
+
+
+ const execidf = async (buy) => {
+
+
+
+  // 現在値が取得する必要があるため、必ず、それまで行く
+  // いってきて、必ずとれる
+  document.querySelector('#nav-order-open>a').click();
+  await sleep(1000)
+  document.getElementById("mainFrame").contentDocument.querySelector('li.order:nth-child(6) > a').click();
+  await sleep(1000);
+  const firstPrice = document.getElementById("mainFrame").contentDocument.querySelector('#text_01').value;
+  // firstprice 
+  document.getElementById("mainFrame").contentDocument.getElementById('amount1').value = document.getElementById("orderValue").value;
+  document.getElementById("mainFrame").contentDocument.getElementById('amount2').value = document.getElementById("orderValue2").value;
+  // 数入れ
+
+  const text01 = document.getElementById("mainFrame").contentDocument.getElementById('text_01');
+  const text02 = document.getElementById("mainFrame").contentDocument.getElementById('text_02');
+  const text03 = document.getElementById("mainFrame").contentDocument.getElementById('text_03');
+  text01.classList.remove('clear-default');
+  text02.classList.remove('clear-default');
+  text03.classList.remove('clear-default');
+  document.getElementById("mainFrame").contentDocument.getElementById('selectValidity_0');
+  document.getElementById("mainFrame").contentDocument.getElementById('selectValidity_1');
+  const sl1 = document.getElementById("mainFrame").contentDocument.getElementById('selectBuySell_01');
+  const sl2 = document.getElementById("mainFrame").contentDocument.getElementById('selectBuySell_02');
+  const g1 = document.getElementById("mainFrame").contentDocument.getElementById('selectExecCond_0');
+  const g2 = document.getElementById("mainFrame").contentDocument.getElementById('selectExecCond_1');
+  const urikai = document.getElementById("sellOption").checked ? true : false;
+  urikai ? sl1.checked = true : sl2.checked = true;
+  if (document.getElementById("now").value.length < 3) {
+   const clipboardData = await navigator.clipboard.readText();
+   const copiedPrice = !isNaN(parseFloat(clipboardData)) ? parseFloat(clipboardData) : 149.9;
+
+
+   const copiedPriceNum = parseFloat(copiedPrice);
+   document.getElementById("now").value = copiedPriceNum;
+  }
+  // now
+  const text = document.getElementById("now").value;
+  text01.value = text;
+
+  if (Number(firstPrice) < Number(text)) {
+   // 買いの時、逆止
+   urikai ? g2.checked = true : g1.checked = true;
+  } else {
+   urikai ? g1.checked = true : g2.checked = true;
+  };
+
+
+  const ri = document.getElementById("rikaku").value;
+  const son = document.getElementById("songiri").value;
+
+  let text02in = urikai ? BigNumber(text).plus(BigNumber(ri)) : BigNumber(text).minus(BigNumber(ri));
+  let text03in = urikai ? BigNumber(text).minus(BigNumber(son)) : BigNumber(text).plus(BigNumber(son));
+
+
+  text02.value = text02in.toString()
+  text03.value = text03in.toString()
+
+ };
+
+
+ mapkey('sz', '買う', function () {
+
+
+
+
+  execidf(true);
  });
- mapkey('sps', '売る', function () {
-  SellMoney(true)
+
+
+ mapkey('sx', '売る', function () {
+  execidf();
  });
  mapkey('splb', '買う', async function () {
   buyMoney(true)
   hufu = await newpro(4000)
-  await BuyLossCut(true)
+  BuyLossCut(true)
  });
  mapkey('spls', '売る', async function () {
   SellMoney(true)
   hufu = await newpro(4000)
-  await SellLossCut(true)
+  SellLossCut(true)
  });
  mapkey('sppp', '売る', async function () {
   SellLossCut(true)
@@ -1222,7 +1335,7 @@ function rakutenFX() {
   // 損失幅の入力欄に値を入れる
   // 利益幅の入力欄に値を入れる
  };
- let LMoney = 5
+ let LMoney = 15
  // 損失幅pips
  const buyButton = () => {
   document.getElementById("mainFrame").contentDocument.getElementById('orderFlashPanel').contentDocument.querySelector('div.part.buy').click()
@@ -1263,6 +1376,7 @@ function rakutenFX() {
  // IFO
  const buyMoney = async (buy) => {
   const exec = async () => {
+   const strep = document.getElementById("mainFrame").contentDocument.getElementById('orderFlashPanel').contentDocument.querySelector('.spread').innerText;
    const od = await document.getElementById("mainFrame").contentDocument.querySelector('h2.hdg-l2-01').innerText;
    console.log(od)
    if (!od.includes('ストリーミング')) {
@@ -1278,18 +1392,27 @@ function rakutenFX() {
     document.getElementById("mainFrame").contentDocument.getElementById('orderFlashPanel').contentDocument.querySelector('body > div > div.StreamingNewClose > div.LossPipsParam > div.LossPips > div > div.rtsStepperText.rtsStepperText-option.rtsWidget.rtsWidget-option > input').value = LMoney
    }
    hufu = await newpro(400);
-   if (buy == 'buy') {
-    let fword = document.getElementById("mainFrame").contentDocument.getElementById('orderFlashPanel').contentDocument.querySelector('div.part.buy')
-    document.getElementById("mainFrame").contentDocument.getElementById('orderFlashPanel').contentDocument.querySelector('div.part.buy').click()
-    hufu = await newpro(1000);
-    document.querySelector('#nav-order-close > a').click();
+   let yesno;
+   if (strep == '0.2') {
+    yesno = true;
    } else {
-    document.getElementById("mainFrame").contentDocument.getElementById('orderFlashPanel').contentDocument.querySelector('div.part.sell').click()
-    hufu = await newpro(1000);
-    document.querySelector('#nav-order-close > a').click();
+    yesno = window.confirm('kauno');
+   }
+   if (yesno) {
+    if (buy == 'buy') {
+     let fword = document.getElementById("mainFrame").contentDocument.getElementById('orderFlashPanel').contentDocument.querySelector('div.part.buy')
+     document.getElementById("mainFrame").contentDocument.getElementById('orderFlashPanel').contentDocument.querySelector('div.part.buy').click()
+     hufu = await newpro(1000);
+     document.querySelector('#nav-order-close > a').click();
+    } else {
+     document.getElementById("mainFrame").contentDocument.getElementById('orderFlashPanel').contentDocument.querySelector('div.part.sell').click()
+     hufu = await newpro(1000);
+     document.querySelector('#nav-order-close > a').click();
+    }
    }
   }
   exec()
+
  };
  mapkey('qk', 'rakuten', function () {
   history.go(-1)
@@ -1530,3 +1653,37 @@ const time = new Date().getTime();
 
 
 
+const API_KEY = '43a74d8d-2f77-4a6a-8684-84b8f3bcd1bf:fx';
+const API_URL = 'https://api-free.deepl.com/v2/translate';
+
+async function deeplTranslate(word) {
+ let deeplInput = word;
+ let sourceLang = "&source_lang=EN&target_lang=JA";
+ let content = encodeURI('auth_key=' + API_KEY + '&text=' + deeplInput + sourceLang);
+
+ let url = API_URL + '?' + content;
+ console.log(url);
+ try {
+  let response = await fetch(url);
+  if (response.ok) {
+   let res = await response.json();
+   return res;
+  } else {
+   throw new Error("Could not reach the API: " + response.statusText);
+  }
+ } catch (error) {
+  alert("翻訳失敗: " + error.message);
+  return null;
+ }
+}
+
+
+
+vmapkey('m', 'kensaku', async function () {
+ const selection = window.getSelection();
+ console.log(selection.anchorNode);
+ const reWord = await deeplTranslate(selection.anchorNode.data);
+ console.log(reWord.translations[0].text);
+ selection.anchorNode.parentElement.append(reWord.translations[0].text);
+ // alert(reWord)
+});

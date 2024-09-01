@@ -1,0 +1,16 @@
+todo text.
+
+
+ 南無般若心経
+
+環境
+next.js淹れる　swr install して。 
+教科書のサンプル流し込んで、動作させる。
+それを変化させる。
+
+tipsを作る。 js 辞書 
+npx create next-app 
+swr
+
+
+家族に逆流しろ
