@@ -30,11 +30,20 @@
  <script>
   function AddChart() {
    const apEl = document.getElementById("chartbox");
-   let div = `--`
+   let div = document.createElement("div");
+   div.innerHTML = `
+    <script type="text/javascript">
+     alert("Hello, World!");
+ </script>
+ `;
+ apEl.appendChild(div);
+ }
+ </script>
+ `
 
 
-   apEl.appendChild(div);
-  }
+ apEl.appendChild(div);
+ }
 
 
 
@@ -53,11 +62,10 @@
   <br>
   <dd>
 
-
+   rest
   </dd>
 
 
-  aa
  </div>
  <!-- <div class="chartbox"> 
 
