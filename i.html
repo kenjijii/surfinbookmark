@@ -28,15 +28,6 @@
   }
  </style>
  <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
- <script>
-  (function load() {
-   var ele = document.getElementById("chartbox");
-   if (ele) {
-    var html = localStorage.getItem("chartbox");
-    ele.innerHTML = html;
-   }
-  })();
- </script>
 
 
  <script>
@@ -80,7 +71,15 @@
    var ele = document.getElementById("chartbox");
    ele.appendChild(s);
   }
-  AddChart()
+  // AddChart()
+  (function load() {
+   var ele = document.getElementById("chartbox");
+   if (ele) {
+    var html = localStorage.getItem("chartbox");
+    ele.innerHTML = html;
+   }
+  })();
+
  </script>
 
 
