@@ -37,6 +37,7 @@
    localStorage.setItem("chartbox", html);
   }
   function clear() {
+   document.getElementById("chartbox").innerHTML = '';
    localStorage.clear();
    location.reload();
   }
@@ -316,6 +317,11 @@
  </button>
  <button onclick="save()">save</button>
  <button onclick="clear()">clear</button>
+ <div class="team">
+
+  <button onclick="set1()">set1</button>
+
+ </div>
 </body>
 
 </html>
