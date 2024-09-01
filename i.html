@@ -29,13 +29,25 @@
  </style>
  <script>
   function AddChart() {
-   const apEl = document.getElementById("chartbox");
-   let div =`<script type="text/javascript">
-     alert("Hello, World!");
- </script>
- `;
- apEl.append(div);
+  //   const apEl = document.getElementById("chartbox");
+  //   let div =`<script type="text/javascript">
+  //     (function() {
+  //      alert("Hello, World!");
+  //     })();
+  // </script>
+ // `;
+ // apEl.append(div);
+
+
+ var s = document.createElement("script");
+ s.innerHTML = `(function() {
+ alert("Hello, World!");
+ })();`;
+
+ var ele = document.getElementById("chartbox");
+ ele.appendChild(s);
  }
+ AddChart()
  </script>
 
 
