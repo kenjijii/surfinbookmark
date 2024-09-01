@@ -40,9 +40,26 @@
 
 
  var s = document.createElement("script");
- s.innerHTML = `(function() {
- alert("Hello, World!");
- })();`;
+ s.innerHTML = `
+
+
+ new TradingView.widget(
+ {
+ "width": 440,
+ "height": 270,
+ "symbol": "FRED:NIKKEI225",
+ "interval": "D",
+ "timezone": "Etc/UTC",
+ "theme": "light",
+ "style": "1",
+ "locale": "ja",
+ "enable_publishing": false,
+ "allow_symbol_change": true,
+ "container_id": "tradingview_e2add"
+ }
+ );
+
+ `;
 
  var ele = document.getElementById("chartbox");
  ele.appendChild(s);
