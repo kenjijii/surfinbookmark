@@ -72,17 +72,21 @@
    ele.appendChild(s);
   }
   // AddChart()
-  (function load() {
-   var ele = document.getElementById("chartbox");
-   if (ele) {
-    var html = localStorage.getItem("chartbox");
-    ele.innerHTML = html;
-   }
-  })();
+
 
  </script>
 
-
+ <script>
+  window.addEventListener('DOMContentLoaded', function () {
+   (function load() {
+    var ele = document.getElementById("chartbox");
+    if (ele) {
+     var html = localStorage.getItem("chartbox");
+     ele.innerHTML = html;
+    }
+   })();
+  });
+ </script>
 
 </head>
 
