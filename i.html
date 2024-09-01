@@ -29,18 +29,8 @@
  </style>
  <script>
   function AddChart() {
-  //   const apEl = document.getElementById("chartbox");
-  //   let div =`<script type="text/javascript">
-  //     (function() {
-  //      alert("Hello, World!");
-  //     })();
-  // </script>
- // `;
- // apEl.append(div);
-
-
- var s = document.createElement("script");
- s.innerHTML = `
+   var s = document.createElement("script");
+   s.innerHTML = `
 
 
  new TradingView.widget(
@@ -61,10 +51,10 @@
 
  `;
 
- var ele = document.getElementById("chartbox");
- ele.appendChild(s);
- }
- AddChart()
+   var ele = document.getElementById("chartbox");
+   ele.appendChild(s);
+  }
+  AddChart()
  </script>
 
 
