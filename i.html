@@ -39,11 +39,11 @@
    localStorage.clear();
    location.reload();
   }
-  function load() {
+  (function load() {
    var ele = document.getElementById("chartbox");
    var html = localStorage.getItem("chartbox");
    ele.innerHTML = html;
-  }
+  })();
 
   function AddChart() {
    const widthInput = document.getElementById("widthInput");
