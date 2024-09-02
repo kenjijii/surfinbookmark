@@ -95,14 +95,14 @@
 
 
 
-  function width(typenum) {
+  function width(tvw) {
    const iFms = document.querySelectorAll("iframe");
-   let width = "0";
-   let height = "0";
+   let width = tvw;
+   let height = "110";
    if (typenum == 1) {
 
     iFms.forEach(iFm => {
-     iFm.parentNode.style.width = width;
+     iFm.parentNode.style.width = width + 'vw';
      iFm.parentNode.style.height = height;
     });
    };
@@ -120,7 +120,13 @@
 </head>
 
 <body>
+ <div id="ima">
 
+  <button onclick="width(33)">３</button>
+  <button onclick="width(66)">2</button>
+  <button onclick="width(99)">1</button>
+
+ </div>
 
  <div id="chartbox">yuutabr
   あああdddddd
@@ -137,13 +143,7 @@
  </button>
  <button onclick="save()">save</button>
  <button onclick="clear()">clear</button>
- <div id="ima">
 
-  <button onclick="width(3)">３</button>
-  <button onclick="width(2)">2</button>
-  <button onclick="width(1)">1</button>
-
- </div>
 </body>
 
 </html>
