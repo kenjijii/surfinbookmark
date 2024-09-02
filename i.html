@@ -48,17 +48,13 @@
 
 
   function AddChart() {
-   const widthInput = document.getElementById("widthInput");
-   const heightInput = document.getElementById("heightInput");
-   const width = widthInput.value;
-   const height = heightInput.value;
 
    var s = document.createElement("script");
    s.innerHTML = `
   new TradingView.widget(
    {
     "width": 100%,
-   "height": ${height},
+   "height":20vh,
    "symbol": "FRED:NIKKEI225",
    "interval": "D",
    "timezone": "Etc/UTC",
