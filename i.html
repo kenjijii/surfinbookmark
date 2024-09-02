@@ -98,11 +98,11 @@
   function width(tvw) {
    const iFms = document.querySelectorAll("iframe");
    let width = tvw;
-   let height = "110";
+   let height = tvw * 2 / 3;
 
    iFms.forEach(iFm => {
     iFm.parentNode.style.width = width + 'vw';
-    iFm.parentNode.style.height = height;
+    iFm.parentNode.style.height = height + 'vw';
    });
   };
   // AddChart()
