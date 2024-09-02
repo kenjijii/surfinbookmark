@@ -1,6 +1,11 @@
 <!DOCTYPE html
  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
+<!--
+    Modified from the Debian original for Ubuntu
+    Last updated: 2022-03-22
+    See: https://launchpad.net/bugs/1966004
+  -->
 
 <head>
  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -32,16 +37,12 @@
    localStorage.setItem("chartbox", html);
   }
   function clear() {
-   document.getElementById("chartbox").innerHTML = '';
    localStorage.clear();
    location.reload();
   }
 
 
-  // 高さが、20vwとか
-  // 幅が、3分割とか。
-
-  function AddChart(symbol, interval,) {
+  function AddChart() {
    const widthInput = document.getElementById("widthInput");
    const heightInput = document.getElementById("heightInput");
    const width = widthInput.value;
@@ -51,8 +52,8 @@
    s.innerHTML = `
   new TradingView.widget(
    {
-   "width": 100%,
-   "height":233,
+    "width": ${width},
+   "height": ${height},
    "symbol": "FRED:NIKKEI225",
    "interval": "D",
    "timezone": "Etc/UTC",
@@ -62,15 +63,20 @@
    "enable_publishing": false,
    "allow_symbol_change": true,
    "container_id": "tradingview_e2add"
-   }
+ }
   );
-  `;
+
+ `;
 
    var ele = document.getElementById("chartbox");
    ele.appendChild(s);
   }
   // AddChart()
 
+
+ </script>
+
+ <script>
   window.addEventListener('DOMContentLoaded', function () {
    (function load() {
     var ele = document.getElementById("chartbox");
@@ -80,10 +86,7 @@
     }
    })();
   });
-
-
  </script>
-
 
 </head>
 
@@ -315,7 +318,6 @@
  <button onclick="clear()">clear</button>
  <div class="team">
 
-  <!-- <button onclick="set1()">set1</button> -->
 
  </div>
 </body>
