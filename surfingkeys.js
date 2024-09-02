@@ -111,6 +111,14 @@ unmap("s");
 unmap("x");
 unmap("p");
 unmap("a");
+// http://127.0.0.1:5500/surfingkeys.js
+mapkey('q', 'Show me the money', function () {
+ alert('qt')
+});
+
+vmapkey('qt', 'kensaku', async function () {
+ alert('qt')
+});
 mapkey('ymd', "Copy current page's link for markdown", function () {
  const url = new URL(window.location.href);
  var title = window.document.title.replace(/(<|>)/g, '\\$1')
@@ -1679,7 +1687,8 @@ async function deeplTranslate(word) {
 
 
 
-vmapkey('m', 'kensaku', async function () {
+
+vmapkey('q', 'kensaku', async function () {
  const selection = window.getSelection();
  console.log(selection.anchorNode);
  const reWord = await deeplTranslate(selection.anchorNode.data);
