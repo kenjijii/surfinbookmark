@@ -100,6 +100,14 @@
    const iFms = document.querySelectorAll("iframe");
    let width = tvw;
    let height = tvw * 2 / 3;
+   if (tvw < 44) {
+    height = tvw;
+   } else {
+    height = tvw * 2 / 3;
+
+
+
+   }
 
    iFms.forEach(iFm => {
     iFm.parentNode.style.width = width + 'vw';
@@ -122,8 +130,8 @@
 <body>
  <div id="ima">
 
-  <button onclick="width(33)">３</button>
-  <button onclick="width(66)">2</button>
+  <button onclick="width(31)">３</button>
+  <button onclick="width(46)">2</button>
   <button onclick="width(99)">1</button>
 
  </div>
