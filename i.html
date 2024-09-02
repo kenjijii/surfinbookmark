@@ -77,10 +77,11 @@
 
 
   function width() {
-   const iFm = document.querySelector("iframe");
-   iFm.style.width = "100%";
-   iFm.style.height = "100%";
-
+   const iFms = document.querySelectorAll("iframe");
+   iFms.forEach(iFm => {
+    iFm.parentNode.style.width = "100%";
+    iFm.parentNode.style.height = "100%";
+   });
   };
   // AddChart()
 
