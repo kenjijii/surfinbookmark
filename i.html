@@ -74,7 +74,14 @@
    var ele = document.getElementById("chartbox");
    ele.appendChild(s);
   }
-  AddChart()
+  // AddChart()
+
+  function width() {
+   const iFm = document.querySelector(".layout__area--center");
+   iFm.style.width = "100%";
+   iFm.style.height = "100%";
+
+  });
  </script>
 
 
@@ -84,7 +91,7 @@
 <body>
 
  <div id="chartbox">yuutabr
-  あああ
+  あああddd
  </div>
  <!-- <div class="chartbox"> 
 
@@ -307,6 +314,11 @@
  </button>
  <button onclick="save()">save</button>
  <button onclick="clear()">clear</button>
+ <div id="ima">
+
+  <button onclick="width()">sinuna</button>
+
+ </div>
 </body>
 
 </html>
