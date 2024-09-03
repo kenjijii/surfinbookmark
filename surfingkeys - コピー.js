@@ -446,8 +446,8 @@ function rakutenFX() {
   div.innerHTML = `<h5>Control Panel</h5>
    <button id="sellMoney">idf</button>
 
-  <input type="number" id="orderValue" value="0" style="width: 2rem;" />
-  <input type="number" id="orderValue2" value="1" style="width: 2rem;" />
+  <input type="number" id="orderValue" value="1" style="width: 1rem;" />
+  <input type="number" id="orderValue2" value="1" style="width: 1rem;" />
 
 
   <input type="radio" id="buyOption" name="tradeOption" value="buy" checked>
@@ -456,9 +456,9 @@ function rakutenFX() {
   <label for="buyOption">Sell</label>
   <input type="number" id="now" value="1" style="width: 5rem;"step="0.001" />
   <label for="buyOption">now</label>
-  <input type="number" id="rikaku" value="0.01" style="width: 5rem;"step="0.001" />
+  <input type="number" id="rikaku" value="1" style="width: 5rem;"step="0.001" />
   <label for="rikaku">r</label>
-  <input type="number" id="songiri" value="0.008" style="width: 5rem;"step="0.001" />
+  <input type="number" id="songiri" value="1" style="width: 5rem;"step="0.001" />
   <label for="songiri">s</label>
 
    <button id="buyMoney">Buy Money</button>
@@ -671,10 +671,8 @@ function rakutenFX() {
    document.querySelector('#nav-order-change > a').click();
    hufu = await newpro(700)
    let ag = [...document.getElementById("mainFrame").contentDocument.querySelectorAll('.align-R>div:nth-child(2)')].map((c) => c.textContent);
-   console.log(ag)
-
    const nP = ag.filter(c => c != ' ');
-   console.log(nP[NumOfCP])
+   // console.log(nP[NumOfCP])
    hufu = await newpro(20)
    document.getElementById("mainFrame").contentDocument.getElementsByName('checkBoxArr[' + NumOfCP + ']')[0].checked = true
    hufu = await newpro(700)
@@ -760,13 +758,8 @@ function rakutenFX() {
   text01.classList.remove('clear-default');
   text02.classList.remove('clear-default');
   text03.classList.remove('clear-default');
-  // document.getElementById("mainFrame")./contentDocument.getElementById('selectValidity_0');
-  // document.getElementById("mainFrame").contentDocument.getElementById('selectValidity_1');
-
-  // document.getElementById("mainFrame").contentDocument.getElementById('selectValidity_0');
-  document.getElementById("mainFrame").contentDocument.querySelector('#selectValidity_2').checked = true
-  document.getElementById("mainFrame").contentDocument.querySelector('#selectValidity2_2').checked = true
-
+  document.getElementById("mainFrame").contentDocument.getElementById('selectValidity_0');
+  document.getElementById("mainFrame").contentDocument.getElementById('selectValidity_1');
   const sl1 = document.getElementById("mainFrame").contentDocument.getElementById('selectBuySell_01');
   const sl2 = document.getElementById("mainFrame").contentDocument.getElementById('selectBuySell_02');
   const g1 = document.getElementById("mainFrame").contentDocument.getElementById('selectExecCond_0');
@@ -775,11 +768,8 @@ function rakutenFX() {
   urikai ? sl1.checked = true : sl2.checked = true;
   if (document.getElementById("now").value.length < 3) {
    const clipboardData = await navigator.clipboard.readText();
-
-   console.log(clipboardData);
-
    const copiedPrice = !isNaN(parseFloat(clipboardData)) ? parseFloat(clipboardData) : 149.9;
-   console.log(copiedPrice);
+
 
    const copiedPriceNum = parseFloat(copiedPrice);
    document.getElementById("now").value = copiedPriceNum;
@@ -790,18 +780,18 @@ function rakutenFX() {
 
   if (Number(firstPrice) < Number(text)) {
    // 買いの時、逆止
-   urikai ? g1.checked = true : g2.checked = true;
-  } else {
    urikai ? g2.checked = true : g1.checked = true;
+  } else {
+   urikai ? g1.checked = true : g2.checked = true;
   };
 
 
   const ri = document.getElementById("rikaku").value;
   const son = document.getElementById("songiri").value;
 
-  let text02in = urikai ? BigNumber(text).minus(BigNumber(son)) : BigNumber(text).plus(BigNumber(son));
+  let text02in = urikai ? BigNumber(text).plus(BigNumber(ri)) : BigNumber(text).minus(BigNumber(ri));
+  let text03in = urikai ? BigNumber(text).minus(BigNumber(son)) : BigNumber(text).plus(BigNumber(son));
 
-  let text03in = urikai ? BigNumber(text).plus(BigNumber(ri)) : BigNumber(text).minus(BigNumber(ri));
 
   text02.value = text02in.toString()
   text03.value = text03in.toString()
@@ -1050,7 +1040,11 @@ function rakutenFX() {
    let sasiB = document.getElementById("sasiB");
    let gyakB = document.getElementById("gyakB");
    let buyB = document.getElementById("buyB");
-
+   if (sa1.checked) {
+    document.getElementById("mainFrame").contentDocument.querySelector('#selectExecCond_0').checked = true
+   } else {
+    document.getElementById("mainFrame").contentDocument.querySelector('#selectExecCond_1').checked = true
+   }
    //購入数
    document.getElementById("mainFrame").contentDocument.querySelector('#amount1').value = document.querySelector('#bana_04').value;
    // たぶん期限
