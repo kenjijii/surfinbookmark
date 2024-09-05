@@ -112,9 +112,6 @@ unmap("x");
 unmap("p");
 unmap("a");
 // http://127.0.0.1:5500/surfingkeys.js
-mapkey('q', 'Show me the money', function () {
- alert('qt')
-});
 
 vmapkey('qt', 'kensaku', async function () {
  alert('qt')
