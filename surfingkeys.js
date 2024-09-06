@@ -1407,7 +1407,7 @@ function rakutenFX() {
    if (strep == '0.2') {
     yesno = true;
    } else {
-    yesno = window.confirm('kauno');
+    // yesno = window.confirm('kauno');
    }
    if (yesno) {
     if (buy == 'buy') {
