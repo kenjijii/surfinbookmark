@@ -1273,7 +1273,7 @@ function rakutenFX() {
      `https://translate.google.com/translate?js=n&sl=auto&tl=ja&u=https://qiita.com/hush_in/items/09b549ca8e533340d834`
    )
   } else {
-   // 選択している場合はそれを翻訳する
+   // 選択している場合はそれをする
    tabOpenLink(
     `https://translate.google.com/?sl=auto&tl=ja&text=${encodeURI(selection)}`
    )
