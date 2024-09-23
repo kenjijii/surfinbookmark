@@ -1691,6 +1691,17 @@ async function deeplTranslate(word) {
 
 
 
+mapkey('tr', 'kensaku', function () {
+ document.body.onclick = async (e) => {
+  const selection = window.getSelection();
+  console.log(selection.anchorNode);
+
+  const reWord = await deeplTranslate(selection.anchorNode.data);
+  console.log(reWord.translations[0].text);
+  selection.anchorNode.parentElement.append(reWord.translations[0].text);
+ }
+});
+
 vmapkey('q', 'kensaku', async function () {
  const selection = window.getSelection();
  console.log(selection.anchorNode);
