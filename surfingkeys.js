@@ -1273,7 +1273,7 @@ function rakutenFX() {
      `https://translate.google.com/translate?js=n&sl=auto&tl=ja&u=https://qiita.com/hush_in/items/09b549ca8e533340d834`
    )
   } else {
-   // 選択している場合はそれを翻訳する
+   // 選択している場合はそれをする
    tabOpenLink(
     `https://translate.google.com/?sl=auto&tl=ja&text=${encodeURI(selection)}`
    )
@@ -1688,8 +1688,36 @@ async function deeplTranslate(word) {
  }
 }
 
+const tranceExchange = async (word) => {
+
+ const SelectNode = window.getSelection().anchorNode.parentElement;
+ const text = SelectNode.textContent;
+ const reWord = await deeplTranslate(text);
+ const translatedDiv = document.createElement('div');
+ translatedDiv.textContent = reWord.translations[0].text;
+ SelectNode.append(translatedDiv);
+
+ // SelectNode.append(reWord.translations[0].text);
+};
+mapkey('tc', 'kensaku', function () {
+ //タッチすると関数を実行する
+
+ document.body.onclick = async (e) => {
+  tranceExchange(e);
+ }
+});
 
 
+mapkey('tr', 'kensaku', function () {
+ document.body.onclick = async (e) => {
+  const selection = window.getSelection();
+  console.log(selection.anchorNode);
+
+  const reWord = await deeplTranslate(selection.anchorNode.data);
+  console.log(reWord.translations[0].text);
+  selection.anchorNode.parentElement.append(reWord.translations[0].text);
+ }
+});
 
 vmapkey('q', 'kensaku', async function () {
  const selection = window.getSelection();
