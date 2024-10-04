@@ -1688,7 +1688,24 @@ async function deeplTranslate(word) {
  }
 }
 
+const tranceExchange = async (word) => {
 
+ const SelectNode = window.getSelection().anchorNode.parentElement;
+ const text = SelectNode.textContent;
+ const reWord = await deeplTranslate(text);
+ const translatedDiv = document.createElement('div');
+ translatedDiv.textContent = reWord.translations[0].text;
+ SelectNode.append(translatedDiv);
+
+ // SelectNode.append(reWord.translations[0].text);
+};
+mapkey('tc', 'kensaku', function () {
+ //タッチすると関数を実行する
+
+ document.body.onclick = async (e) => {
+  tranceExchange(e);
+ }
+});
 
 
 mapkey('tr', 'kensaku', function () {
