@@ -46,7 +46,7 @@ const shuntNormalKeys = (keys) => keys.forEach((key) => map(`!!${key}`, key))
 const unmapNormalKeys = (keys) => keys.forEach((key) => unmap(key))
 const unshuntNormalKeys = (keys) => keys.forEach((key) => unmap(`!!${key}`))
 // ---------------------------------------------------------
-const defaultNormalKeys = ["<Alt-s>", "<Alt-i>", "p", ";ql", "cf", ";m", ";fs", "O", "af", "C", "<Ctrl-h>", "<Ctrl-j>", "<Ctrl-i>", "q", "<Ctrl-Alt-i>", "cS", "cs", "j", "k", "yt", "yT", "g0", "g$", "gx0", "gxt", "gxT", "gx$", "gxx", "E", "R", "<Alt-p>", "<Alt-m>", "on", "gT", "gt", ";u", ";U", "B", "F", "<Ctrl-6>", "S", "D", "sg", "sd", "sb", "se", "sw", "ss", "sh", "sy", "yi", "ys", "yj", "yQ", "yp", "cq", "cc", ";pp", ";pj", "oi", "od", "ob", "oe", "H", "t", "m", "'", "<Ctrl-'>", ";pm", ";e", ";v", "gc", "gk", "gn", ";i", ";j", "cp", ";pa", ";pb", ";pd", ";ps", ";pc", ";cp", ";ap", "gr", ";s", ";ph", ";t", ";dh", ";db", ";yh"];
+const defaultNormalKeys = ["<Alt-s>", "<Alt-i>", "p", ";ql", "cf", ";m", ";fs", "O", "af", "C", "<Ctrl-h>", "<Ctrl-j>", "<Ctr l-i>", "q", "<Ctrl-Alt-i>", "cS", "cs", "j", "k", "yt", "yT", "g0", "g$", "gx0", "gxt", "gxT", "gx$", "gxx", "E", "R", "<Alt-p>", "<Alt-m>", "on", "gT", "gt", ";u", ";U", "B", "F", "<Ctrl-6>", "S", "D", "sg", "sd", "sb", "se", "sw", "ss", "sh", "sy", "yi", "ys", "yj", "yQ", "yp", "cq", "cc", ";pp", ";pj", "oi", "od", "ob", "oe", "H", "t", "m", "'", "<Ctrl-'>", ";pm", ";e", ";v", "gc", "gk", "gn", ";i", ";j", "cp", ";pa", ";pb", ";pd", ";ps", ";pc", ";cp", ";ap", "gr", ";s", ";ph", ";t", ";dh", ";db", ";yh"];
 shuntNormalKeys(defaultNormalKeys);
 unmapNormalKeys(defaultNormalKeys);
 map("@@", "!!<Alt-s>")

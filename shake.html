@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <style>
+  .demo_icon {
+   border-radius: 50%;
+   width: 100px;
+   height: 100px;
+   border: solid #999 1px;
+   line-height: 100px;
+   text-align: center;
+   font-size: 9px;
+  }
+
+  .demo_icon.poyon {
+   animation: poyon 1.0s linear 0s;
+   background-color: #C00;
+   color: #FFF;
+  }
+
+
+  @keyframes poyon {
+   0% {
+    transform: scale(0.8, 1.4) translate(0%, -100%);
+   }
+
+   10% {
+    transform: scale(0.8, 1.4) translate(0%, -15%);
+   }
+
+   20% {
+    transform: scale(1.4, 0.6) translate(0%, 30%);
+   }
+
+   30% {
+    transform: scale(0.9, 1.1) translate(0%, -10%);
+   }
+
+   40% {
+    transform: scale(0.95, 1.2) translate(0%, -30%);
+   }
+
+   50% {
+    transform: scale(0.95, 1.2) translate(0%, -10%);
+   }
+
+   60% {
+    transform: scale(1.1, 0.9) translate(0%, 5%);
+   }
+
+   70% {
+    transform: scale(1.0, 1.0) translate(0%, 0%);
+   }
+
+   100% {
+    transform: scale(1.0, 1.0) translate(0%, 0%);
+   }
+  }
+ </style>
+
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.1.2/howler.min.js"></script>
+ <script>
+
+
+
+
+  eff = new Howl({
+   src: ["/sound/demo/click/003.mp3"],
+   autoplay: false,
+   loop: false,
+   volume: 0.8
+  });
+
+
+  function ClickRequestDeviceSensor() {
+   //デバイスのイベントへのリクエスト許可確認
+   DeviceOrientationEvent.requestPermission().then(function (response) {
+    if (response === 'granted') {
+     //許可されたらイベントを実行する
+     window.addEventListener("devicemotion", devicemotionHandler);
+     //許可ボタンを消す
+     $('#sensorrequest').css('display', 'none');
+    }
+   }).catch(function (e) {
+    console.log(e);
+   });
+  }
+
+
+  //$(function(){
+  window.onload = () => {
+
+   if (window.DeviceOrientationEvent) {
+    if (DeviceOrientationEvent.requestPermission && typeof DeviceOrientationEvent.requestPermission === 'function') {
+
+     var banner = '<div  onclick="ClickRequestDeviceSensor();" class="btn" id="sensorrequest">加速度センサーの有効化</div>';
+     $('#demo_info').append(banner);
+
+    } else {
+     window.addEventListener("devicemotion", devicemotionHandler);
+    }
+
+
+
+   }
+
+  };
+
+  function devicemotionHandler(event) {
+
+
+   // X軸
+   var x = event.acceleration.x;
+   // Y軸
+   var y = event.acceleration.y;
+   // Z軸
+   var z = event.acceleration.z;
+
+   var l = 7;
+   if (x > l) {
+    $('#demo_data span').html('<b>右</b>に振りました！');
+    sf();
+   }
+   else if (x < -l) {
+    $('#demo_data span').html('<b>左</b>に振りました！');
+    sf();
+   }
+   else if (y > l) {
+    $('#demo_data span').html('<b>上</b>に振りました！');
+    sf();
+   }
+   else if (y < -l) {
+    $('#demo_data span').html('<b>下</b>に振りました！');
+    sf();
+   }
+   else return;
+
+  }
+
+  function sf() {
+   eff = new Howl({
+    src: ["/sound/demo/click/003.mp3"],
+    autoplay: false,
+    loop: false,
+    volume: 0.8
+   });
+   eff.play();
+   $(".demo_icon").removeClass("poyon").addClass("poyon");
+
+   $(".demo_icon").one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function () {
+    $(".demo_icon").removeClass('poyon');
+   });
+   $(".demo_icon").addClass('poyon');
+  }
+
+ </script>
+ <title>シェーク</title>
+</head>
+
+<body>
+
+
+ <div id="demo_info"></div>
+ <div id="demo_data"><span></span></div>
+
+ <div class="demo_icon">ふりふりしてください</div>
+
+
+</body>
+
+</html>
